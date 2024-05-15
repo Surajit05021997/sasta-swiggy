@@ -3,7 +3,7 @@ import axios from 'axios';
 import { SWIGGY_API_URL } from '../constants/constants';
 
 const useFetchRestaurants = () => {
-  const [restaurants, setRestaurants] = useState(null);
+  const [restaurants, setRestaurants] = useState([]);
 
   useEffect(() => {
     fetchRestaurantData();
