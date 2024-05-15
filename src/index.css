@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+/* css variables */
+:root {
+  /* colors */
+  --clr-neutral-100: #ffffff;
+  --clr-neutral-700: #3D4152;
+  --clr-neutral-900: #000000;
+
+   /* font family */
+   --ff-primary: "Roboto", sans-serif;
+
+   /* font weight */
+   --fw-light: 300;
+   --fw-regular: 400;
+   --fw-medium: 500;
+   --fw-bold: 700;
+   --fw-black: 900;
+ 
+   /* font size */
+   --fs-100: .875rem;
+   --fs-200: 1rem;
+   --fs-300: 1.125rem;
+   --fs-350: 1.25rem;
+   --fs-400: 1.5rem;
+   --fs-500: 2rem;
+   --fs-600: 2.5rem;
+   --fs-700: 3rem;
+   --fs-800: 5.5rem;
+   --fs-900: 6.25rem;
+}
+
+/** css reset **/
+*, *::before, *::after {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+img, picture, svg, video, canvas {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+/* general styling */
+body {
+  font-family: var(--ff-primary);
+  font-size: var(--fs-200);
+  color: var(--clr-neutral-700);
+}
+
+a {
+  color: var(--clr-neutral-700);
+}

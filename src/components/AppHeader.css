@@ -1,0 +1,17 @@
+.main-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.brand-logo img {
+  width: 2rem;
+}
+
+.main-navbar ul {
+  font-size: var(--fs-300);
+  display: flex;
+  gap: 4rem;
+}
+
