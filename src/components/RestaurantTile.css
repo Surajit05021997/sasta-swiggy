@@ -11,6 +11,11 @@
   transform: scale(1.05, 1.05);
 }
 
+.restaurant-tile:hover .restaurant-tile-image {
+  transition: all 400ms ease-in-out;
+  transform: scale(1.15, 1.15);
+}
+
 .restaurant-tile-image-container {
   width: 18.75rem;
   height: 12.5rem;
