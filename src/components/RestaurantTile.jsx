@@ -4,7 +4,7 @@ import './RestaurantTile.css';
 
 const RestaurantTile = (props) => {
 
-  const { name, areaName,cloudinaryImageId, cuisines, sla, avgRating } = props.restaurant.info;
+  const { name, areaName, cloudinaryImageId, cuisines, sla, avgRating } = props.restaurant.info;
 
   const getRatingClassName = () => {
     const ratingColorClass = avgRating >= 4 ? 'rating-green' : 'rating-red';

@@ -1,6 +1,7 @@
 import useFetchRestaurants from '../utilities/useFeatchRestaurants.jsx';
 import RestaurantTile from './RestaurantTile.jsx';
 import AppShimmer from './AppShimmer.jsx';
+import { Link } from 'react-router-dom';
 import './RestaurantList.css';
 
 const RestaurantList = () => {
@@ -10,7 +11,11 @@ const RestaurantList = () => {
       {
         restaurants.length == 0 ? <AppShimmer /> :
         restaurants.map((restaurant) => {
-          return <RestaurantTile key={restaurant.info.id} restaurant={restaurant} />
+          return (
+            <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
+              <RestaurantTile restaurant={restaurant} />
+            </Link>
+          );
         })
       }
     </section>

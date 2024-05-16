@@ -1,13 +1,13 @@
 import './App.css'
 import AppHeader from './components/AppHeader.jsx';
-import RestaurantList from './components/RestaurantList.jsx';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   return (
     <div>
       <AppHeader />
       <main>
-        <RestaurantList />
+        <Outlet />
       </main>
     </div>
   );

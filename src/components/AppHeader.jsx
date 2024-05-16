@@ -1,11 +1,14 @@
 import swiggyLogo from '../assets/swiggy_logo.svg';
 import './AppHeader.css';
+import { Link } from 'react-router-dom';
 
 const AppHeader = () => {
   return (
     <header className="main-header">
       <div className="brand-logo">
-        <img src={swiggyLogo} alt="Swiggy Logo" />
+        <Link to={'/'}>
+          <img src={swiggyLogo} alt="Swiggy Logo" />
+        </Link>
       </div>
       <nav className="main-navbar">
         <ul>
