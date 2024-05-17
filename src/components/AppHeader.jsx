@@ -6,7 +6,7 @@ const AppHeader = () => {
   return (
     <header className="main-header">
       <div className="brand-logo">
-        <Link to={'/'}>
+        <Link to='/'>
           <img src={swiggyLogo} alt="Swiggy Logo" />
         </Link>
       </div>

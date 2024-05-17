@@ -11,8 +11,8 @@ const useFetchRestaurants = () => {
   
   const fetchRestaurantData = async () => {
     const restaurantData = await axios.get(SWIGGY_API_URL);
-    const restaurantListData = restaurantData.data.data.cards.find((res) => res.card.card.gridElements.infoWithStyle['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle');
-    const restaurantsList = restaurantListData.card.card.gridElements.infoWithStyle.restaurants;
+    const restaurantListData = restaurantData?.data?.data?.cards.find((res) => res?.card?.card?.gridElements?.infoWithStyle['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle');
+    const restaurantsList = restaurantListData?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     setRestaurants(restaurantsList);
   }
   return restaurants;

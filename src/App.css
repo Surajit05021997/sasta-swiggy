@@ -4,4 +4,24 @@
   padding-inline: 2rem;
 }
 
+.rating {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+}
 
+.rating-green::before {
+  content: "";
+  background: url('./assets/star_green.svg') no-repeat;
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.rating-red::before {
+  content: "";
+  background: url('./assets/star_red.svg') no-repeat;
+  display: block;
+  width: 24px;
+  height: 24px;
+}
