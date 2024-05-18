@@ -16,8 +16,12 @@ const RestaurantMenu = () => {
         <section className="restaurant-menu">
           <h2>Menu</h2>
           {
-            restaurantMenuInfo.map((restaurantMenuTileInfo) => {
-              return <RestaurantMenuTile key={restaurantMenuTileInfo.card.card.title} restaurantMenuTileInfo={restaurantMenuTileInfo} />
+            restaurantMenuInfo.map((restaurantMenuTileInfo, index) => {
+              return <RestaurantMenuTile
+                        key={restaurantMenuTileInfo.card.card.title}
+                        restaurantMenuTileInfo={restaurantMenuTileInfo}
+                        isFirstTile={index === 0 ? true : false}
+                      />
             })
           }
         </section>

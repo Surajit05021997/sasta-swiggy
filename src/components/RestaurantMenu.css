@@ -7,4 +7,5 @@
   display: flex;
   flex-direction: column;
   margin-block: 2rem;
+  gap: 2rem;
 }
