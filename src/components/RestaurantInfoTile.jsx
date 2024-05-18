@@ -16,7 +16,7 @@ const RestaurantInfoTile = ({ restaurantInfo }) => {
   }
 
   return (
-    <div className="restaurant-info-tile">
+    <section className="restaurant-info-tile">
       <h1>{restaurantInfo.name}</h1>
       <div className="restaurant-info">
         <div className="rating-cost-info">
@@ -31,7 +31,7 @@ const RestaurantInfoTile = ({ restaurantInfo }) => {
           {getDelivertyCostInfo()}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 

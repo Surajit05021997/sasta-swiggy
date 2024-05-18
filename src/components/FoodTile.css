@@ -1,0 +1,18 @@
+.food-tile {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 1rem;
+  border-bottom: 2px solid var(--clr-neutral-200);
+}
+
+.food-image {
+  width: 200px;
+  height: 120px;
+  overflow: hidden;
+  border-radius: 1rem;
+}
+
+.food-image img {
+  object-fit: cover;
+}
