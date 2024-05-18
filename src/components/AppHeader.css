@@ -12,6 +12,20 @@
 .main-navbar ul {
   font-size: var(--fs-300);
   display: flex;
+  align-items: center;
   gap: 4rem;
 }
 
+.cart-nav-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  left: 12px;
+  top: 10px;
+  font-size: var(--fs-100);
+  font-weight: var(--fw-bold);
+}

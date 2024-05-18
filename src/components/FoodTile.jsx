@@ -4,7 +4,7 @@ import AddButton from './AddButton.jsx';
 import './FoodTile.css';
 
 const FoodTile = ({ foodInfo }) => {
-  const { name, imageId, price, defaultPrice, description } = foodInfo;
+  const { id, name, imageId, price, defaultPrice, description } = foodInfo;
   return (
     <div className="food-tile">
       <div className="food-info">
@@ -18,7 +18,7 @@ const FoodTile = ({ foodInfo }) => {
             imageId ? <img src={`${IMAGE_URL}${imageId}`} alt="Food Image" /> : ''
           }
         </div>
-        <AddButton />
+        <AddButton id={id} name={name} price={price} defaultPrice={defaultPrice} />
       </div>
     </div>
   );
