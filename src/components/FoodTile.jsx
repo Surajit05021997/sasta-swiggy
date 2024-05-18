@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { IMAGE_URL } from '../constants/constants.js';
+import AddButton from './AddButton.jsx';
 import './FoodTile.css';
 
 const FoodTile = ({ foodInfo }) => {
@@ -11,10 +12,13 @@ const FoodTile = ({ foodInfo }) => {
         <div>₹{price/100 || defaultPrice/100}</div>
         <p className="food-description">{description}</p>
       </div>
-      <div className="food-image">
-        {
-          imageId ? <img src={`${IMAGE_URL}${imageId}`} alt="Food Image" /> : ''
-        }
+      <div className="imgae-button-container">
+        <div className="food-image">
+          {
+            imageId ? <img src={`${IMAGE_URL}${imageId}`} alt="Food Image" /> : ''
+          }
+        </div>
+        <AddButton />
       </div>
     </div>
   );
