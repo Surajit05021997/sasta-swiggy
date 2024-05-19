@@ -1,11 +1,13 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import './AddButton.css';
 import CartContext from '../utilities/CartContext.jsx';
 import PropTypes from 'prop-types';
 import RestaurantContext from '../utilities/RestaurantContext.jsx';
+import Notification from './Notification.jsx';
 
 
 const AddButton = ({ id, name, price, defaultPrice }) => {
+  const [showNotification, setShowNotification] = useState(false);
   const { cart, setCart } = useContext(CartContext);
   const { selectedRestaurant, checkoutRestaurant, setCheckoutRestaurant } = useContext(RestaurantContext);
 
@@ -20,7 +22,7 @@ const AddButton = ({ id, name, price, defaultPrice }) => {
 
   const handleAddRemoveClick = (action) => {
     if((checkoutRestaurant?.id !== selectedRestaurant?.id) && checkoutRestaurant !== null) {
-      alert('Food already added from different restaurant.');
+      setShowNotification(true);
       return;
     }
 
@@ -59,6 +61,11 @@ const AddButton = ({ id, name, price, defaultPrice }) => {
         ) : (
           <button onClick={() => handleAddRemoveClick('add')}>ADD</button>
         )
+      }
+      {
+        showNotification ? (
+          <Notification setShowNotification={setShowNotification} />
+        ) : ''
       }
     </div>
   );

@@ -1,0 +1,33 @@
+.notification {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0,0,0,0.50);
+  
+}
+
+dialog {
+  border: 2px solid var(--clr-success);
+  border-radius: 1rem;
+  max-width: 600px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+.notification-heading {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-bold);
+}
+
+.btn-grp {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  justify-content: end;
+}
