@@ -2,10 +2,12 @@ import { useContext } from 'react';
 import './AddButton.css';
 import CartContext from '../utilities/CartContext.jsx';
 import PropTypes from 'prop-types';
+import RestaurantContext from '../utilities/RestaurantContext.jsx';
 
 
 const AddButton = ({ id, name, price, defaultPrice }) => {
   const { cart, setCart } = useContext(CartContext);
+  const { selectedRestaurant, checkoutRestaurant, setCheckoutRestaurant } = useContext(RestaurantContext);
 
   let currentFoodIndex;
   const getCurrentFoodCount = () => {
@@ -17,6 +19,11 @@ const AddButton = ({ id, name, price, defaultPrice }) => {
   }
 
   const handleAddRemoveClick = (action) => {
+    if((checkoutRestaurant?.id !== selectedRestaurant?.id) && checkoutRestaurant !== null) {
+      alert('Food already added from different restaurant.');
+      return;
+    }
+
     let cartCopy = [...cart];
     let foodObj = cart.find((food) => food.id === id);
     if(foodObj) {
@@ -37,6 +44,7 @@ const AddButton = ({ id, name, price, defaultPrice }) => {
       cartCopy = [...cart, foodObj];
     }
     setCart(cartCopy);
+    cartCopy.length ? setCheckoutRestaurant(selectedRestaurant) : setCheckoutRestaurant(null);
   }
 
   return (

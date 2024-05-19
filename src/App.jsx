@@ -8,9 +8,10 @@ import { useState } from 'react';
 function App() {
   const [cart, setCart] = useState([]);
   const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [checkoutRestaurant, setCheckoutRestaurant] = useState(null);
 
   return (
-    <RestaurantContext.Provider value={{ selectedRestaurant, setSelectedRestaurant }}>
+    <RestaurantContext.Provider value={{ selectedRestaurant, setSelectedRestaurant, checkoutRestaurant, setCheckoutRestaurant }}>
       <CartContext.Provider value={{ cart, setCart}}>
         <div>
           <AppHeader />

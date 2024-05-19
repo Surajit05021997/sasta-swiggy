@@ -14,7 +14,7 @@ const RestaurantMenu = () => {
 
   useEffect(() => {
     setSelectedRestaurant(restaurantMenu?.restaurantInfo);
-  }, [restaurantMenu]);
+  }, [restaurantMenu, setSelectedRestaurant]);
 
   if(restaurantMenu) {
     const { restaurantInfo, restaurantMenuInfo } = restaurantMenu;
