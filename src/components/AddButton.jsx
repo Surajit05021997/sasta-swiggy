@@ -7,12 +7,26 @@ import PropTypes from 'prop-types';
 const AddButton = ({ id, name, price, defaultPrice }) => {
   const { cart, setCart } = useContext(CartContext);
 
-  const handleAddClick = () => {
-    let cartCopy;
+  let currentFoodIndex;
+  const getCurrentFoodCount = () => {
+    const currentFood = cart.find((food, index) => {
+      currentFoodIndex = index;
+      return food.id === id
+    });
+    return currentFood?.quantity;
+  }
+
+  const handleAddRemoveClick = (action) => {
+    let cartCopy = [...cart];
     let foodObj = cart.find((food) => food.id === id);
     if(foodObj) {
-      foodObj.quantity += 1;
-      cartCopy = [...cart];
+      if(action === 'add') {
+        foodObj.quantity += 1;
+        cartCopy = [...cart];
+      } else if (action === 'remove') {
+        foodObj.quantity === 1 ? cartCopy.splice(currentFoodIndex, 1) :
+          foodObj.quantity -= 1;
+      }
     } else {
       foodObj = {
         id,
@@ -27,7 +41,17 @@ const AddButton = ({ id, name, price, defaultPrice }) => {
 
   return (
     <div className="add-buttom">
-      <button onClick={handleAddClick}>ADD</button>
+      {
+        getCurrentFoodCount() ? (
+          <div className="plus-minus-button">
+            <button onClick={() => handleAddRemoveClick('remove')}>-</button>
+            <div>{getCurrentFoodCount()}</div>
+            <button onClick={() => handleAddRemoveClick('add')}>+</button>
+          </div>
+        ) : (
+          <button onClick={() => handleAddRemoveClick('add')}>ADD</button>
+        )
+      }
     </div>
   );
 }

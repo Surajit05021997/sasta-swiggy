@@ -8,10 +8,10 @@ const RestaurantInfoTile = ({ restaurantInfo }) => {
   };
 
   const getDelivertyCostInfo = () => {
-    const startIndex = restaurantInfo.feeDetails.message.indexOf('kms') - 4;
+    const startIndex = restaurantInfo?.feeDetails?.message?.indexOf('kms') - 4;
     const endIndex = startIndex + 7;
-    const distance = restaurantInfo.feeDetails.message.slice(startIndex, endIndex);
-    const deliveryCost = restaurantInfo.feeDetails.totalFee/100;
+    const distance = restaurantInfo?.feeDetails?.message?.slice(startIndex, endIndex);
+    const deliveryCost = restaurantInfo?.feeDetails?.totalFee/100;
     return `${distance} | ₹ ${deliveryCost} Delivery fee will apply`;
   }
 
