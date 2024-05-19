@@ -4,8 +4,8 @@ import { IMAGE_URL } from '../constants/constants.js';
 import './Checkout.css';
 
 const Checkout = () => {
-  const { selectedRestaurant } = useContext(RestaurantContext);
-  const { name, cloudinaryImageId, areaName } = selectedRestaurant;
+  const { checkoutRestaurant } = useContext(RestaurantContext);
+  const { name, cloudinaryImageId, areaName } = checkoutRestaurant;
   return (
     <div className="checkout">
       <div className="checkout-restaurant-info">
