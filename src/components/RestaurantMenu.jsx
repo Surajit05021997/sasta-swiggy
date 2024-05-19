@@ -3,11 +3,19 @@ import useFetchRestaurantMenu from '../utilities/useFetchRestaurantMenu.jsx';
 import RestaurantInfoTile from "./RestaurantInfoTile.jsx";
 import RestaurantMenuTile from "./RestaurantMenuTile.jsx";
 import './RestaurantMenu.css';
+import { useContext, useEffect } from 'react';
+import RestaurantContext from '../utilities/RestaurantContext';
 
 const RestaurantMenu = () => {
   const { restaurantId } = useParams();
   const restaurantMenu = useFetchRestaurantMenu(restaurantId);
   
+  const { setSelectedRestaurant } = useContext(RestaurantContext);
+
+  useEffect(() => {
+    setSelectedRestaurant(restaurantMenu?.restaurantInfo);
+  }, [restaurantMenu]);
+
   if(restaurantMenu) {
     const { restaurantInfo, restaurantMenuInfo } = restaurantMenu;
     return (

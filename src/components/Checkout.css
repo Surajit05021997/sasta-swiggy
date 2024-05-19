@@ -1,0 +1,14 @@
+.checkout {
+  max-width: 50rem;
+  margin-inline: auto;
+}
+
+.checkout-restaurant-info {
+  display: flex;
+  gap: 2rem;
+}
+
+.checkout-restaurant-info img {
+  width: 200px;
+  height: auto;
+}

@@ -17,7 +17,7 @@ const AppHeader = () => {
   return (
     <header className="main-header">
       <div className="brand-logo">
-        <Link to='/'>
+        <Link to="/">
           <img src={swiggyLogo} alt="Swiggy Logo" />
         </Link>
       </div>
@@ -36,13 +36,13 @@ const AppHeader = () => {
             <a href="/login">Sign In</a>
           </li>
           <li className="main-nav-items">
-            <a href="/cart">
+            <Link to="/checkout">
               <div className="cart-nav-item">
                 <img src={cartIcon} alt="Cart Icon" />
                 <div className="cart-count">{getCartCount()}</div>
                 <div>Cart</div>
               </div>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
