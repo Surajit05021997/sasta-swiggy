@@ -15,7 +15,6 @@ const Checkout = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const { checkoutRestaurant, setSelectedRestaurant } = useContext(RestaurantContext);
   const { cart } = useContext(CartContext);
-
   const navigate = useNavigate();
 
   useEffect(() => {
