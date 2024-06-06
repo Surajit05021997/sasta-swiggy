@@ -43,7 +43,7 @@ const Checkout = () => {
     <div className="checkout">
       <div className="checkout-restaurant-info">
         <img src={`${IMAGE_URL}${cloudinaryImageId}`} alt="Restaurant Image" />
-        <div>
+        <div className="restaurant-details">
           <div>{name}</div>
           <div>{areaName}</div>
         </div>
@@ -64,7 +64,7 @@ const Checkout = () => {
         }
       </div>
       <div className="bill-details">
-        <div>Bill Details</div>
+        <div className="bill-details-title">Bill Details</div>
         <div className="bill-detail-row">
           <div>Item Total</div>
           <div>₹{totalFoodAmount}</div>
