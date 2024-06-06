@@ -6,6 +6,8 @@ import './Checkout.css';
 import emptyCartImg from '../assets/empty_cart.webp';
 import { useNavigate } from 'react-router-dom';
 import AddButton from './AddButton.jsx';
+import vegIcon from '../assets/veg_icon.svg';
+import nonVegIcon from '../assets/non_veg_icon.svg';
 
 
 const Checkout = () => {
@@ -53,7 +55,12 @@ const Checkout = () => {
           cart.map((foodItem) => {
             return (
               <div className="cart-item" key={foodItem.id}>
-                <div className="left-info">{foodItem.name}</div>
+                <div className="left-info">
+                  <div>
+                  {foodItem.vegClassifier === 'VEG' ? <img className="food-classifier-icon" src={vegIcon} alt="Veg Icon" />: <img className="food-classifier-icon" src={nonVegIcon} alt="Non Veg Icon" />}
+                  </div>
+                  <div>{foodItem.name}</div>
+                </div>
                 <div className="right-info">
                   <AddButton id={foodItem.id} name={foodItem.name} price={foodItem.price} />
                   <div className="item-price">₹{(foodItem.price * foodItem.quantity)/100}</div>

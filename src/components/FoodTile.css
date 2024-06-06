@@ -11,6 +11,10 @@
   width: calc(100% - 5rem - 200px);
 }
 
+.food-classifier-icon {
+  width: 1.25rem;
+}
+
 .food-description {
   width: 100%;
   white-space: nowrap;

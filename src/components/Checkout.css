@@ -71,6 +71,15 @@
   align-items: center;
 }
 
+.left-info {
+  display: flex;
+  gap: .5rem;
+}
+
+.food-classifier-icon {
+  width: 1.25rem;
+}
+
 .cart-item .right-info {
   display: flex;
   align-items: center;

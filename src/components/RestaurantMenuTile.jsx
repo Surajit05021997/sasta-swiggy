@@ -9,7 +9,6 @@ const RestaurantMenuTile = ({ restaurantMenuTileInfo, isFirstTile }) => {
 
   const handleFoodCategoryClick = () => {
     setIsCollapsed(!isCollapsed);
-    console.log(isCollapsed);
   }
 
   return (

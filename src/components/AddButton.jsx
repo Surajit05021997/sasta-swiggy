@@ -6,7 +6,7 @@ import RestaurantContext from '../utilities/RestaurantContext.jsx';
 import Notification from './Notification.jsx';
 
 
-const AddButton = ({ id, name, price, defaultPrice }) => {
+const AddButton = ({ id, name, price, defaultPrice, vegClassifier }) => {
   const [showNotification, setShowNotification] = useState(false);
   const { cart, setCart } = useContext(CartContext);
   const { selectedRestaurant, checkoutRestaurant, setCheckoutRestaurant } = useContext(RestaurantContext);
@@ -42,6 +42,7 @@ const AddButton = ({ id, name, price, defaultPrice }) => {
         name,
         price: price ? price : defaultPrice,
         quantity: 1,
+        vegClassifier,
       }
       cartCopy = [...cart, foodObj];
     }
@@ -76,6 +77,7 @@ AddButton.propTypes = {
   name: PropTypes.string.isRequired,
   price: PropTypes.number,
   defaultPrice: PropTypes.number,
+  vegClassifier: PropTypes.string,
 }
 
 export default AddButton;
