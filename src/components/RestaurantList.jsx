@@ -1,6 +1,6 @@
 import useFetchRestaurants from '../utilities/useFetchRestaurants.jsx';
 import RestaurantTile from './RestaurantTile.jsx';
-import AppShimmer from './AppShimmer.jsx';
+import RestaurantListShimmer from './RestaurantListShimmer.jsx';
 import { Link } from 'react-router-dom';
 import './RestaurantList.css';
 
@@ -9,7 +9,7 @@ const RestaurantList = () => {
   return (
     <section className="restaurant-list">
       {
-        restaurants.length === 0 ? <AppShimmer /> :
+        restaurants.length === 0 ? <RestaurantListShimmer /> :
         restaurants.map((restaurant) => {
           return (
             <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>

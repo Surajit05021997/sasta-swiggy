@@ -1,6 +1,6 @@
-import './AppShimmer.css';
+import './RestaurantListShimmer.css';
 
-const AppShimmer = () => {
+const RestaurantListShimmer = () => {
   const shimmerContentArr = [1,2,3,4,5,6,7,8,9];
   return (
     <div className="shimmer-container">
@@ -21,4 +21,4 @@ const AppShimmer = () => {
   );
 };
 
-export default AppShimmer;
+export default RestaurantListShimmer;

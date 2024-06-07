@@ -7,6 +7,7 @@ import { useState, useContext, useEffect } from 'react';
 import RestaurantContext from '../utilities/RestaurantContext';
 import CartContext from "../utilities/CartContext";
 import { useNavigate } from 'react-router-dom';
+import RestaurantMenuShimmer from "./RestaurantMenuShimmer.jsx";
 
 const RestaurantMenu = () => {
   const [totalItem, setTotalItem] = useState(0);
@@ -59,7 +60,7 @@ const RestaurantMenu = () => {
       </div>
     )
   } else {
-    return (<div>Loading</div>);
+    return (<RestaurantMenuShimmer />);
   }
   
 }
