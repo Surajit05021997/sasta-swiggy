@@ -19,7 +19,7 @@ const Checkout = () => {
 
   useEffect(() => {
     setSelectedRestaurant(checkoutRestaurant);
-  }, []);
+  });
 
   useEffect(() => {
     const total = cart.reduce((totalFoodAmount, item) => totalFoodAmount = totalFoodAmount + ((item.price/100)*item.quantity), 0);
