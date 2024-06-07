@@ -6,6 +6,16 @@
   gap: 2.5rem;
 }
 
+.restaurant-info-holder {
+  width: 50rem;
+  height: 170px;
+  border-radius: 1rem;
+  background: linear-gradient(-45deg, #eee 40%, var(--clr-neutral-300) 50%, #eee 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 1s infinite linear;
+}
+
 .food-tile-holder {
   display: flex;
   justify-content: space-between;

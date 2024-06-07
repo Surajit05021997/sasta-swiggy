@@ -1,9 +1,10 @@
 import './RestaurantMenuShimmer.css';
 
 const RestaurantMenuShimmer = () => {
-  const shimmerContentArr = [1,2,3,4,5];
+  const shimmerContentArr = [1,2,3,4];
   return (
     <div className="restaurant-menu-shimmer">
+      <div className="restaurant-info-holder"></div>
       {
       shimmerContentArr.map((item) => {
         return (
