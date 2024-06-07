@@ -17,12 +17,24 @@
   width: 18.75rem;
   height: 12.5rem;
   border-radius: 1rem;
-  background: var(--clr-neutral-200);
+  background: linear-gradient(-45deg, #eee 40%, var(--clr-neutral-300) 50%, #eee 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 1s infinite linear;
 }
 
 .shimmer-info-container {
   width: 10rem;
   height: 1rem;
   border-radius: .5rem;
-  background: var(--clr-neutral-200);
+  background: linear-gradient(-45deg, #eee 40%, var(--clr-neutral-300) 50%, #eee 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 1s infinite linear;
+}
+
+@keyframes shimmer {
+  to {
+     background-position-x: 0%
+  }
 }
