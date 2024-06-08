@@ -1,5 +1,6 @@
 import swiggyLogo from '../assets/swiggy_logo.svg';
-import cartIcon from '../assets/cart.svg';
+import cartIcon from '../assets/cart.png';
+import searchIcon from '../assets/search.svg';
 import './AppHeader.css';
 import { Link } from 'react-router-dom';
 import CartContext from '../utilities/CartContext.jsx';
@@ -24,20 +25,16 @@ const AppHeader = () => {
       <nav className="main-navbar">
         <ul>
           <li className="main-nav-items">
-            <a href="/search">Search</a>
-          </li>
-          <li className="main-nav-items">
-            <a href="/help">Offer</a>
-          </li>
-          <li className="main-nav-items">
-            <a href="/help">Help</a>
-          </li>
-          <li className="main-nav-items">
-            <a href="/login">Sign In</a>
+            <Link to="/search">
+              <div className="nav-item">
+                <img src={searchIcon} alt="Search Icon" />
+                <div>Search</div>
+              </div>
+            </Link>
           </li>
           <li className="main-nav-items">
             <Link to="/checkout">
-              <div className="cart-nav-item">
+              <div className="nav-item">
                 <img src={cartIcon} alt="Cart Icon" />
                 <div className="cart-count">{getCartCount()}</div>
                 <div>Cart</div>

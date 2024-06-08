@@ -4,6 +4,7 @@ import ErrorPage from '../components/ErrorPage.jsx';
 import RestaurantList from '../components/RestaurantList.jsx';
 import RestaurantMenu from '../components/RestaurantMenu.jsx';
 import Checkout from '../components/Checkout.jsx';
+import SearchPage from '../components/SearchPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/checkout',
         element: <Checkout />
+      },
+      {
+        path: '/search',
+        element: <SearchPage />
       }
     ],
   },
