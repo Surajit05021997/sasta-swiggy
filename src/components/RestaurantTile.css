@@ -13,7 +13,7 @@
   width: 18.75rem;
   height: 12.5rem;
   overflow: hidden;
-  border-radius: 1rem;
+  border-radius: .5rem;
 }
 
 .restaurant-tile-image {
