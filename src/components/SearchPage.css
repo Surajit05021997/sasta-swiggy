@@ -20,3 +20,21 @@
   right: 8px;
   top: 12px;
 }
+
+.popular-cuisines {
+  padding: 3rem 2rem;
+}
+
+.popular-cuisines-title {
+  font-size: var(--fs-350);
+  font-weight: var(--fw-black);
+}
+
+.popular-cuisine-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.popular-cuisine-list img {
+  width: 100px;
+}
