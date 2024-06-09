@@ -1,13 +1,16 @@
 import PropTypes from 'prop-types';
+import { useContext } from "react";
 import { IMAGE_URL } from '../constants/constants.js';
 import AddButton from './AddButton.jsx';
 import './FoodTile.css';
 import vegIcon from '../assets/veg_icon.svg';
 import nonVegIcon from '../assets/non_veg_icon.svg';
+import RestaurantContext from "../utilities/RestaurantContext";
 
 const FoodTile = ({ foodInfo }) => {
   const { id, name, imageId, price, defaultPrice, description, itemAttribute } = foodInfo;
-  const { vegClassifier } = itemAttribute
+  const { vegClassifier } = itemAttribute;
+  const { selectedRestaurant } = useContext(RestaurantContext);
   return (
     <div className="food-tile">
       <div className="food-info">
@@ -22,7 +25,7 @@ const FoodTile = ({ foodInfo }) => {
             imageId ? <img src={`${IMAGE_URL}${imageId}`} alt="Food Image" /> : ''
           }
         </div>
-        <AddButton id={id} name={name} price={price} vegClassifier={vegClassifier} defaultPrice={defaultPrice} />
+        <AddButton id={id} name={name} price={price} vegClassifier={vegClassifier} defaultPrice={defaultPrice} restaurantInfo={selectedRestaurant} />
       </div>
     </div>
   );

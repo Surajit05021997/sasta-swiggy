@@ -6,10 +6,10 @@ import RestaurantContext from '../utilities/RestaurantContext.jsx';
 import Notification from './Notification.jsx';
 
 
-const AddButton = ({ id, name, price, defaultPrice, vegClassifier }) => {
+const AddButton = ({ id, name, price, defaultPrice, vegClassifier, restaurantInfo }) => {
   const [showNotification, setShowNotification] = useState(false);
   const { cart, setCart } = useContext(CartContext);
-  const { selectedRestaurant, checkoutRestaurant, setCheckoutRestaurant } = useContext(RestaurantContext);
+  const { setSelectedRestaurant, checkoutRestaurant, setCheckoutRestaurant } = useContext(RestaurantContext);
 
   let currentFoodIndex;
   const getCurrentFoodCount = () => {
@@ -21,23 +21,34 @@ const AddButton = ({ id, name, price, defaultPrice, vegClassifier }) => {
   }
 
   const handleAddRemoveClick = (action) => {
-    if((checkoutRestaurant?.id !== selectedRestaurant?.id) && checkoutRestaurant !== null) {
+    if (checkoutRestaurant !== null && checkoutRestaurant.id !== restaurantInfo.id) {
       setShowNotification(true);
       return;
     }
 
     let cartCopy = [...cart];
     let foodObj = cart.find((food) => food.id === id);
-    if(foodObj) {
+    if (cart.length && foodObj) {
       if(action === 'add') {
         foodObj.quantity += 1;
         cartCopy = [...cart];
       } else if (action === 'remove') {
-        foodObj.quantity === 1 ? cartCopy.splice(currentFoodIndex, 1) :
+        if (foodObj.quantity === 1) {
+          if (cart.length === 1) {
+            cartCopy.splice(currentFoodIndex, 1);
+            setCheckoutRestaurant(null);
+          } else {
+            cartCopy.splice(currentFoodIndex, 1);
+          }
+        } else {
           foodObj.quantity -= 1;
+        }
       }
     } else {
+      setSelectedRestaurant(restaurantInfo);
+      setCheckoutRestaurant(restaurantInfo);
       foodObj = {
+        restaurantId: restaurantInfo.id,
         id,
         name,
         price: price ? price : defaultPrice,
@@ -47,7 +58,6 @@ const AddButton = ({ id, name, price, defaultPrice, vegClassifier }) => {
       cartCopy = [...cart, foodObj];
     }
     setCart(cartCopy);
-    cartCopy.length ? setCheckoutRestaurant(selectedRestaurant) : setCheckoutRestaurant(null);
   }
 
   return (
@@ -78,6 +88,7 @@ AddButton.propTypes = {
   price: PropTypes.number,
   defaultPrice: PropTypes.number,
   vegClassifier: PropTypes.string,
+  restaurantInfo: PropTypes.object,
 }
 
 export default AddButton;

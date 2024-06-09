@@ -61,7 +61,7 @@ const Checkout = () => {
                   <div>{foodItem.name}</div>
                 </div>
                 <div className="right-info">
-                  <AddButton id={foodItem.id} name={foodItem.name} price={foodItem.price} />
+                  <AddButton id={foodItem.id} name={foodItem.name} price={foodItem.price} restaurantInfo={checkoutRestaurant} />
                   <div className="item-price">₹{(foodItem.price * foodItem.quantity)/100}</div>
                 </div>
               </div>

@@ -11,7 +11,6 @@ const SearchPage = () => {
 
   const preSearchData = usePreSearch();
   const searchSuggestData = useSearchSuggest(searchText);
-  console.log(searchSuggestData);
 
   const showSuggestion = (cuisine) => {
     const index = cuisine.action.link.indexOf('=');

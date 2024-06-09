@@ -5,6 +5,7 @@ import rightArrow from '../assets/right_arrow.svg';
 import { useNavigate } from 'react-router-dom';
 import vegIcon from '../assets/veg_icon.svg';
 import nonVegIcon from '../assets/non_veg_icon.svg';
+import AddButton from './AddButton.jsx';
 
 const SuggestedDishTile = (props) => {
   const { dishInfo, restaurantInfo } = props;
@@ -37,10 +38,13 @@ const SuggestedDishTile = (props) => {
           <div>{dishInfo.name}</div>
           <div>₹{dishInfo.price/100}</div>
         </div>
-        <div className='suggested-dish-image-container'>
-          {
-            dishInfo.imageId ? <img src={`${IMAGE_URL}${dishInfo.imageId}`} alt="Search Image" /> : ''
-          }
+        <div>
+          <div className='suggested-dish-image-container'>
+            {
+              dishInfo.imageId ? <img src={`${IMAGE_URL}${dishInfo.imageId}`} alt="Search Image" /> : ''
+            }
+          </div>
+          <AddButton id={dishInfo.id} name={dishInfo.name} price={dishInfo.price} vegClassifier={dishInfo.isVeg === 1 ? 'VEG' : 'NONVEG'} restaurantInfo={restaurantInfo.info} />
         </div>
       </div>
     </div>
