@@ -15,8 +15,9 @@ const useSearchSuggest = (searchText) => {
   }, [searchText]);
 
   const fetchSearchSuggestData = async () => {
-    const response = await axios.get(`${SEARCH_SUGGEST_URL}?lat=${location.lat}&lng=${location.lng}&str=${searchText}`);
-    setSearchSuggest(response.data.data.suggestions);
+    const response = await axios.get(`${SEARCH_SUGGEST_URL}&lat=${location.lat}&lng=${location.lng}&str=${searchText}`);
+    const filteredData = response.data.data.cards[0].groupedCard.cardGroupMap.DISH.cards.filter((card) => card.card.card['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.Dish');
+    setSearchSuggest(filteredData);
   }
 
   return searchSuggest;
