@@ -39,11 +39,13 @@ const SuggestedDishTile = (props) => {
           <div>₹{dishInfo.price/100}</div>
         </div>
         <div className="flex-column gap-1 align-items-center">
-          <div className='suggested-dish-image-container'>
-            {
-              dishInfo.imageId ? <img src={`${IMAGE_URL}${dishInfo.imageId}`} alt="Search Image" /> : ''
-            }
-          </div>
+          {
+            dishInfo.imageId ? (<div className='suggested-dish-image-container'>
+              {
+                dishInfo.imageId ? <img src={`${IMAGE_URL}${dishInfo.imageId}`} alt="Search Image" /> : ''
+              }
+            </div>) : ''
+          }
           <AddButton id={dishInfo.id} name={dishInfo.name} price={dishInfo.price} vegClassifier={dishInfo.isVeg === 1 ? 'VEG' : 'NONVEG'} restaurantInfo={restaurantInfo.info} />
         </div>
       </div>
