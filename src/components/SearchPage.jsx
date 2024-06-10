@@ -16,6 +16,7 @@ const SearchPage = () => {
   const showSuggestion = (cuisine) => {
     const index = cuisine.action.link.indexOf('=');
     setSearchText(cuisine.action.link.slice(index+1));
+    setSearchInputText(cuisine.action.link.slice(index+1));
   }
 
   useEffect(() => {
