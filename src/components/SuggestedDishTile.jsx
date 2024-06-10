@@ -38,7 +38,7 @@ const SuggestedDishTile = (props) => {
           <div>{dishInfo.name}</div>
           <div>₹{dishInfo.price/100}</div>
         </div>
-        <div>
+        <div className="flex-column gap-1 align-items-center">
           <div className='suggested-dish-image-container'>
             {
               dishInfo.imageId ? <img src={`${IMAGE_URL}${dishInfo.imageId}`} alt="Search Image" /> : ''

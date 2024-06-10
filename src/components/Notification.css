@@ -25,6 +25,11 @@ dialog {
   font-weight: var(--fw-bold);
 }
 
+.notification-description {
+  font-size: var(--fs-300);
+  font-weight: var(--fw-regular);
+}
+
 .btn-grp {
   display: flex;
   gap: 2rem;

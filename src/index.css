@@ -90,3 +90,22 @@ body::-webkit-scrollbar-thumb
 a {
   color: var(--clr-neutral-700);
 }
+
+/* utility class */
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+.align-items-center {
+  align-items: center;
+}

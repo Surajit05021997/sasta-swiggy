@@ -45,7 +45,6 @@ const SearchPage = () => {
                     )
                   })
                 }
-                
               </div>
             )
           }
