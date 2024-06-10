@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './SearchPage.css';
 import searchIcon from '../assets/search.svg';
 import usePreSearch from '../utilities/usePreSearch';
@@ -8,6 +8,7 @@ import SearchSuggest from './SearchSuggest';
 
 const SearchPage = () => {
   const [searchText, setSearchText] = useState('');
+  const [searchInputText, setSearchInputText] = useState('');
 
   const preSearchData = usePreSearch();
   const searchSuggestData = useSearchSuggest(searchText);
@@ -17,10 +18,22 @@ const SearchPage = () => {
     setSearchText(cuisine.action.link.slice(index+1));
   }
 
+  useEffect(() => {
+    const getData = setTimeout(() => {
+      setSearchText(searchInputText);
+    }, 1000);
+    return () => clearTimeout(getData);
+  }, [searchInputText]);
+
+  const handleChange = (event) => {
+    const value = event.target.value 
+    setSearchInputText(value);
+  };
+
   return (
     <div className="search">
       <div className="search-bar">
-        <input type="text" placeholder="Search for restaurants and food" />
+        <input type="text" placeholder="Search for restaurants and food" value={searchInputText} onChange={(e) => handleChange(e)} />
         <img src={searchIcon} alt="Search Icon" />
       </div>
       <div className="popular-cuisines">
@@ -50,7 +63,9 @@ const SearchPage = () => {
           }
         </div>
       </div>
-      <SearchSuggest searchSuggestData={searchSuggestData} />
+      {
+        (searchInputText&&!searchSuggestData.length) ? 'Loading' : (searchInputText&&searchSuggestData.length) ? <SearchSuggest searchSuggestData={searchSuggestData} /> : ''
+      }
     </div>
   );
 }

@@ -10,7 +10,10 @@ const useSearchSuggest = (searchText) => {
 
   useEffect(() => {
     if(location.lat && location.lng) {
-      fetchSearchSuggestData();
+      setSearchSuggest([]);
+      if (searchText) {
+        fetchSearchSuggestData();
+      }
     }
   }, [searchText]);
 
