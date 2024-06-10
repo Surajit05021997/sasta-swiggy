@@ -32,10 +32,42 @@
 
 .popular-cuisine-list {
   display: flex;
-  flex-wrap: wrap;
 }
 
 .popular-cuisine-list img {
   width: 100px;
   cursor: pointer;
+}
+
+.popular-cuisine-shimmer {
+  padding: .75rem;
+  display: flex;
+  gap: 1.15rem;
+}
+
+.shimmer-image-holder {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: linear-gradient(-45deg, #eee 40%, var(--clr-neutral-300) 50%, #eee 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 1s infinite linear;
+}
+
+.shimmer-title-holder {
+  width: 3.5rem;
+  height: 1.25rem;
+  margin-top: 1rem;
+  border-radius: .5rem;
+  background: linear-gradient(-45deg, #eee 40%, var(--clr-neutral-300) 50%, #eee 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 1s infinite linear;
+}
+
+@keyframes shimmer {
+  to {
+     background-position-x: 0%
+  }
 }

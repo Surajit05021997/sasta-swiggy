@@ -3,7 +3,7 @@ import './SearchSuggest.css';
 import SuggestedDishTile from './SuggestedDishTile';
 
 const SearchSuggest = (props) => {
-  return (
+  return props.searchSuggestData.length ? (
     <div className="search-suggestions">
       {
         props.searchSuggestData.map((suggestion) => {
@@ -14,7 +14,7 @@ const SearchSuggest = (props) => {
         })
       }
     </div>
-  )
+  ) : ''
 }
 
 export default SearchSuggest;
