@@ -1,6 +1,7 @@
 .search {
   max-width: 60rem;
-  margin: auto;
+  margin:  auto;
+  padding-top: 2rem;
 }
 
 .search-bar {

@@ -1,3 +1,9 @@
+.restaurant-list-title {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-black);
+  margin-bottom: 2rem;
+}
+
 .restaurant-list {
   display: flex;
   flex-wrap: wrap;

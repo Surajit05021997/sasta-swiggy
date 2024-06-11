@@ -5,6 +5,7 @@ import useLocation from './useLocation';
 
 const useFetchRestaurants = () => {
   const [restaurants, setRestaurants] = useState([]);
+  const [restaurantListTitle, setRestaurantListTitle] = useState('');
 
   const location = useLocation();
 
@@ -20,8 +21,10 @@ const useFetchRestaurants = () => {
     const restaurantListData = restaurantData?.data?.data?.cards.find((res) => res?.card?.card?.gridElements?.infoWithStyle['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.FavouriteRestaurantInfoWithStyle');
     const restaurantsList = restaurantListData?.card?.card?.gridElements?.infoWithStyle?.restaurants;
     setRestaurants(restaurantsList);
+    const restaurantListTitleData = restaurantData?.data?.data?.cards.find((card) => card?.card?.card?.id === 'popular_restaurants_title').card.card.title;
+    setRestaurantListTitle(restaurantListTitleData);
   }
-  return restaurants;
+  return {restaurants, restaurantListTitle};
 }
 
 export default useFetchRestaurants;
