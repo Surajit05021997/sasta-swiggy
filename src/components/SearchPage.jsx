@@ -5,6 +5,7 @@ import usePreSearch from '../utilities/usePreSearch';
 import useSearchSuggest from '../utilities/useSearchSuggest';
 import { IMAGE_URL } from '../constants/constants';
 import SearchSuggest from './SearchSuggest';
+import SearchDishShimmer from './shimmer/SearchDishShimmer';
 
 const SearchPage = () => {
   const [searchText, setSearchText] = useState('');
@@ -65,7 +66,7 @@ const SearchPage = () => {
         </div>
       </div>
       {
-        (searchInputText&&!searchSuggestData.length) ? 'Loading' : (searchInputText&&searchSuggestData.length) ? <SearchSuggest searchSuggestData={searchSuggestData} /> : ''
+        (searchInputText&&!searchSuggestData.length) ? <SearchDishShimmer /> : (searchInputText&&searchSuggestData.length) ? <SearchSuggest searchSuggestData={searchSuggestData} /> : ''
       }
     </div>
   );

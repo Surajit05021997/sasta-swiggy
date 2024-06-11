@@ -1,6 +1,6 @@
 import useFetchRestaurants from '../utilities/useFetchRestaurants.jsx';
 import RestaurantTile from './RestaurantTile.jsx';
-import RestaurantListShimmer from './RestaurantListShimmer.jsx';
+import RestaurantListShimmer from './shimmer/RestaurantListShimmer.jsx';
 import { Link } from 'react-router-dom';
 import './RestaurantList.css';
 
