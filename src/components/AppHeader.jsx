@@ -16,34 +16,36 @@ const AppHeader = () => {
   }
 
   return (
-    <header className="main-header">
-      <div className="brand-logo">
-        <Link to="/">
-          <img src={swiggyLogo} alt="Swiggy Logo" />
-        </Link>
-      </div>
-      <nav className="main-navbar">
-        <ul>
-          <li className="main-nav-items">
-            <Link to="/search">
-              <div className="nav-item">
-                <img src={searchIcon} alt="Search Icon" />
-                <div>Search</div>
-              </div>
-            </Link>
-          </li>
-          <li className="main-nav-items">
-            <Link to="/checkout">
-              <div className="nav-item">
-                <img src={cartIcon} alt="Cart Icon" />
-                <div className="cart-count">{getCartCount()}</div>
-                <div>Cart</div>
-              </div>
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <div className="main-header-container">
+      <header className="main-header">
+        <div className="brand-logo">
+          <Link to="/">
+            <img src={swiggyLogo} alt="Swiggy Logo" />
+          </Link>
+        </div>
+        <nav className="main-navbar">
+          <ul>
+            <li className="main-nav-items">
+              <Link to="/search">
+                <div className="nav-item">
+                  <img src={searchIcon} alt="Search Icon" />
+                  <div>Search</div>
+                </div>
+              </Link>
+            </li>
+            <li className="main-nav-items">
+              <Link to="/checkout">
+                <div className="nav-item">
+                  <img src={cartIcon} alt="Cart Icon" />
+                  <div className="cart-count">{getCartCount()}</div>
+                  <div>Cart</div>
+                </div>
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </div>
   );
 }
 
