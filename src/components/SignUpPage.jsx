@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './SignUpPage.css';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
@@ -9,7 +9,9 @@ const SignUpPage = () => {
   const [invalidNameMsg, setInvalidNameMsg] = useState('');
   const [invalidEmailMsg, setInvalidEmailMsg] = useState('');
   const [invalidPasswordMsg, setInvalidPasswordMsg] = useState('');
-
+  
+  const navigate = useNavigate();
+  
   const userName = useRef(null);
   const userEmail = useRef(null);
   const userPassword = useRef(null);
@@ -22,11 +24,13 @@ const SignUpPage = () => {
     validationResult.isNameValid ? setInvalidNameMsg('') : setInvalidNameMsg('Invalid name');
     validationResult.isEmailValid ? setInvalidEmailMsg('') : setInvalidEmailMsg('Invalid email');
     validationResult.isPasswordValid ? setInvalidPasswordMsg('') : setInvalidPasswordMsg('Invalid password');
+
     if(validationResult.isNameValid && validationResult.isEmailValid && validationResult.isPasswordValid) {
       createUserWithEmailAndPassword(auth, userEmail.current.value, userPassword.current.value)
         .then((userCredential) => {
           // Signed up 
           const user = userCredential.user;
+          navigate('/')
         })
         .catch((error) => {
           const errorCode = error.code;

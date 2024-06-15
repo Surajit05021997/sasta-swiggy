@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
@@ -7,6 +7,8 @@ import './LoginPage.css';
 
 const LoginPage = () => {
   const [invalidCredentialMsg, setInvalidCredentialMsg] = useState('');
+
+  const navigate = useNavigate();
 
   const userEmail = useRef(null);
   const userPassword = useRef(null);
@@ -21,6 +23,7 @@ const LoginPage = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
+        navigate('/');
       })
       .catch((error) => {
         const errorCode = error.code;
