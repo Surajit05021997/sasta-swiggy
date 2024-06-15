@@ -5,6 +5,8 @@ import RestaurantList from '../components/RestaurantList.jsx';
 import RestaurantMenu from '../components/RestaurantMenu.jsx';
 import Checkout from '../components/Checkout.jsx';
 import SearchPage from '../components/SearchPage.jsx';
+import SignUpPage from '../components/SignUpPage.jsx';
+import LoginPage from '../components/LoginPage.jsx';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <RestaurantList />,
+      },
+      {
+        path: '/sign-up',
+        element: <SignUpPage />
+      },
+      {
+        path: '/login',
+        element: <LoginPage />
       },
       {
         path: '/restaurant/:restaurantId',

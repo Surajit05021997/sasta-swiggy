@@ -1,0 +1,53 @@
+.sign-up {
+  max-width: 40rem;
+  margin-inline: auto;
+}
+
+.sign-up .redirect-link {
+  color: var(--clr-primary);
+}
+
+.sign-up form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-block: 1rem;
+}
+
+.sign-up .field-container {
+  position: relative;
+}
+
+.sign-up input {
+  font-size: var(--fs-200);
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid var(--clr-neutral-700);
+  border-radius: 0;
+}
+
+.sign-up input:focus {
+  outline: var(--clr-neutral-700) solid 1px;
+}
+
+.sign-up label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  transition: all 250ms;
+}
+
+.sign-up .invalid-msg {
+  color: var(--clr-error);
+  padding: .5rem 1rem;
+}
+
+.sign-up button {
+  padding: 1rem;
+  border: none;
+  background-color: var(--clr-primary);
+  color: var(--clr-neutral-100);
+  font-size: var(--fs-200);
+  font-weight: var(--fw-medium);
+  cursor: pointer;
+}

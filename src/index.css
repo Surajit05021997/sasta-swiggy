@@ -9,6 +9,7 @@
   --clr-neutral-700: #3D4152;
   --clr-neutral-900: #000000;
   --clr-success: #65B741;
+  --clr-error: #EE4E4E;
   --clr-primary: #FC8019;
 
    /* font family */
@@ -54,6 +55,10 @@ img, picture, svg, video, canvas {
 }
 
 button {
+  font-family: inherit;
+}
+
+input {
   font-family: inherit;
 }
 
