@@ -1,18 +1,34 @@
 import swiggyLogo from '../assets/swiggy_logo.svg';
 import cartIcon from '../assets/cart.png';
 import searchIcon from '../assets/search.svg';
+import userIcon from '../assets/user.svg';
 import './AppHeader.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import CartContext from '../utilities/CartContext.jsx';
 import { useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { signOut } from "firebase/auth";
+import { auth } from '../firebase';
 
 const AppHeader = () => {
   const { cart } = useContext(CartContext);
+  const user = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const getCartCount = () => {
     return cart.reduce((totalCount, currentFood) => {
       return currentFood.quantity + totalCount;
     }, 0);
+  }
+
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      console.log('Logout successful :)');
+      navigate('/login');
+    }).catch((error) => {
+      // An error happened.
+    });
   }
 
   return (
@@ -32,6 +48,23 @@ const AppHeader = () => {
                   <div>Search</div>
                 </div>
               </Link>
+            </li>
+            <li className="main-nav-items">
+              {
+                !user ? (
+                  <Link to="/login">
+                    <div className="nav-item">
+                      <img src={userIcon} alt="User Icon" />
+                      <div>Login</div>
+                    </div>
+                  </Link>
+                ) : (
+                  <div className="nav-item">
+                    <img src={userIcon} alt="User Icon" />
+                    <div className="logout" onClick={handleLogout}>Logout</div>
+                  </div>
+                )
+              }
             </li>
             <li className="main-nav-items">
               <Link to="/checkout">

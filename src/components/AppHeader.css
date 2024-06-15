@@ -45,3 +45,7 @@
   font-size: var(--fs-100);
   font-weight: var(--fw-bold);
 }
+
+.logout {
+  cursor: pointer;
+}
