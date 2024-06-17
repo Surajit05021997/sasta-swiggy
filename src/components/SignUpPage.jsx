@@ -34,8 +34,9 @@ const SignUpPage = () => {
         })
         .catch((error) => {
           const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
+          if (errorCode === 'auth/email-already-in-use') {
+            setInvalidEmailMsg('Email address is already registered!');
+          }
         });
     }
   }
