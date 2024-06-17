@@ -47,7 +47,7 @@ const RestaurantMenu = () => {
         </div>
         <div>
           {
-            cart.length > 0 ? (
+            cart?.length > 0 ? (
               <div className="cart-notification">
                 <div className="cart-notification-container">
                   <div>{totalItem} items added</div>
