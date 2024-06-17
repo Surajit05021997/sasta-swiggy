@@ -8,26 +8,41 @@ import { useNavigate } from 'react-router-dom';
 import AddButton from './AddButton.jsx';
 import vegIcon from '../assets/veg_icon.svg';
 import nonVegIcon from '../assets/non_veg_icon.svg';
+import useFetchRestaurantMenu from '../utilities/useFetchRestaurantMenu.jsx';
 
 
 const Checkout = () => {
+  const [cartDetails, setCartDetails] = useState([]);
   const [totalFoodAmount, setTotalFoodAmount] = useState(0);
   const [totalAmount, setTotalAmount] = useState(0);
-  const { checkoutRestaurant, setSelectedRestaurant } = useContext(RestaurantContext);
-  const { cart } = useContext(CartContext);
+  const { checkoutRestaurant, setSelectedRestaurant, setCheckoutRestaurant } = useContext(RestaurantContext);
+  const { cart, setCart } = useContext(CartContext);
   const navigate = useNavigate();
+  
+  // const restaurantMenu = useFetchRestaurantMenu(JSON.parse(localStorage.getItem('cartDetails'))[0] ? JSON.parse(localStorage.getItem('cartDetails'))[0].restaurantId : undefined);
+  const restaurantMenu = useFetchRestaurantMenu(cartDetails.length ? cartDetails[0].restaurantId : null);
 
   useEffect(() => {
     setSelectedRestaurant(checkoutRestaurant);
   });
+  
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem('cartDetails')));
+  }, []);
 
   useEffect(() => {
-    const total = cart.reduce((totalFoodAmount, item) => totalFoodAmount = totalFoodAmount + ((item.price/100)*item.quantity), 0);
+    setCartDetails(JSON.parse(localStorage.getItem('cartDetails')));
+  }, [cart]);
+
+  useEffect(() => {
+    const restaurantInfo = restaurantMenu?.restaurantInfo;
+    setCheckoutRestaurant(restaurantInfo);
+    const total = cartDetails.reduce((totalFoodAmount, item) => totalFoodAmount = totalFoodAmount + ((item.price/100)*item.quantity), 0);
     setTotalFoodAmount(total);
     setTotalAmount(total + ((5*totalFoodAmount)/100) + 5);
-  }, [cart, totalFoodAmount]);
+  }, [totalFoodAmount, cartDetails, restaurantMenu]);
 
-  if(!checkoutRestaurant) {
+  if(JSON.parse(localStorage.getItem('cartDetails')).length === 0) {
     return (
       <div className="checkout">
         <div className="empty-checkout">
@@ -39,19 +54,19 @@ const Checkout = () => {
       </div>
     );
   }
-  const { name, cloudinaryImageId, areaName } = checkoutRestaurant;
+  // const { name, cloudinaryImageId, areaName } = checkoutRestaurant;
   return (
-    <div className="checkout">
-      <div className="checkout-restaurant-info">
-        <img src={`${IMAGE_URL}${cloudinaryImageId}`} alt="Restaurant Image" />
-        <div className="restaurant-details">
-          <div>{name}</div>
-          <div>{areaName}</div>
-        </div>
-      </div>
+    checkoutRestaurant ? (<div className="checkout">
+       <div className="checkout-restaurant-info">
+         <img src={`${IMAGE_URL}${checkoutRestaurant?.cloudinaryImageId}`} alt="Restaurant Image" />
+         <div className="restaurant-details">
+           <div>{checkoutRestaurant?.name}</div>
+           <div>{checkoutRestaurant?.areaName}</div>
+         </div>
+       </div>
       <div className="cart-item-list">
         {
-          cart.map((foodItem) => {
+          cartDetails.map((foodItem) => {
             return (
               <div className="cart-item" key={foodItem.id}>
                 <div className="left-info">
@@ -88,7 +103,7 @@ const Checkout = () => {
         <div>TO PAY</div>
         <div>₹{totalAmount}</div>
       </div>
-    </div>
+    </div>) : ''
   );
 }
 

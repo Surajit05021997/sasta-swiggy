@@ -9,7 +9,7 @@ const useFetchRestaurantMenu = (restaurantId) => {
   const location = useLocation();
 
   useEffect(() => {
-    if(location.lat && location.lng) {
+    if(restaurantId && location.lat && location.lng) {
       fetchRestaurantMenuData(restaurantId);
     }
   }, [restaurantId, location]);

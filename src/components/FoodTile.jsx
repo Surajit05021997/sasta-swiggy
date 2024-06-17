@@ -1,16 +1,23 @@
 import PropTypes from 'prop-types';
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { IMAGE_URL } from '../constants/constants.js';
 import AddButton from './AddButton.jsx';
 import './FoodTile.css';
 import vegIcon from '../assets/veg_icon.svg';
 import nonVegIcon from '../assets/non_veg_icon.svg';
 import RestaurantContext from "../utilities/RestaurantContext";
+import CartContext from "../utilities/CartContext";
 
 const FoodTile = ({ foodInfo }) => {
   const { id, name, imageId, price, defaultPrice, description, itemAttribute } = foodInfo;
   const { vegClassifier } = itemAttribute;
   const { selectedRestaurant } = useContext(RestaurantContext);
+  const { setCart } = useContext(CartContext);
+
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem('cartDetails')));
+  }, []);
+
   return (
     <div className="food-tile">
       <div className="food-info">

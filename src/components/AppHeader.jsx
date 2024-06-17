@@ -5,15 +5,19 @@ import userIcon from '../assets/user.svg';
 import './AppHeader.css';
 import { Link, useNavigate } from 'react-router-dom';
 import CartContext from '../utilities/CartContext.jsx';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { signOut } from "firebase/auth";
 import { auth } from '../firebase';
 
 const AppHeader = () => {
-  const { cart } = useContext(CartContext);
+  const { cart, setCart } = useContext(CartContext);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setCart(JSON.parse(localStorage.getItem('cartDetails')));
+  }, []);
 
   const getCartCount = () => {
     return cart.reduce((totalCount, currentFood) => {

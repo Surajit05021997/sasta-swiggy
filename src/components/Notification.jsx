@@ -16,6 +16,7 @@ const Notification = ({ setShowNotification }) => {
     const cancelBtn = document.querySelector(".cancel-btn") ; 
     confirmBtn.addEventListener('click', () => {
       setCart([]);
+      localStorage.setItem('cartDetails', JSON.stringify([]));
       dialog.close();
       setCheckoutRestaurant(null)
       setShowNotification(false);

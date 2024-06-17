@@ -58,6 +58,7 @@ const AddButton = ({ id, name, price, defaultPrice, vegClassifier, restaurantInf
       cartCopy = [...cart, foodObj];
     }
     setCart(cartCopy);
+    localStorage.setItem('cartDetails', JSON.stringify(cartCopy));
   }
 
   return (
