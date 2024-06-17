@@ -3,3 +3,21 @@
   from = "/dapi/restaurants/list/v5"
   status = 200
   to = "https://www.swiggy.com/dapi/restaurants/list/v5"
+
+[[redirects]]
+  force = true
+  from = "/dapi/menu/pl"
+  status = 200
+  to = "https://www.swiggy.com/dapi/menu/pl"
+
+[[redirects]]
+  force = true
+  from = "/dapi/landing/PRE_SEARCH"
+  status = 200
+  to = "https://www.swiggy.com/dapi/landing/PRE_SEARCH" 
+
+[[redirects]]
+  force = true
+  from = "/dapi/restaurants/search/v3"
+  status = 200
+  to = "https://www.swiggy.com/dapi/restaurants/search/v3" 
