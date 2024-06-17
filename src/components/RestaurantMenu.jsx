@@ -18,7 +18,7 @@ const RestaurantMenu = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const total = cart.reduce((acc, item) => acc = acc + item.quantity, 0);
+    const total = cart?.reduce((acc, item) => acc = acc + item.quantity, 0);
     setTotalItem(total);
   }, [cart]);
 

@@ -20,7 +20,7 @@ const AppHeader = () => {
   }, []);
 
   const getCartCount = () => {
-    return cart.reduce((totalCount, currentFood) => {
+    return cart?.reduce((totalCount, currentFood) => {
       return currentFood.quantity + totalCount;
     }, 0);
   }
