@@ -5,13 +5,14 @@ import userIcon from '../assets/user.svg';
 import './AppHeader.css';
 import { Link, useNavigate } from 'react-router-dom';
 import CartContext from '../utilities/CartContext.jsx';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { signOut } from "firebase/auth";
 import { auth } from '../firebase';
 
 const AppHeader = () => {
   const { cart, setCart } = useContext(CartContext);
+  const [cartCount, setCartCount] = useState(0);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
 
@@ -19,11 +20,12 @@ const AppHeader = () => {
     setCart(JSON.parse(localStorage.getItem('cartDetails')));
   }, []);
 
-  const getCartCount = () => {
-    return cart?.reduce((totalCount, currentFood) => {
+  useEffect(() => {
+    const cartCountCopy = cart ? cart.reduce((totalCount, currentFood) => {
       return currentFood.quantity + totalCount;
-    }, 0);
-  }
+    }, 0) : 0;
+    setCartCount(cartCountCopy);
+  }, [cart]);
 
   const handleLogout = () => {
     signOut(auth).then(() => {
@@ -74,7 +76,7 @@ const AppHeader = () => {
               <Link to="/checkout">
                 <div className="nav-item">
                   <img src={cartIcon} alt="Cart Icon" />
-                  <div className="cart-count">{getCartCount()}</div>
+                  <div className="cart-count">{cartCount}</div>
                   <div>Cart</div>
                 </div>
               </Link>

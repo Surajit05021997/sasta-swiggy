@@ -10,7 +10,7 @@ import CartContext from "../utilities/CartContext";
 
 const FoodTile = ({ foodInfo }) => {
   const { id, name, imageId, price, defaultPrice, description, itemAttribute } = foodInfo;
-  const { vegClassifier } = itemAttribute;
+  const vegClassifier = itemAttribute?.vegClassifier;
   const { selectedRestaurant } = useContext(RestaurantContext);
   const { setCart } = useContext(CartContext);
 
