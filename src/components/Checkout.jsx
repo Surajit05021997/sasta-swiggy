@@ -37,10 +37,13 @@ const Checkout = () => {
   useEffect(() => {
     const restaurantInfo = restaurantMenu?.restaurantInfo;
     setCheckoutRestaurant(restaurantInfo);
+  }, [restaurantMenu]);
+
+  useEffect(() => {
     const total = cartDetails?.reduce((totalFoodAmount, item) => totalFoodAmount = totalFoodAmount + ((item.price/100)*item.quantity), 0);
     setTotalFoodAmount(total);
     setTotalAmount(total + ((5*totalFoodAmount)/100) + 5);
-  }, [totalFoodAmount, cartDetails, restaurantMenu]);
+  }, [totalFoodAmount, cartDetails]);
 
   if(JSON.parse(localStorage.getItem('cartDetails')).length === 0) {
     return (
