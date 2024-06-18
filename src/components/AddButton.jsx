@@ -28,7 +28,7 @@ const AddButton = ({ id, name, price, defaultPrice, vegClassifier, restaurantInf
 
     let cartCopy = [];
     let foodObj = cart?.find((food) => food.id === id);
-    if (cart.length && foodObj) {
+    if (cart?.length && foodObj) {
       cartCopy = [...cart];
       if(action === 'add') {
         foodObj.quantity += 1;
