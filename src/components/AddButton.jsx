@@ -28,35 +28,37 @@ const AddButton = ({ id, name, price, defaultPrice, vegClassifier, restaurantInf
 
     let cartCopy = [];
     let foodObj = cart?.find((food) => food.id === id);
-    if (cart?.length && foodObj) {
-      cartCopy = [...cart];
-      if(action === 'add') {
-        foodObj.quantity += 1;
+    if (cart !== null) {
+      if (cart?.length && foodObj) {
         cartCopy = [...cart];
-      } else if (action === 'remove') {
-        if (foodObj.quantity === 1) {
-          if (cart.length === 1) {
-            cartCopy.splice(currentFoodIndex, 1);
-            setCheckoutRestaurant(null);
+        if(action === 'add') {
+          foodObj.quantity += 1;
+          cartCopy = [...cart];
+        } else if (action === 'remove') {
+          if (foodObj.quantity === 1) {
+            if (cart.length === 1) {
+              cartCopy.splice(currentFoodIndex, 1);
+              setCheckoutRestaurant(null);
+            } else {
+              cartCopy.splice(currentFoodIndex, 1);
+            }
           } else {
-            cartCopy.splice(currentFoodIndex, 1);
+            foodObj.quantity -= 1;
           }
-        } else {
-          foodObj.quantity -= 1;
         }
+      } else {
+        setSelectedRestaurant(restaurantInfo);
+        setCheckoutRestaurant(restaurantInfo);
+        foodObj = {
+          restaurantId: restaurantInfo.id,
+          id,
+          name,
+          price: price ? price : defaultPrice,
+          quantity: 1,
+          vegClassifier,
+        }
+        cartCopy = [...cart, foodObj];
       }
-    } else {
-      setSelectedRestaurant(restaurantInfo);
-      setCheckoutRestaurant(restaurantInfo);
-      foodObj = {
-        restaurantId: restaurantInfo.id,
-        id,
-        name,
-        price: price ? price : defaultPrice,
-        quantity: 1,
-        vegClassifier,
-      }
-      cartCopy = [foodObj];
     }
     setCart(cartCopy);
     localStorage.setItem('cartDetails', JSON.stringify(cartCopy));
