@@ -2,6 +2,7 @@ import axios from 'axios';
 import { RESTAURANT_MENU } from '../constants/constants.js';
 import { useState, useEffect } from 'react';
 import useLocation from './useLocation';
+import baseUrl from './getBaseUrl';
 
 const useFetchRestaurantMenu = (restaurantId) => {
   const [restaurantMenu, setRestaurantMenu] = useState(null);
@@ -15,7 +16,7 @@ const useFetchRestaurantMenu = (restaurantId) => {
   }, [restaurantId, location]);
 
   const fetchRestaurantMenuData = async (restaurantId) => {
-    const restaurantMenuData = await axios.get(`${RESTAURANT_MENU}&restaurantId=${restaurantId}&lat=${location.lat}&lng=${location.lng}`);
+    const restaurantMenuData = await axios.get(`${baseUrl}${RESTAURANT_MENU}&restaurantId=${restaurantId}&lat=${location.lat}&lng=${location.lng}`);
     const restaurantInfo = restaurantMenuData.data.data.cards.find((res) =>
       res.card.card['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.Restaurant').card.card.info;
     const restaurantMenuInfoWrapper = restaurantMenuData.data.data.cards.find((res) =>
