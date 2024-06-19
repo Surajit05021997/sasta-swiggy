@@ -11,8 +11,8 @@ const RestaurantList = () => {
       <div className="restaurant-list-title">{restaurantListTitle}</div>
       <section className="restaurant-list">
         {
-          restaurants?.length === 0 ? <RestaurantListShimmer /> :
-          restaurants?.map((restaurant) => {
+          restaurants.length === 0 ? <RestaurantListShimmer /> :
+          restaurants.map((restaurant) => {
             return (
               <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
                 <RestaurantTile restaurant={restaurant} />
