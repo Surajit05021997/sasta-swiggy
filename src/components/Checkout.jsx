@@ -35,7 +35,7 @@ const Checkout = () => {
   }, [cart]);
 
   useEffect(() => {
-    const restaurantInfo = restaurantMenu?.restaurantInfo;
+    const restaurantInfo = restaurantMenu?.restaurantInfo ? restaurantMenu?.restaurantInfo : null;
     setCheckoutRestaurant(restaurantInfo);
   }, [restaurantMenu]);
 

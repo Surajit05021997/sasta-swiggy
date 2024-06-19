@@ -45,4 +45,4 @@
   force = true
   from = "/dapi/restaurants/search/v3"
   status = 200
-  to = "https://www.swiggy.com/dapi/restaurants/search/v3" 
+  to = "https://www.swiggy.com/dapi/restaurants/search/v3"
