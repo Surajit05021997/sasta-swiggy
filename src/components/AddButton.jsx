@@ -21,7 +21,7 @@ const AddButton = ({ id, name, price, defaultPrice, vegClassifier, restaurantInf
   }
 
   const handleAddRemoveClick = (action) => {
-    if (checkoutRestaurant !== null && checkoutRestaurant.id !== restaurantInfo.id) {
+    if (checkoutRestaurant !== null && checkoutRestaurant?.id !== restaurantInfo.id) {
       setShowNotification(true);
       return;
     }
