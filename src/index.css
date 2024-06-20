@@ -4,8 +4,10 @@
 :root {
   /* colors */
   --clr-neutral-100: #ffffff;
+  --clr-neutral-150: #f3f3f3;
   --clr-neutral-200: #ececec;
   --clr-neutral-300: #dedede;
+  --clr-neutral-600: #959595;
   --clr-neutral-700: #3D4152;
   --clr-neutral-900: #000000;
   --clr-success: #65B741;
@@ -109,4 +111,8 @@ a {
 
 .align-items-center {
   align-items: center;
+}
+
+.fw-bold {
+  font-weight: var(--fw-bold);
 }

@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth } from '../firebase';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
@@ -8,6 +8,7 @@ import './LoginPage.css';
 const LoginPage = () => {
   const [invalidCredentialMsg, setInvalidCredentialMsg] = useState('');
 
+  const location = useLocation();
   const navigate = useNavigate();
 
   const userEmail = useRef(null);
@@ -23,7 +24,11 @@ const LoginPage = () => {
       .then((userCredential) => {
         // Signed in 
         const user = userCredential.user;
-        navigate('/');
+        if(location.state.from === 'checkout') {
+          navigate('/checkout');
+        } else {
+          navigate('/');
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -38,7 +43,7 @@ const LoginPage = () => {
       <h1>Login</h1>
       <div>
         or
-        <Link className="redirect-link" to="/sign-up"> create an account</Link>
+        <Link className="redirect-link" to="/sign-up" state={{from: 'homepage'}}> create an account</Link>
       </div>
       <form onSubmit={(event) => event.preventDefault()}>
         <div className="field-container">

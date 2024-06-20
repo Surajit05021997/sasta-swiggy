@@ -31,7 +31,7 @@ const AppHeader = () => {
     signOut(auth).then(() => {
       // Sign-out successful.
       console.log('Logout successful :)');
-      navigate('/login');
+      navigate('/login', { state: { from: 'homepage' }});
     }).catch((error) => {
       // An error happened.
     });
@@ -58,7 +58,7 @@ const AppHeader = () => {
             <li className="main-nav-items">
               {
                 !user ? (
-                  <Link to="/login">
+                  <Link to="/login" state={{from: 'homepage'}}>
                     <div className="nav-item">
                       <img src={userIcon} alt="User Icon" />
                       <div>Login</div>
