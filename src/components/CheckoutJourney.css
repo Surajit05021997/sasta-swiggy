@@ -48,8 +48,17 @@
   padding: 2rem;
 }
 
-.addAddressDialog {
+.add-address-dialog {
   width: 100rem;
+}
+
+.add-address-dialog-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-address-dialog-header .close-button {
+  cursor: pointer;
 }
 
 .new-address form {

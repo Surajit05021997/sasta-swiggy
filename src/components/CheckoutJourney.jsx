@@ -4,7 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import check from '../assets/check.svg';
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import  { auth, db } from '../firebase';
-import { useRef } from "react";
+import { useRef } from 'react';
+import closeButton from '../assets/cross.svg';
 
 const CheckoutJourney = () => {
   const user = useSelector((state) => state.user);
@@ -13,15 +14,18 @@ const CheckoutJourney = () => {
   const addressLine1 = useRef(null);
 
   const openAddAddressDialog = () => {
-    const dialog = document.querySelector('.addAddressDialog');
+    const dialog = document.querySelector('.add-address-dialog');
     dialog.showModal();
+  }
+
+  const closeAddAddressDialog = () => {
+    const dialog = document.querySelector('.add-address-dialog');
+    dialog.close();
   }
 
   const handleAddNewAddress = async (e) => {
     e.preventDefault();
-    const dialog = document.querySelector('.addAddressDialog');
-
-    console.log(addressLine1.current.value)
+    const dialog = document.querySelector('.add-address-dialog');
 
     // Get user address list
     let addressList = [];
@@ -34,6 +38,7 @@ const CheckoutJourney = () => {
       console.log("No such document!");
     }
 
+    // Create new address list
     if(addressList?.length > 0) {
       addressList = [...addressList, {
         addressLine1: addressLine1.current.value,
@@ -51,6 +56,8 @@ const CheckoutJourney = () => {
     }, { merge: true });
 
     dialog.close();
+
+    addressLine1.current.value = '';
   }
 
   return (
@@ -86,8 +93,11 @@ const CheckoutJourney = () => {
             <div className="new-address">
               <div>Add new address</div>
               <button onClick={openAddAddressDialog}>ADD NEW</button>
-              <dialog className="addAddressDialog">
-                <div className="fw-bold">Save delivery address</div>
+              <dialog className="add-address-dialog">
+                <div className="add-address-dialog-header">
+                  <div className="fw-bold">Save delivery address</div>
+                  <img src={closeButton} alt="Close Button" className="close-button" onClick={closeAddAddressDialog} />
+                </div>
                 <form>
                   <input type="text" placeholder="Address line 1" ref={addressLine1} />
                   <input type="text" placeholder="Address line 2" />
