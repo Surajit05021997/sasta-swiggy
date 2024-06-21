@@ -18,7 +18,7 @@
   gap: 2rem;
 }
 
-.login-control button {
+.login-control button, .new-address button {
   border: none;
   background-color: var(--clr-primary);
   padding: 1rem 2rem;
@@ -38,3 +38,36 @@
   color: var(--clr-neutral-600);
 }
 
+.delivery-address-list {
+  display: flex;
+  gap: 1rem;
+}
+
+.new-address {
+  background-color: var(--clr-neutral-100);
+  padding: 2rem;
+}
+
+.addAddressDialog {
+  width: 100rem;
+}
+
+.new-address form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-block: 1rem; 
+}
+
+.new-address input {
+  font-size: var(--fs-200);
+  padding: 1rem;
+  width: 100%;
+  border: 1px solid var(--clr-neutral-700);
+  border-radius: 0;
+}
+
+::backdrop {
+  background: var(--clr-neutral-900);
+  opacity: 0.75;
+}

@@ -4,7 +4,7 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
 import { useRef, useState } from "react";
 import validateFormData from "../utilities/validateFormData";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, doc, setDoc } from "firebase/firestore"; 
 import  { db } from '../firebase';
 
 const SignUpPage = () => {
@@ -21,12 +21,13 @@ const SignUpPage = () => {
 
   const addUserToDb = async (user) => {
     console.log(user)
+    const usersDb = collection(db, "users");
     try {
-      const docRef = await addDoc(collection(db, "users"), {
+      await setDoc(doc(usersDb, user.email), {
         uid: user.uid,
         address: null,
+        email: user.email,
       });
-      console.log("Document written with ID: ", docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -44,7 +45,7 @@ const SignUpPage = () => {
     if(validationResult.isNameValid && validationResult.isEmailValid && validationResult.isPasswordValid) {
       createUserWithEmailAndPassword(auth, userEmail.current.value, userPassword.current.value)
         .then((userCredential) => {
-          // Signed up 
+          // Signed up
           const user = userCredential.user;
           if(location.state.from === 'checkout') {
             navigate('/checkout');
