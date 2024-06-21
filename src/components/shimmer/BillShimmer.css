@@ -1,0 +1,78 @@
+.bill-shimmer {
+  background-color: var(--clr-neutral-150);
+  padding: 1rem;
+}
+
+.bill-shimmer .bill-restaurant-info {
+  display: flex;
+  gap: 2rem;
+}
+
+.bill-shimmer .restaurant-img-holder {
+  background-color: var(--clr-neutral-300);
+  width: 5rem;
+  height: 5rem;
+}
+
+.bill-shimmer .info {
+  height: 1rem;
+  border-radius: .25rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--clr-neutral-300) 40%, var(--clr-neutral-150) 50%, var(--clr-neutral-300) 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 1s infinite linear;
+}
+
+.bill-shimmer .restaurant-name-holder {
+  width: 10rem;
+}
+
+.bill-shimmer .bill-items {
+  padding-block: 2rem;
+}
+
+.bill-shimmer .item-holder {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bill-shimmer .item-category {
+  width: 1rem;
+  height: 1rem;
+  border-radius: .25rem;
+  margin-bottom: 1rem;
+  background: var(--clr-neutral-300);
+  margin-right: 1rem;
+}
+
+.bill-shimmer .item-name {
+  width: 15rem;
+}
+
+.bill-shimmer .item-price {
+  width: 3rem;
+}
+
+.bill-shimmer .title-holder {
+  width: 5rem;
+  height: 1rem;
+  border-radius: .25rem;
+  margin-bottom: 1rem;
+  background: var(--clr-neutral-300);
+}
+
+.bill-shimmer .price-detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.bill-shimmer .price-detail-name {
+  width: 8rem;
+}
+
+@keyframes shimmer {
+  to {
+     background-position-x: 0%
+  }
+}

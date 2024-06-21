@@ -8,6 +8,8 @@
   background-color: var(--clr-neutral-150);
   padding: 2rem;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   gap: 1rem;
 }
 
@@ -25,10 +27,14 @@
   cursor: pointer;
 }
 
-.delivery-address-disabled, .payment-disabled {
+.delivery-address, .payment {
   padding: 2rem;
   font-weight: var(--fw-bold);
   background-color: var(--clr-neutral-150);
+  color: var(--clr-neutral-700);
+}
+
+.delivery-address.disabled, .payment.disabled {
   color: var(--clr-neutral-600);
 }
 

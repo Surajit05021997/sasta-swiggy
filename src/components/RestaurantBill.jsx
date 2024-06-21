@@ -4,10 +4,10 @@ import CartContext from "../utilities/CartContext.jsx";
 import { IMAGE_URL } from '../constants/constants.js';
 import './RestaurantBill.css';
 import AddButton from './AddButton.jsx';
+import BillShimmer from './shimmer/BillShimmer.jsx';
 import vegIcon from '../assets/veg_icon.svg';
 import nonVegIcon from '../assets/non_veg_icon.svg';
 import useFetchRestaurantMenu from '../utilities/useFetchRestaurantMenu.jsx';
-
 
 const RestaurantBill = () => {
   const [cartDetails, setCartDetails] = useState([]);
@@ -89,7 +89,7 @@ const RestaurantBill = () => {
         <div>TO PAY</div>
         <div>₹{totalAmount}</div>
       </div>
-    </div>) : ''
+    </div>) : <BillShimmer />
   );
 }
 

@@ -1,6 +1,4 @@
 .restaurant-bill {
-  max-width: 50rem;
-  margin-inline: auto;
   background-color: var(--clr-neutral-150);
 }
 
@@ -11,12 +9,12 @@
 }
 
 .checkout-restaurant-info img {
-  width: 150px;
+  width: 5rem;
   height: auto;
 }
 
 .checkout-restaurant-info .restaurant-details {
-  font-size: var(--fs-300);
+  font-size: var(--fs-200);
   font-weight: var(--fw-bold);
 }
 

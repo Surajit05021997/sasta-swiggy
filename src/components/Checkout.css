@@ -1,5 +1,5 @@
 .checkout {
-  max-width: 60rem;
+  max-width: 80rem;
   margin-inline: auto;
   display: grid;
   grid-template-columns: 2fr 1fr;
