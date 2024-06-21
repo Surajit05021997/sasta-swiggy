@@ -13,6 +13,7 @@ import { auth } from '../firebase';
 const AppHeader = () => {
   const { cart, setCart } = useContext(CartContext);
   const [cartCount, setCartCount] = useState(0);
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
 
@@ -26,6 +27,10 @@ const AppHeader = () => {
     }, 0) : 0;
     setCartCount(cartCountCopy);
   }, [cart]);
+
+  const toggleProfileMenu = () => {
+    setShowProfileMenu(!showProfileMenu);
+  }
 
   const handleLogout = () => {
     signOut(auth).then(() => {
@@ -65,9 +70,17 @@ const AppHeader = () => {
                     </div>
                   </Link>
                 ) : (
-                  <div className="nav-item">
+                  <div className="nav-item profile" onClick={toggleProfileMenu}>
                     <img src={userIcon} alt="User Icon" />
-                    <div className="logout" onClick={handleLogout}>Logout</div>
+                    <div className="use-name">{auth.currentUser.displayName}</div>
+                    <div className={showProfileMenu ? "profile-menu" : "profile-menu hide"}>
+                      <div className="profile-menu-popup">
+                        <img src={userIcon} alt="User Icon" />
+                        <div className="fw-bold">{auth.currentUser.displayName}</div>
+                        <div className="logout" onClick={handleLogout}>Logout</div>
+
+                      </div>
+                    </div>
                   </div>
                 )
               }
@@ -75,7 +88,7 @@ const AppHeader = () => {
             <li className="main-nav-items">
               <Link to="/checkout">
                 <div className="nav-item">
-                  <img src={cartIcon} alt="Cart Icon" />
+                  <img src={cartIcon} alt="Cart Icon" className="cart-icon" />
                   <div className="cart-count">{cartCount}</div>
                   <div>Cart</div>
                 </div>

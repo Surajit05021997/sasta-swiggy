@@ -1,6 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import './SignUpPage.css';
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from '../firebase';
 import { useRef, useState } from "react";
 import validateFormData from "../utilities/validateFormData";
@@ -18,6 +18,17 @@ const SignUpPage = () => {
   const userName = useRef(null);
   const userEmail = useRef(null);
   const userPassword = useRef(null);
+
+  const updateUserProfile = (user) => {
+    updateProfile(auth.currentUser, {
+      displayName: userName.current.value,
+    }).then(() => {
+      addUserToDb(user);
+    }).catch((error) => {
+      // An error occurred
+      // ...
+    });
+  }
 
   const addUserToDb = async (user) => {
     console.log(user)
@@ -47,12 +58,12 @@ const SignUpPage = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          updateUserProfile(user);
           if(location.state.from === 'checkout') {
             navigate('/checkout');
           } else {
             navigate('/');
           }
-          addUserToDb(user);
         })
         .catch((error) => {
           const errorCode = error.code;
