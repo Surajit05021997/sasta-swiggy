@@ -4,6 +4,8 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../firebase';
 import { useRef, useState } from "react";
 import validateFormData from "../utilities/validateFormData";
+import { collection, addDoc } from "firebase/firestore";
+import  { db } from '../firebase';
 
 const SignUpPage = () => {
   const [invalidNameMsg, setInvalidNameMsg] = useState('');
@@ -16,6 +18,19 @@ const SignUpPage = () => {
   const userName = useRef(null);
   const userEmail = useRef(null);
   const userPassword = useRef(null);
+
+  const addUserToDb = async (user) => {
+    console.log(user)
+    try {
+      const docRef = await addDoc(collection(db, "users"), {
+        uid: user.uid,
+        address: null,
+      });
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
 
   const signUpUser = () => {
     setInvalidNameMsg('');
@@ -34,8 +49,9 @@ const SignUpPage = () => {
           if(location.state.from === 'checkout') {
             navigate('/checkout');
           } else {
-            navigate('/')
+            navigate('/');
           }
+          addUserToDb(user);
         })
         .catch((error) => {
           const errorCode = error.code;
