@@ -19,6 +19,8 @@ const AppHeader = () => {
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem('cartDetails')));
+
+    // added click event listner to hide profile menu
     document.addEventListener('click', (e) => {
       const profile = document.querySelector('.profile');
       if (!profile?.contains(e.target)) {

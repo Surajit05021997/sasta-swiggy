@@ -74,7 +74,7 @@ const AddButton = ({ id, name, price, defaultPrice, vegClassifier, restaurantInf
             <button onClick={() => handleAddRemoveClick('add')}>+</button>
           </div>
         ) : (
-          <button onClick={() => handleAddRemoveClick('add')}>ADD</button>
+          <button className="fresh-add-btn" onClick={() => handleAddRemoveClick('add')}>ADD</button>
         )
       }
       {
