@@ -13,7 +13,8 @@ const CheckoutJourney = () => {
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
 
-  const addressLine1 = useRef(null);
+  const flatNo = useRef(null);
+  const landmark = useRef(null);
   const markerAddressRef = useRef(null);
 
   const openAddAddressDialog = () => {
@@ -44,11 +45,15 @@ const CheckoutJourney = () => {
     // Create new address list
     if(addressList?.length > 0) {
       addressList = [...addressList, {
-        addressLine1: addressLine1.current.value,
+        markerAddress: markerAddressRef.current.value,
+        flatNo: flatNo.current.value,
+        landmark: landmark.current.value,
       }]
     } else {
       addressList = [{
-        addressLine1: addressLine1.current.value,
+        markerAddress: markerAddressRef.current.value,
+        flatNo: flatNo.current.value,
+        landmark: landmark.current.value,
       }]
     }
 
@@ -60,7 +65,8 @@ const CheckoutJourney = () => {
 
     dialog.close();
 
-    addressLine1.current.value = '';
+    flatNo.current.value = '';
+    landmark.current.value = '';
   }
 
   return (
@@ -104,8 +110,8 @@ const CheckoutJourney = () => {
                 <form>
                   <AddressMap setMarkerAddress={setMarkerAddress} />
                   <textarea className="marker-address" ref={markerAddressRef} value={markerAddress} rows="5" disabled />
-                  <input type="text" placeholder="Door/Flat No" ref={addressLine1} />
-                  <input type="text" placeholder="Landmark" />
+                  <input type="text" placeholder="Door/Flat No" ref={flatNo} />
+                  <input type="text" placeholder="Landmark" ref={landmark}/>
                   <button onClick={handleAddNewAddress}>ADD</button>
                 </form>
               </dialog>

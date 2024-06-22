@@ -82,13 +82,13 @@ const AppHeader = () => {
                     <div className="nav-item">
                       <div className="profile-menu-invoker" onClick={toggleProfileMenu}>
                         <img src={userIcon} alt="User Icon" />
-                        <div className="use-name">{auth.currentUser.displayName}</div>
+                        <div className="use-name">{user.displayName}</div>
                       </div>
                     </div>
                     <div className={showProfileMenu ? "profile-menu" : "profile-menu hide"}>
                       <div className="profile-menu-use-info">
                         <img src={userIcon} alt="User Icon" />
-                        <div className="fw-bold">{auth.currentUser.displayName}</div>
+                        <div className="fw-bold">{user.displayName}</div>
                       </div>
                       <hr />
                       <div className="profile-menu-item-list">

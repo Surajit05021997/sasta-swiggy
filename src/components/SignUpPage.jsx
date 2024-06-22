@@ -6,11 +6,15 @@ import { useRef, useState } from "react";
 import validateFormData from "../utilities/validateFormData";
 import { collection, doc, setDoc } from "firebase/firestore"; 
 import  { db } from '../firebase';
+import { useDispatch } from 'react-redux';
+import { addUser } from '../store/userSlice';
 
 const SignUpPage = () => {
   const [invalidNameMsg, setInvalidNameMsg] = useState('');
   const [invalidEmailMsg, setInvalidEmailMsg] = useState('');
   const [invalidPasswordMsg, setInvalidPasswordMsg] = useState('');
+
+  const dispatch = useDispatch();
   
   const location = useLocation();
   const navigate = useNavigate();
@@ -24,6 +28,8 @@ const SignUpPage = () => {
       displayName: userName.current.value,
     }).then(() => {
       addUserToDb(user);
+      const { accessToken, displayName, email, uid } = user;
+        dispatch(addUser({ accessToken, displayName, email, uid }));
     }).catch((error) => {
       // An error occurred
       // ...
