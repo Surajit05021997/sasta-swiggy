@@ -31,7 +31,6 @@ const SignUpPage = () => {
   }
 
   const addUserToDb = async (user) => {
-    console.log(user)
     const usersDb = collection(db, "users");
     try {
       await setDoc(doc(usersDb, user.email), {

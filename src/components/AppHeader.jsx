@@ -1,5 +1,5 @@
 import swiggyLogo from '../assets/swiggy_logo.svg';
-import cartIcon from '../assets/cart.png';
+import cartIcon from '../assets/cart.svg';
 import searchIcon from '../assets/search.svg';
 import userIcon from '../assets/user.svg';
 import './AppHeader.css';
