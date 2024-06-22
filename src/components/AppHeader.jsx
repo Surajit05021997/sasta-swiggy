@@ -19,6 +19,12 @@ const AppHeader = () => {
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem('cartDetails')));
+    document.addEventListener('click', (e) => {
+      const profile = document.querySelector('.profile');
+      if (!profile?.contains(e.target)) {
+        setShowProfileMenu(false);
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -70,15 +76,21 @@ const AppHeader = () => {
                     </div>
                   </Link>
                 ) : (
-                  <div className="nav-item profile" onClick={toggleProfileMenu}>
-                    <img src={userIcon} alt="User Icon" />
-                    <div className="use-name">{auth.currentUser.displayName}</div>
+                  <div className="profile">
+                    <div className="nav-item">
+                      <div className="profile-menu-invoker" onClick={toggleProfileMenu}>
+                        <img src={userIcon} alt="User Icon" />
+                        <div className="use-name">{auth.currentUser.displayName}</div>
+                      </div>
+                    </div>
                     <div className={showProfileMenu ? "profile-menu" : "profile-menu hide"}>
-                      <div className="profile-menu-popup">
+                      <div className="profile-menu-use-info">
                         <img src={userIcon} alt="User Icon" />
                         <div className="fw-bold">{auth.currentUser.displayName}</div>
+                      </div>
+                      <hr />
+                      <div className="profile-menu-item-list">
                         <div className="logout" onClick={handleLogout}>Logout</div>
-
                       </div>
                     </div>
                   </div>
