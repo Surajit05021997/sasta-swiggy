@@ -49,7 +49,11 @@
 }
 
 .add-address-dialog {
-  width: 100rem;
+  width: 40rem;
+  border: 2px solid var(--clr-success);
+  border-radius: 1rem;
+  margin: auto;
+  padding: 1.5rem;
 }
 
 .add-address-dialog-header {
@@ -79,4 +83,9 @@
 ::backdrop {
   background: var(--clr-neutral-900);
   opacity: 0.75;
+}
+
+.marker-address {
+  resize: none;
+  font-size: var(--fs-200);
 }

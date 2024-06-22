@@ -4,14 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import check from '../assets/check.svg';
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import  { auth, db } from '../firebase';
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import closeButton from '../assets/cross.svg';
+import AddressMap from './AddressMap.jsx';
 
 const CheckoutJourney = () => {
+  const [markerAddress, setMarkerAddress] = useState('');
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const addressLine1 = useRef(null);
+  const markerAddressRef = useRef(null);
 
   const openAddAddressDialog = () => {
     const dialog = document.querySelector('.add-address-dialog');
@@ -99,9 +102,10 @@ const CheckoutJourney = () => {
                   <img src={closeButton} alt="Close Button" className="close-button" onClick={closeAddAddressDialog} />
                 </div>
                 <form>
-                  <input type="text" placeholder="Address line 1" ref={addressLine1} />
-                  <input type="text" placeholder="Address line 2" />
-                  <input type="text" placeholder="Address line 3" />
+                  <AddressMap setMarkerAddress={setMarkerAddress} />
+                  <textarea className="marker-address" ref={markerAddressRef} value={markerAddress} rows="5" disabled />
+                  <input type="text" placeholder="Door/Flat No" ref={addressLine1} />
+                  <input type="text" placeholder="Landmark" />
                   <button onClick={handleAddNewAddress}>ADD</button>
                 </form>
               </dialog>

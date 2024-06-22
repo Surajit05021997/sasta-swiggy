@@ -12,7 +12,7 @@
   
 }
 
-dialog {
+.notification dialog {
   border: 2px solid var(--clr-success);
   border-radius: 1rem;
   max-width: 600px;
