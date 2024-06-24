@@ -85,7 +85,7 @@ const AppHeader = () => {
                         <div className="use-name">{user.displayName}</div>
                       </div>
                     </div>
-                    <div className={showProfileMenu ? "profile-menu" : "profile-menu hide"}>
+                    <div className={showProfileMenu ? "profile-menu" : "profile-menu hidden"}>
                       <div className="profile-menu-use-info">
                         <img src={userIcon} alt="User Icon" />
                         <div className="fw-bold">{user.displayName}</div>
