@@ -83,6 +83,9 @@ const CheckoutJourney = () => {
 
     dialog.close();
 
+    // Called to show the newly adde address
+    getDeliveryAddressList();
+
     flatNo.current.value = '';
     landmark.current.value = '';
   }
