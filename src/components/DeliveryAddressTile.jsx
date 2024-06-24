@@ -1,6 +1,7 @@
 import './DeliveryAddressTile.css';
 import { useDispatch } from 'react-redux';
 import { addAddress } from '../store/deliveryDetailsSlice';
+import PropTypes from 'prop-types';
 
 const DeliveryAddressTile = ({address}) => {
   const dispatch = useDispatch();
@@ -15,6 +16,10 @@ const DeliveryAddressTile = ({address}) => {
       <button onClick={handleDeliveryAddressSelection}>DELIVER HERE</button>
     </div>
   );
+}
+
+DeliveryAddressTile.propTypes = {
+  address: PropTypes.object.isRequired,
 }
 
 export default DeliveryAddressTile;
