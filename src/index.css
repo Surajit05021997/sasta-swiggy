@@ -105,6 +105,10 @@ a {
   flex-direction: column;
 }
 
+.justify-space-between {
+  justify-content: space-between;
+}
+
 .gap-1 {
   gap: 1rem;
 }

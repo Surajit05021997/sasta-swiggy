@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import './CheckoutJourney.css';
 import { useNavigate } from 'react-router-dom';
 import check from '../assets/check.svg';
@@ -8,12 +8,15 @@ import { useState, useRef, useEffect } from 'react';
 import closeButton from '../assets/cross.svg';
 import AddressMap from './AddressMap.jsx';
 import DeliveryAddressTile from './DeliveryAddressTile.jsx';
+import { addAddress } from '../store/deliveryDetailsSlice';
 
 const CheckoutJourney = () => {
   const [markerAddress, setMarkerAddress] = useState('');
   const [deliveryAddressList, setDeliveryAddressList] = useState([]);
   const user = useSelector((state) => state.user);
+  const deliveryDetails = useSelector((state) => state.deliveryDetails);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const flatNo = useRef(null);
   const landmark = useRef(null);
@@ -90,6 +93,10 @@ const CheckoutJourney = () => {
     landmark.current.value = '';
   }
 
+  const handleChangeDeliveryAddress = () => {
+    dispatch(addAddress(null));
+  }
+
   return (
     !user ? (
       <div className="checkout-journey">
@@ -118,31 +125,48 @@ const CheckoutJourney = () => {
           <img src={check} alt="" />
         </div>
         <div className="delivery-address">
-          <div className="fw-bold mb-1">Select delivery address</div>
-          <div className="delivery-address-list">
-            {
-              deliveryAddressList?.map((address, index) => {
-                return <DeliveryAddressTile address={address} key={index} />
-              })
-            }
-            <div className="new-address">
-              <div className="mb-1">Add new address</div>
-              <button onClick={openAddAddressDialog}>ADD NEW</button>
-              <dialog className="add-address-dialog">
-                <div className="add-address-dialog-header">
-                  <div className="fw-bold">Save delivery address</div>
-                  <img src={closeButton} alt="Close Button" className="close-button" onClick={closeAddAddressDialog} />
-                </div>
-                <form>
-                  <AddressMap setMarkerAddress={setMarkerAddress} />
-                  <textarea className="marker-address" ref={markerAddressRef} value={markerAddress} rows="5" disabled />
-                  <input type="text" placeholder="Door/Flat No" ref={flatNo} />
-                  <input type="text" placeholder="Landmark" ref={landmark}/>
-                  <button onClick={handleAddNewAddress}>ADD</button>
-                </form>
-              </dialog>
+          <div className="fw-bold mb-1">{deliveryDetails?.address ? (
+            <div className='flex-row justify-space-between'>
+              <div className='flex-row gap-1'>
+                <div>Delivery address</div>
+                <button className="change-delivery-address-btn" onClick={handleChangeDeliveryAddress}>CHANGE</button>
+              </div>
+              <img src={check} alt="" />
             </div>
-          </div>
+          ) : 'Select delivery address'}</div>
+          {
+            deliveryDetails?.address ? (
+              <div className="selected-delivery-address">
+                {deliveryDetails?.address.markerAddress}
+              </div>
+            ) : (
+              <div className="delivery-address-list">
+                {
+                  deliveryAddressList?.map((address, index) => {
+                    return <DeliveryAddressTile address={address} key={index} />
+                  })
+                }
+                <div className="new-address">
+                  <div className="mb-1">Add new address</div>
+                  <button onClick={openAddAddressDialog}>ADD NEW</button>
+                  <dialog className="add-address-dialog">
+                    <div className="add-address-dialog-header">
+                      <div className="fw-bold">Save delivery address</div>
+                      <img src={closeButton} alt="Close Button" className="close-button" onClick={closeAddAddressDialog} />
+                    </div>
+                    <form>
+                      <AddressMap setMarkerAddress={setMarkerAddress} />
+                      <textarea className="marker-address" ref={markerAddressRef} value={markerAddress} rows="5" disabled />
+                      <input type="text" placeholder="Door/Flat No" ref={flatNo} />
+                      <input type="text" placeholder="Landmark" ref={landmark}/>
+                      <button onClick={handleAddNewAddress}>ADD</button>
+                    </form>
+                  </dialog>
+                </div>
+              </div>
+            )
+          }
+          
         </div>
         <div className="payment">
           <div className="fw-bold">Choose payment method</div>

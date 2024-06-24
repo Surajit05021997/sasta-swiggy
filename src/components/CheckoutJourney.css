@@ -29,7 +29,6 @@
 
 .delivery-address, .payment {
   padding: 2rem;
-  font-weight: var(--fw-bold);
   background-color: var(--clr-neutral-150);
   color: var(--clr-neutral-700);
 }
@@ -88,4 +87,13 @@
 .marker-address {
   resize: none;
   font-size: var(--fs-200);
+}
+
+.change-delivery-address-btn {
+  background: none;
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-200);
+  color: var(--clr-primary);
+  border: none;
+  cursor: pointer;
 }

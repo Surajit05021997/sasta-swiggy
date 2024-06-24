@@ -1,5 +1,5 @@
 import './DeliveryAddressTile.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addAddress } from '../store/deliveryDetailsSlice';
 
 const DeliveryAddressTile = ({address}) => {
