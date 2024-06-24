@@ -4,18 +4,36 @@ import { useNavigate } from 'react-router-dom';
 import check from '../assets/check.svg';
 import { collection, doc, getDoc, setDoc } from "firebase/firestore";
 import  { auth, db } from '../firebase';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import closeButton from '../assets/cross.svg';
 import AddressMap from './AddressMap.jsx';
+import DeliveryAddressTile from './DeliveryAddressTile.jsx';
 
 const CheckoutJourney = () => {
   const [markerAddress, setMarkerAddress] = useState('');
+  const [deliveryAddressList, setDeliveryAddressList] = useState([]);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   const flatNo = useRef(null);
   const landmark = useRef(null);
   const markerAddressRef = useRef(null);
+
+  useEffect(() => {
+    if(auth.currentUser) {
+      getDeliveryAddressList();
+    }
+  }, [auth.currentUser]);
+
+  const getDeliveryAddressList = async () => {
+    const docRef = doc(db, "users", auth.currentUser.email);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      setDeliveryAddressList(docSnap.data().address);
+    } else {
+      console.log("No such document!");
+    }
+  }
 
   const openAddAddressDialog = () => {
     const dialog = document.querySelector('.add-address-dialog');
@@ -97,10 +115,15 @@ const CheckoutJourney = () => {
           <img src={check} alt="" />
         </div>
         <div className="delivery-address">
-          <div className="fw-bold">Select delivery address</div>
+          <div className="fw-bold mb-1">Select delivery address</div>
           <div className="delivery-address-list">
+            {
+              deliveryAddressList?.map((address, index) => {
+                return <DeliveryAddressTile markerAddress={address.markerAddress} key={index}/>
+              })
+            }
             <div className="new-address">
-              <div>Add new address</div>
+              <div className="mb-1">Add new address</div>
               <button onClick={openAddAddressDialog}>ADD NEW</button>
               <dialog className="add-address-dialog">
                 <div className="add-address-dialog-header">

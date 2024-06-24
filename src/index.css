@@ -116,3 +116,7 @@ a {
 .fw-bold {
   font-weight: var(--fw-bold);
 }
+
+.mb-1 {
+  margin-bottom: 1rem;
+}
