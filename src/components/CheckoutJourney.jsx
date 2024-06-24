@@ -122,7 +122,7 @@ const CheckoutJourney = () => {
           <div className="delivery-address-list">
             {
               deliveryAddressList?.map((address, index) => {
-                return <DeliveryAddressTile markerAddress={address.markerAddress} key={index}/>
+                return <DeliveryAddressTile address={address} key={index} />
               })
             }
             <div className="new-address">

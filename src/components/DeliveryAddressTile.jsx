@@ -1,10 +1,18 @@
 import './DeliveryAddressTile.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { addAddress } from '../store/deliveryDetailsSlice';
 
-const DeliveryAddressTile = ({markerAddress}) => {
+const DeliveryAddressTile = ({address}) => {
+  const dispatch = useDispatch();
+
+  const handleDeliveryAddressSelection = () => {
+    dispatch(addAddress(address));
+  }
+
   return (
     <div className="delivery-address-tile">
-      <div className="address">{markerAddress}</div>
-      <button>DELIVER HERE</button>
+      <div className="address">{address.markerAddress}</div>
+      <button onClick={handleDeliveryAddressSelection}>DELIVER HERE</button>
     </div>
   );
 }
