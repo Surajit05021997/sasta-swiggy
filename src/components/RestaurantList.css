@@ -10,3 +10,19 @@
   gap: 2.5rem;
   justify-content: center;
 }
+
+.restaurant-not-available {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.restaurant-not-available img {
+  width: 20rem;
+}
+
+.restaurant-not-available .title {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-black);
+}
