@@ -17,13 +17,11 @@ const Checkout = () => {
 
   if(isCartEmpty) {
     return (
-      <div className="checkout">
-        <div className="empty-checkout">
-          <img className="empty-cart-img" src={emptyCartImg} />
-          <p className="title">Your cart is empty</p>
-          <p className="sub-title">You can go to home page to view more restaurants</p>
-          <button className="home-btn" onClick={() => navigate('/')}>SEE RESTAURANTS</button>
-        </div>
+      <div className="empty-checkout">
+        <img className="empty-cart-img" src={emptyCartImg} />
+        <p className="title">Your cart is empty</p>
+        <p className="sub-title">You can go to home page to view more restaurants</p>
+        <button className="home-btn" onClick={() => navigate('/')}>SEE RESTAURANTS</button>
       </div>
     );
   }
