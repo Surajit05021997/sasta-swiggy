@@ -12,7 +12,7 @@ const DeliveryAddressTile = ({address}) => {
 
   return (
     <div className="delivery-address-tile">
-      <div className="address">{address.markerAddress}</div>
+      <div className="address truncate">{address.markerAddress}</div>
       <button onClick={handleDeliveryAddressSelection}>DELIVER HERE</button>
     </div>
   );

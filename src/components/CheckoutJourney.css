@@ -45,6 +45,9 @@
 .new-address {
   background-color: var(--clr-neutral-100);
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .add-address-dialog {

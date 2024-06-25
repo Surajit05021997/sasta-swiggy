@@ -147,7 +147,7 @@ const CheckoutJourney = () => {
                   })
                 }
                 <div className="new-address">
-                  <div className="mb-1">Add new address</div>
+                  <div className="mb-1 fw-bold">Add new address</div>
                   <button onClick={openAddAddressDialog}>ADD NEW</button>
                   <dialog className="add-address-dialog">
                     <div className="add-address-dialog-header">
