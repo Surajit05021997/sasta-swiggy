@@ -6,8 +6,6 @@ import './RestaurantList.css';
 
 const RestaurantList = () => {
   const {restaurants, restaurantListTitle, restaurantNotAvailableData} = useFetchRestaurants();
-  console.log(restaurantNotAvailableData)
-  console.log(restaurants)
   return (
     <div>
       <div className="restaurant-list-title">{restaurantListTitle}</div>

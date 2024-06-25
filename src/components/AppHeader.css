@@ -101,3 +101,13 @@
   gap: .5rem;
   padding: 1rem;
 }
+
+.profile-menu-indicator.expanded {
+  transform: rotate(180deg);
+  transition: transform 250ms;
+}
+
+.profile-menu-indicator.collapsed {
+  transform: rotate(0deg);
+  transition: transform 250ms;
+}

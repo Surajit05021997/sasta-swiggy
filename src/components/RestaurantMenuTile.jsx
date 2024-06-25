@@ -15,9 +15,9 @@ const RestaurantMenuTile = ({ restaurantMenuTileInfo, isFirstTile }) => {
     <div className="restaurant-menu-tile">
       <div className="food-category" onClick={handleFoodCategoryClick}>
         <h3>{restaurantMenuTileInfo.card.card.title}</h3>
-        <img src={downArrow} alt="Down Arrow" />
+        <img src={downArrow} alt="Down Arrow" className={isCollapsed ? 'collapsed' : 'expanded'} />
       </div>
-      <div className={ isCollapsed ? 'collapsed ' : 'expanded ' + 'food-tile-block'}>
+      <div className={(isCollapsed ? 'collapsed ' : 'expanded ') + 'food-tile-block'}>
         {
           restaurantMenuTileInfo.card.card.itemCards.map((food) => {
             const { info } = food.card;

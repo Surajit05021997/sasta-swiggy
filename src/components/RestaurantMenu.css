@@ -6,7 +6,8 @@
 .restaurant-menu {
   display: flex;
   flex-direction: column;
-  margin-block: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 5rem;
   gap: 2rem;
 }
 

@@ -2,6 +2,7 @@ import swiggyLogo from '../assets/swiggy_logo.svg';
 import cartIcon from '../assets/cart.svg';
 import searchIcon from '../assets/search.svg';
 import userIcon from '../assets/user.svg';
+import downArrow from '../assets/down_arrow.svg';
 import './AppHeader.css';
 import { Link, useNavigate } from 'react-router-dom';
 import CartContext from '../utilities/CartContext.jsx';
@@ -83,6 +84,7 @@ const AppHeader = () => {
                       <div className="profile-menu-invoker" onClick={toggleProfileMenu}>
                         <img src={userIcon} alt="User Icon" />
                         <div className="use-name">{user.displayName}</div>
+                        <img src={downArrow} alt="" className={showProfileMenu ? 'profile-menu-indicator expanded' : 'profile-menu-indicator collapsed'} />
                       </div>
                     </div>
                     <div className={showProfileMenu ? "profile-menu" : "profile-menu hidden"}>

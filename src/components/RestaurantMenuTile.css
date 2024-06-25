@@ -9,10 +9,20 @@
   cursor: pointer;
 }
 
-.restaurant-menu-tile .expanded {
+.food-category .collapsed {
+  transform: rotate(0deg);
+  transition: transform 250ms;
+}
+
+.food-category .expanded {
+  transform: rotate(180deg);
+  transition: transform 250ms;
+}
+
+.food-tile-block.expanded {
   display: block;
 }
 
-.restaurant-menu-tile .collapsed {
+.food-tile-block.collapsed {
   display: none;
 }
