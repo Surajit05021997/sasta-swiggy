@@ -7,7 +7,7 @@ const RestaurantInfoTile = ({ restaurantInfo }) => {
     return `rating ${ratingColorClass}`;
   };
 
-  const getDelivertyCostInfo = () => {
+  const getDeliveryCostInfo = () => {
     const startIndex = restaurantInfo?.feeDetails?.message?.indexOf('kms') - 4;
     const endIndex = startIndex + 7;
     const distance = restaurantInfo?.feeDetails?.message?.slice(startIndex, endIndex);
@@ -28,7 +28,7 @@ const RestaurantInfoTile = ({ restaurantInfo }) => {
         </div>
         <div className="divider"></div>
         <div className="delivery-cost-info">
-          {getDelivertyCostInfo()}
+          {getDeliveryCostInfo()}
         </div>
       </div>
     </section>
