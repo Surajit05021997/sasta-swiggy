@@ -7,6 +7,7 @@ import Checkout from '../components/Checkout.jsx';
 import SearchPage from '../components/SearchPage.jsx';
 import SignUpPage from '../components/SignUpPage.jsx';
 import LoginPage from '../components/LoginPage.jsx';
+import ProtectedRoute from '../components/ProtectedRoute.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,12 +20,17 @@ const router = createBrowserRouter([
         element: <RestaurantList />,
       },
       {
-        path: '/sign-up',
-        element: <SignUpPage />
-      },
-      {
-        path: '/login',
-        element: <LoginPage />
+        element: <ProtectedRoute />,
+        children: [
+          {
+            path: '/sign-up',
+            element: <SignUpPage />
+          },
+          {
+            path: '/login',
+            element: <LoginPage />
+          },
+        ],
       },
       {
         path: '/restaurant/:restaurantId',
