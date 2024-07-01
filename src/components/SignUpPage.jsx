@@ -23,16 +23,15 @@ const SignUpPage = () => {
   const userEmail = useRef(null);
   const userPassword = useRef(null);
 
-  const updateUserProfile = (user) => {
+  const updateUserProfile = (user, userName) => {
     updateProfile(auth.currentUser, {
-      displayName: userName.current.value,
+      displayName: userName,
     }).then(() => {
       addUserToDb(user);
       const { accessToken, displayName, email, uid } = user;
         dispatch(addUser({ accessToken, displayName, email, uid }));
     }).catch((error) => {
-      // An error occurred
-      // ...
+      console.log(error);
     });
   }
 
@@ -59,11 +58,12 @@ const SignUpPage = () => {
     validationResult.isPasswordValid ? setInvalidPasswordMsg('') : setInvalidPasswordMsg('Invalid password');
 
     if(validationResult.isNameValid && validationResult.isEmailValid && validationResult.isPasswordValid) {
+      const useNameCopy = userName.current.value;
       createUserWithEmailAndPassword(auth, userEmail.current.value, userPassword.current.value)
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
-          updateUserProfile(user);
+          updateUserProfile(user, useNameCopy);
           if(location.state.from === 'checkout') {
             navigate('/checkout');
           } else {
