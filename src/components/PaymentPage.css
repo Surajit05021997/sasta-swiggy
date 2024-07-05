@@ -1,0 +1,8 @@
+.payment-btn {
+  border: none;
+  background-color: var(--clr-primary);
+  padding: 1rem 2rem;
+  color: var(--clr-neutral-100);
+  font-weight: var(--fw-bold);
+  cursor: pointer;
+}

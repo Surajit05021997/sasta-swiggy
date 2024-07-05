@@ -9,6 +9,7 @@ import closeButton from '../assets/cross.svg';
 import AddressMap from './AddressMap.jsx';
 import DeliveryAddressTile from './DeliveryAddressTile.jsx';
 import { addAddress } from '../store/deliveryDetailsSlice';
+import PaymentPage from './PaymentPage.jsx';
 
 const CheckoutJourney = () => {
   const [markerAddress, setMarkerAddress] = useState('');
@@ -169,7 +170,8 @@ const CheckoutJourney = () => {
           
         </div>
         <div className="payment">
-          <div className="fw-bold">Choose payment method</div>
+          <div className="fw-bold mb-1">Choose payment method</div>
+          <PaymentPage />
         </div>
       </div>
     )
