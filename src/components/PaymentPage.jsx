@@ -1,17 +1,19 @@
 import axios from 'axios';
 import './PaymentPage.css';
 import swiggyLogo from '../assets/swiggy_logo.svg';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import CartContext from '../utilities/CartContext.jsx';
 import RestaurantContext from '../utilities/RestaurantContext.jsx';
+import { updateIsOrderPlaced } from '../store/deliveryDetailsSlice.js';
 
 const PaymentPage = () => {
   const user = useSelector((state) => state.user);
   const { setCart } = useContext(CartContext);
   const { setCheckoutRestaurant } = useContext(RestaurantContext);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handlePayment = async (event) => {
 
@@ -27,15 +29,11 @@ const PaymentPage = () => {
       image: swiggyLogo,
       order_id: id,
       handler: async function (response){
-        // alert('Payment successfull');
+        dispatch(updateIsOrderPlaced(true));
         setCart([]);
         setCheckoutRestaurant(null);
         localStorage.setItem('cartDetails', JSON.stringify([]));
         navigate('/');
-        
-        // alert(response.razorpay_payment_id);
-        // alert(response.razorpay_order_id);
-        // alert(response.razorpay_signature)
       },
       prefill: {
           name: user.displayName,

@@ -26,3 +26,33 @@
   font-size: var(--fs-400);
   font-weight: var(--fw-black);
 }
+
+.order-placed-dialog-container {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0,0,0,0.50);
+}
+
+.order-placed-dialog {
+  position: fixed;
+  z-index: 10;
+  top: 50vh;
+  border: 2px solid var(--clr-success);
+  border-radius: 1rem;
+  max-width: 600px;
+  margin: auto;
+  padding: 1.5rem;
+}
+
+.order-placed-dialog .close-button {
+  position: absolute;
+  right: 1rem;
+  cursor: pointer;
+}

@@ -3,9 +3,21 @@ import RestaurantTile from './RestaurantTile.jsx';
 import RestaurantListShimmer from './shimmer/RestaurantListShimmer.jsx';
 import { Link } from 'react-router-dom';
 import './RestaurantList.css';
+import closeButton from '../assets/cross.svg';
+import { useSelector, useDispatch } from 'react-redux';
+import { updateIsOrderPlaced } from '../store/deliveryDetailsSlice.js';
 
 const RestaurantList = () => {
   const {restaurants, restaurantListTitle, restaurantNotAvailableData} = useFetchRestaurants();
+  const dispatch = useDispatch();
+  const deliveryDetails = useSelector((state) => state.deliveryDetails);
+
+  const closeOrderPlacedDialog =() => {
+    dispatch(updateIsOrderPlaced(false));
+    const orderPlacedDialog = document.querySelector('.order-placed-dialog');
+    orderPlacedDialog.close();
+  }
+
   return (
     <div>
       <div className="restaurant-list-title">{restaurantListTitle}</div>
@@ -27,6 +39,20 @@ const RestaurantList = () => {
           })))
         }
       </section>
+      {
+        deliveryDetails.isOrderPlaced ? (
+          <div className="order-placed-dialog-container">
+            <dialog className="order-placed-dialog" open>
+              <div>
+                <img src={closeButton} alt="Close Button" className="close-button" onClick={closeOrderPlacedDialog} />
+                <div>
+                  Order placed
+                </div>
+              </div>
+            </dialog>
+          </div>
+        ) : ('')
+      }
     </div>
   );
 }
