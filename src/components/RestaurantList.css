@@ -43,7 +43,6 @@
 .order-placed-dialog {
   position: fixed;
   z-index: 10;
-  top: 50vh;
   border: 2px solid var(--clr-success);
   border-radius: 1rem;
   max-width: 600px;
@@ -53,6 +52,17 @@
 
 .order-placed-dialog .close-button {
   position: absolute;
+  top: 1rem;
   right: 1rem;
   cursor: pointer;
+}
+
+.order-placed-image {
+  margin: 5rem 5rem 2rem;
+}
+
+.order-placed-dialog-title {
+  font-size: var(--fs-400);
+  font-weight: var(--fw-bold);
+  text-align: center;
 }

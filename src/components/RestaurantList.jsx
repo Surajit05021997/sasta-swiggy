@@ -4,6 +4,7 @@ import RestaurantListShimmer from './shimmer/RestaurantListShimmer.jsx';
 import { Link } from 'react-router-dom';
 import './RestaurantList.css';
 import closeButton from '../assets/cross.svg';
+import orderPlacedImage from '../assets/order_placed.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateIsOrderPlaced } from '../store/deliveryDetailsSlice.js';
 
@@ -45,8 +46,9 @@ const RestaurantList = () => {
             <dialog className="order-placed-dialog" open>
               <div>
                 <img src={closeButton} alt="Close Button" className="close-button" onClick={closeOrderPlacedDialog} />
-                <div>
-                  Order placed
+                <img className="order-placed-image" src={orderPlacedImage} alt="Orer placed Image" />
+                <div className="order-placed-dialog-title">
+                  Order Placed
                 </div>
               </div>
             </dialog>
