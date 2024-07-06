@@ -3,9 +3,14 @@ import './PaymentPage.css';
 import swiggyLogo from '../assets/swiggy_logo.svg';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import CartContext from '../utilities/CartContext.jsx';
+import RestaurantContext from '../utilities/RestaurantContext.jsx';
 
 const PaymentPage = () => {
   const user = useSelector((state) => state.user);
+  const { setCart } = useContext(CartContext);
+  const { setCheckoutRestaurant } = useContext(RestaurantContext);
   const navigate = useNavigate();
 
   const handlePayment = async (event) => {
@@ -23,6 +28,9 @@ const PaymentPage = () => {
       order_id: id,
       handler: async function (response){
         // alert('Payment successfull');
+        setCart([]);
+        setCheckoutRestaurant(null);
+        localStorage.setItem('cartDetails', JSON.stringify([]));
         navigate('/');
         
         // alert(response.razorpay_payment_id);
