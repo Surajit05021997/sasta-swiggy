@@ -117,7 +117,7 @@ const CheckoutJourney = () => {
           </div>
         </div>
         <div className="delivery-address disabled">Delivery address</div>
-        <div className="payment disabled">Payment</div>
+        <div className="payment disabled">Choose payment method</div>
       </div>
     ) : (
       <div className="checkout-journey">
@@ -167,12 +167,17 @@ const CheckoutJourney = () => {
               </div>
             )
           }
-          
         </div>
-        <div className="payment">
-          <div className="fw-bold mb-1">Choose payment method</div>
-          <PaymentPage />
-        </div>
+        {
+          deliveryDetails.address ? (
+            <div className="payment">
+              <div className="fw-bold mb-1">Choose payment method</div>
+              <PaymentPage />
+            </div>
+          ) : (
+            <div className="payment disabled">Choose payment method</div>
+          )
+        }
       </div>
     )
   )
