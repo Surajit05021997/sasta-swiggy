@@ -10,14 +10,17 @@ import { updateIsOrderPlaced } from '../store/deliveryDetailsSlice.js';
 
 const PaymentPage = () => {
   const user = useSelector((state) => state.user);
-  const { setCart } = useContext(CartContext);
-  const { setCheckoutRestaurant } = useContext(RestaurantContext);
+  const { cart, setCart } = useContext(CartContext);
+  const { checkoutRestaurant, setCheckoutRestaurant } = useContext(RestaurantContext);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handlePayment = async (event) => {
-
-    const response = await axios.post('https://sasta-swiggy-server.vercel.app/order');
+    const totalFoodAmount = cart?.reduce((totalFoodAmount, item) => totalFoodAmount = totalFoodAmount + ((item.price/100)*item.quantity), 0);
+    const toPay = totalFoodAmount + ((5*totalFoodAmount)/100) + 5 + ((checkoutRestaurant?.feeDetails?.totalFee)/100);
+    const response = await axios.post('https://sasta-swiggy-server.vercel.app/order', {
+      amount: toPay * 100,
+    });
     const {amount, id} = response.data;
 
     var options = {
