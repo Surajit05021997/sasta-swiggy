@@ -1,14 +1,18 @@
 import RestaurantBill from "./RestaurantBill";
 import CheckoutJourney from "./CheckoutJourney";
+import SpinnerLoader from "./SpinnerLoader";
 import emptyCartImg from '../assets/empty_cart.webp';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState, useContext } from "react";
 import CartContext from '../utilities/CartContext.jsx';
+import { useSelector } from 'react-redux';
 import './Checkout.css';
 
 const Checkout = () => {
   const [isCartEmpty, setIsCartEmpty] = useState(true);
   const { cart } = useContext(CartContext);
+
+  const deliveryDetails = useSelector((state) => state.deliveryDetails);
 
   useEffect(() => {
     setIsCartEmpty(JSON.parse(localStorage.getItem('cartDetails')).length === 0)
@@ -30,6 +34,9 @@ const Checkout = () => {
     <div className="checkout">
       <CheckoutJourney />
       <RestaurantBill />
+      {
+        deliveryDetails.isPaymentLoading ? <SpinnerLoader /> : ''
+      }
     </div>
   )
 }

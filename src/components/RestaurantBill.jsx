@@ -38,7 +38,7 @@ const RestaurantBill = () => {
   useEffect(() => {
     const total = cartDetails?.reduce((totalFoodAmount, item) => totalFoodAmount = totalFoodAmount + ((item.price/100)*item.quantity), 0);
     setTotalFoodAmount(total);
-    setTotalAmount(total + ((5*totalFoodAmount)/100) + 5 + ((checkoutRestaurant?.feeDetails?.totalFee)/100));
+    setTotalAmount(total + ((5*totalFoodAmount)/100) + 5 + (checkoutRestaurant?.feeDetails?.totalFee ? (checkoutRestaurant?.feeDetails?.totalFee)/100 : 0));
   }, [checkoutRestaurant, totalFoodAmount, cartDetails]);
 
   return (
@@ -78,7 +78,7 @@ const RestaurantBill = () => {
         </div>
         <div className="bill-detail-row">
           <div>Delivery fee</div>
-          <div>₹{(checkoutRestaurant?.feeDetails?.totalFee)/100}</div>
+          <div>₹{checkoutRestaurant?.feeDetails?.totalFee ? (checkoutRestaurant?.feeDetails?.totalFee)/100 : 0}</div>
         </div>
         <div className="bill-detail-row">
           <div>Platform fee</div>

@@ -5,6 +5,7 @@ const deliveryDetailsSlice = createSlice({
   initialState: {
     address: null,
     isOrderPlaced: false,
+    isPaymentLoading: false
   },
   reducers: {
     addAddress: (state, action) => {
@@ -12,10 +13,13 @@ const deliveryDetailsSlice = createSlice({
     },
     updateIsOrderPlaced: (state, action) => {
       state.isOrderPlaced = action.payload;
-    }
+    },
+    updatePaymentLoading: (state, action) => {
+      state.isPaymentLoading = action.payload;
+    },
   }
 });
 
-export const { addAddress, updateIsOrderPlaced } = deliveryDetailsSlice.actions;
+export const { addAddress, updateIsOrderPlaced, updatePaymentLoading } = deliveryDetailsSlice.actions;
 
 export default deliveryDetailsSlice.reducer;

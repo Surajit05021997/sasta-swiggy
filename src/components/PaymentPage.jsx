@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import CartContext from '../utilities/CartContext.jsx';
 import RestaurantContext from '../utilities/RestaurantContext.jsx';
-import { updateIsOrderPlaced } from '../store/deliveryDetailsSlice.js';
+import { updateIsOrderPlaced, updatePaymentLoading } from '../store/deliveryDetailsSlice.js';
 
 const PaymentPage = () => {
   const user = useSelector((state) => state.user);
@@ -16,8 +16,9 @@ const PaymentPage = () => {
   const dispatch = useDispatch();
 
   const handlePayment = async (event) => {
+    dispatch(updatePaymentLoading(true));
     const totalFoodAmount = cart?.reduce((totalFoodAmount, item) => totalFoodAmount = totalFoodAmount + ((item.price/100)*item.quantity), 0);
-    const toPay = totalFoodAmount + ((5*totalFoodAmount)/100) + 5 + ((checkoutRestaurant?.feeDetails?.totalFee)/100);
+    const toPay = Math.floor(totalFoodAmount + ((5*totalFoodAmount)/100) + 5 + (checkoutRestaurant?.feeDetails?.totalFee ? (checkoutRestaurant?.feeDetails?.totalFee)/100 : 0));
     const response = await axios.post('https://sasta-swiggy-server.vercel.app/order', {
       amount: toPay * 100,
     });
@@ -52,17 +53,11 @@ const PaymentPage = () => {
     };
     let rzp1 = new Razorpay(options);
     rzp1.on('payment.failed', function (response){
-            // alert(response.error.code);
-            // alert(response.error.description);
-            // alert(response.error.source);
-            // alert(response.error.step);
-            // alert(response.error.reason);
-            // alert(response.error.metadata.order_id);
-            // alert(response.error.metadata.payment_id);
-            alert('Payment failed')
+      alert('Payment failed')
     });
     rzp1.open();
     event.preventDefault();
+    dispatch(updatePaymentLoading(false));
   }
 
   return (
