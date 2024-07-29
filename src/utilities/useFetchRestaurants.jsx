@@ -12,7 +12,6 @@ const useFetchRestaurants = () => {
   const [restaurantNotAvailableData, setRestaurantNotAvailableData] = useState(null);
 
   const location = useLocation();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
