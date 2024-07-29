@@ -3,6 +3,7 @@ import cartIcon from '../assets/cart.svg';
 import searchIcon from '../assets/search.svg';
 import userIcon from '../assets/user.svg';
 import downArrow from '../assets/down_arrow.svg';
+import logout from '../assets/logout.svg';
 import './AppHeader.css';
 import { Link, useNavigate } from 'react-router-dom';
 import CartContext from '../utilities/CartContext.jsx';
@@ -94,7 +95,10 @@ const AppHeader = () => {
                       </div>
                       <hr />
                       <div className="profile-menu-item-list">
-                        <div className="logout" onClick={handleLogout}>Logout</div>
+                        <div className="logout" onClick={handleLogout}>
+                          <img src={logout} alt="" />
+                          <div>Logout</div>
+                        </div>
                       </div>
                     </div>
                   </div>

@@ -89,9 +89,12 @@ const RestaurantBill = () => {
           <div>₹{(5*totalFoodAmount)/100}</div>
         </div>
       </div>
-      <div className="total-amount">
-        <div>TO PAY</div>
-        <div>₹{totalAmount}</div>
+      <div>
+        <div className="total-amount">₹{totalAmount}</div>
+        <div className="to-pay-amount">
+          <div>TO PAY</div>
+          <div>₹{Math.floor(totalAmount)}</div>
+        </div>
       </div>
     </div>) : <BillShimmer />
   );
