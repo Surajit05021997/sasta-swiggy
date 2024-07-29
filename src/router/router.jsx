@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter, Navigate  } from 'react-router-dom';
 import App from '../App.jsx';
 import ErrorPage from '../components/ErrorPage.jsx';
 import RestaurantList from '../components/RestaurantList.jsx';
@@ -24,26 +24,30 @@ const router = createBrowserRouter([
         children: [
           {
             path: '/sign-up',
-            element: <SignUpPage />
+            element: <SignUpPage />,
           },
           {
             path: '/login',
-            element: <LoginPage />
+            element: <LoginPage />,
           },
         ],
       },
       {
         path: '/restaurant/:restaurantId',
-        element: <RestaurantMenu />
+        element: <RestaurantMenu />,
       },
       {
         path: '/checkout',
-        element: <Checkout />
+        element: <Checkout />,
       },
       {
         path: '/search',
-        element: <SearchPage />
-      }
+        element: <SearchPage />,
+      },
+      {
+        path: '*',
+        element: <Navigate to="/" />,
+      },
     ],
   },
 ]);
