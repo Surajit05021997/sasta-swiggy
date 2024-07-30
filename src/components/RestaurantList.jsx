@@ -38,7 +38,7 @@ const RestaurantList = () => {
               </div>
             ) : (restaurants?.map((restaurant) => {
               return (
-                <Link to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
+                <Link className="restaurant-tile-link" to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
                   <RestaurantTile restaurant={restaurant} />
                 </Link>
               );

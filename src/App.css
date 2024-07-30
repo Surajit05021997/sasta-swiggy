@@ -1,7 +1,7 @@
 #root {
   max-width: 1400px;
   margin: 7rem auto 0;
-  padding-inline: 2rem;
+  padding-inline: 1rem;
 }
 
 .rating {
@@ -24,4 +24,10 @@
   display: block;
   width: 24px;
   height: 24px;
+}
+
+@media (min-width: 48rem) {
+  #root {
+    padding-inline: 2rem;
+  }
 }

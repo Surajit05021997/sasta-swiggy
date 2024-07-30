@@ -1,7 +1,7 @@
 .restaurant-tile {
   display: flex;
   flex-direction: column;
-  width: 18.75rem;
+  width: 100%;
   transition: all 250ms;
 }
 
@@ -10,10 +10,10 @@
 }
 
 .restaurant-tile-image-container {
-  width: 15rem;
-  height: 10rem;
+  width: 100%;
+  aspect-ratio: 1.5/1;
   overflow: hidden;
-  border-radius: .5rem;
+  border-radius: 8px 8px 0 0;
 }
 
 .restaurant-tile-image {
@@ -44,8 +44,13 @@
 }
 
 @media (min-width: 48rem) {
+  .restaurant-tile {
+    width: 18.75rem;
+  }
+
   .restaurant-tile-image-container {
     width: 18.75rem;
     height: 12.5rem;
+    border-radius: 8px;
   }
 }

@@ -81,12 +81,10 @@ const AppHeader = () => {
                   </Link>
                 ) : (
                   <div className="profile">
-                    <div className="nav-item">
-                      <div className="profile-menu-invoker nav-item" onClick={toggleProfileMenu}>
-                        <img src={userIcon} alt="User Icon" />
-                        <div className="use-name">{user.displayName}</div>
-                        <img src={downArrow} alt="" className={showProfileMenu ? 'profile-menu-indicator expanded' : 'profile-menu-indicator collapsed'} />
-                      </div>
+                    <div className="profile-menu-invoker nav-item" onClick={toggleProfileMenu}>
+                      <img src={userIcon} alt="User Icon" />
+                      <div className="use-name">{user.displayName}</div>
+                      <img src={downArrow} alt="" className={showProfileMenu ? 'profile-menu-indicator expanded' : 'profile-menu-indicator collapsed'} />
                     </div>
                     <div className={showProfileMenu ? "profile-menu" : "profile-menu hidden"}>
                       <div className="profile-menu-use-info">

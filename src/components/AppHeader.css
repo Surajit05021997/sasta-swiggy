@@ -63,7 +63,7 @@
 
 .cart-count {
   position: absolute;
-  left: 24px;
+  left: 28px;
   top: 13px;
   font-size: var(--fs-100);
   font-weight: var(--fw-bold);
@@ -145,6 +145,10 @@
 
   .profile-menu-indicator{
     display: block;
+  }
+
+  .cart-count {
+    left: 24px;
   }
 }
 
