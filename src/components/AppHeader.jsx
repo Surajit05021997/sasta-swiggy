@@ -66,7 +66,7 @@ const AppHeader = () => {
               <Link to="/search">
                 <div className="nav-item">
                   <img src={searchIcon} alt="Search Icon" />
-                  <div>Search</div>
+                  <div className='nav-item-text'>Search</div>
                 </div>
               </Link>
             </li>
@@ -82,7 +82,7 @@ const AppHeader = () => {
                 ) : (
                   <div className="profile">
                     <div className="nav-item">
-                      <div className="profile-menu-invoker" onClick={toggleProfileMenu}>
+                      <div className="profile-menu-invoker nav-item" onClick={toggleProfileMenu}>
                         <img src={userIcon} alt="User Icon" />
                         <div className="use-name">{user.displayName}</div>
                         <img src={downArrow} alt="" className={showProfileMenu ? 'profile-menu-indicator expanded' : 'profile-menu-indicator collapsed'} />
@@ -110,7 +110,7 @@ const AppHeader = () => {
                 <div className="nav-item">
                   <img src={cartIcon} alt="Cart Icon" className="cart-icon" />
                   <div className="cart-count">{cartCount}</div>
-                  <div>Cart</div>
+                  <div className='nav-item-text'>Cart</div>
                 </div>
               </Link>
             </li>

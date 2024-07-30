@@ -10,8 +10,8 @@
 }
 
 .restaurant-tile-image-container {
-  width: 18.75rem;
-  height: 12.5rem;
+  width: 15rem;
+  height: 10rem;
   overflow: hidden;
   border-radius: .5rem;
 }
@@ -41,4 +41,11 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+@media (min-width: 48rem) {
+  .restaurant-tile-image-container {
+    width: 18.75rem;
+    height: 12.5rem;
+  }
 }
