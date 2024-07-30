@@ -68,7 +68,7 @@ input, textarea {
 /* general styling */
 body {
   font-family: var(--ff-primary);
-  font-size: var(--fs-200);
+  font-size: var(--fs-100);
   color: var(--clr-neutral-700);
   line-height: 1.4;
 }
@@ -123,4 +123,11 @@ a {
 
 .mb-1 {
   margin-bottom: 1rem;
+}
+
+
+@media (min-width: 48px) {
+  body {
+    font-size: var(--fs-200);
+  }
 }

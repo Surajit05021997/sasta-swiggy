@@ -1,14 +1,14 @@
 .food-tile {
   display: flex;
-  gap: 5rem;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
-  padding-block: 2rem;
+  padding-block: 1rem;
   border-bottom: 2px solid var(--clr-neutral-200);
 }
 
 .food-info {
-  width: calc(100% - 5rem - 200px);
+  width: 50%;
 }
 
 .food-classifier-icon {
@@ -30,7 +30,7 @@
 }
 
 .food-image {
-  width: 200px;
+  width: 130px;
   overflow: hidden;
   border-radius: 1rem;
   position: relative;
@@ -38,6 +38,25 @@
 
 .food-image img {
   width: 100%;
-  height: 120px;
+  height: 130px;
   object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .food-tile {
+    gap: 5rem;
+    padding-block: 2rem;
+  }
+
+  .food-info {
+    width: calc(100% - 5rem - 200px);
+  }
+
+  .food-image {
+    width: 200px;
+  }
+  
+  .food-image img {
+    height: 120px;
+  }
 }

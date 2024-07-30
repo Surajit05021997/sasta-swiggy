@@ -27,7 +27,7 @@
 }
 
 .cart-notification.show {
-  bottom: 0;
+  bottom: 4.25rem;
 }
 
 .cart-notification-container {
@@ -39,4 +39,15 @@
   align-items: center;
   font-weight: var(--fw-bold);
   cursor: pointer;
+  padding: 0 1rem;
+}
+
+@media (min-width: 48rem) {
+  .cart-notification.show {
+    bottom: 0;
+  }
+
+  .cart-notification-container {
+    padding: 0;
+  }
 }
