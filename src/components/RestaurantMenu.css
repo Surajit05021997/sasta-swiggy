@@ -19,6 +19,15 @@
   position: fixed;
   bottom: 0;
   left: 0;
+  transition: all 250ms;
+}
+
+.cart-notification.hide {
+  bottom: -5rem;
+}
+
+.cart-notification.show {
+  bottom: 0;
 }
 
 .cart-notification-container {

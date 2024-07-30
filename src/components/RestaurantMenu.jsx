@@ -51,16 +51,12 @@ const RestaurantMenu = () => {
               </section>
             </div>
             <div>
-              {
-                cart?.length > 0 ? (
-                  <div className="cart-notification">
-                    <div className="cart-notification-container">
-                      <div>{totalItem} items added</div>
-                      <div onClick={() => navigate('/checkout')}>VIEW CART</div>
-                    </div>
-                  </div>
-                ) : ''
-              }
+              <div className={cart?.length > 0 ? "cart-notification show" : "cart-notification hide"}>
+                <div className="cart-notification-container">
+                  <div>{totalItem} items added</div>
+                  <div onClick={() => navigate('/checkout')}>VIEW CART</div>
+                </div>
+              </div>
             </div>
           </div>
         ) : (
