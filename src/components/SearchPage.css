@@ -1,7 +1,6 @@
 .search {
   max-width: 60rem;
   margin:  auto;
-  padding-top: 2rem;
 }
 
 .search-bar {
@@ -37,7 +36,7 @@
 }
 
 .popular-cuisine-list img {
-  width: 100px;
+  width: 70px;
   max-width: revert;
   cursor: pointer;
 }
@@ -73,6 +72,10 @@
 }
 
 @media (min-width: 48rem) {
+  .search {
+    padding-top: 2rem;
+  }
+
   .popular-cuisines {
     padding: 3rem 2rem;
   }

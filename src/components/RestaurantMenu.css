@@ -47,11 +47,13 @@
     bottom: 0;
   }
 
-  .cart-notification-container {
-    padding: 0;
-  }
-
   .restaurant-menu {
     margin-bottom: 6rem;
+  }
+}
+
+@media (min-width: 62rem) {
+  .cart-notification-container {
+    padding: 0;
   }
 }

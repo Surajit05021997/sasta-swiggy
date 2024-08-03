@@ -20,6 +20,8 @@
 
 .brand-logo img {
   width: 2rem;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
 }
 
 .main-navbar-container {
