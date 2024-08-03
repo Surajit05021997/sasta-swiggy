@@ -7,12 +7,10 @@ const RestaurantListShimmer = () => {
       {
       shimmerContentArr.map((item) => {
         return (
-          <div key={item}>
-            <div className="shimmer-tile">
-              <div className="shimmer-image-container"></div>
-              <div className="shimmer-info-container"></div>
-              <div className="shimmer-info-container"></div>
-            </div>
+          <div className="shimmer-tile" key={item}>
+            <div className="shimmer-image-container"></div>
+            <div className="shimmer-info-container"></div>
+            <div className="shimmer-info-container"></div>
           </div>
         )
       })

@@ -10,11 +10,11 @@
   flex-direction: column;
   justify-content: start;
   gap: 1rem;
-  width: 18.75rem;
+  width: 100%;
 }
 
 .shimmer-image-container {
-  width: 18.75rem;
+  width: 100%;
   height: 12.5rem;
   border-radius: .5rem;
   background-color: var(--clr-neutral-200);
@@ -33,5 +33,15 @@
 @keyframes shimmer {
   to {
      background-position-x: 0%
+  }
+}
+
+@media (min-width: 48rem) {
+  .shimmer-tile {
+    width: 18.75rem;
+  }
+
+  .shimmer-image-container {
+    width: 18.75rem;
   }
 }
