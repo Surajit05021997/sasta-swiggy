@@ -39,6 +39,7 @@
 
 .delivery-address-list {
   display: flex;
+  flex-direction: column;
   gap: 1rem;
 }
 
@@ -99,4 +100,10 @@
   color: var(--clr-primary);
   border: none;
   cursor: pointer;
+}
+
+@media (min-width: 48rem) {
+  .delivery-address-list {
+    flex-direction: row;
+  }
 }

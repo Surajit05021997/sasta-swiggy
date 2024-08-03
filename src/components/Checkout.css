@@ -1,10 +1,11 @@
 .checkout {
   max-width: 80rem;
   margin-inline: auto;
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 2rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+  margin-bottom: 5rem;
 }
 
 .empty-checkout {
@@ -44,4 +45,13 @@
 
 .empty-checkout .home-btn:hover {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+@media (min-width: 48rem) {
+  .checkout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-bottom: 0;
+  }
 }

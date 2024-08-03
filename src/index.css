@@ -126,7 +126,7 @@ a {
 }
 
 
-@media (min-width: 48px) {
+@media (min-width: 48rem) {
   body {
     font-size: var(--fs-200);
   }
