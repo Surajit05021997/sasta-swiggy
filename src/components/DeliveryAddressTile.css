@@ -4,7 +4,7 @@
   align-items: stretch;
   gap: 1rem;
   background: var(--clr-neutral-100);
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .delivery-address-tile button {
@@ -29,5 +29,6 @@
   .delivery-address-tile {
     width: 15rem;
     align-items: center;
+    padding: 2rem;
   }
 }

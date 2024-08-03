@@ -4,6 +4,7 @@ import searchIcon from '../assets/search.svg';
 import userIcon from '../assets/user.svg';
 import downArrow from '../assets/down_arrow.svg';
 import logout from '../assets/logout.svg';
+import cross from '../assets/cross.svg';
 import './AppHeader.css';
 import { Link, useNavigate } from 'react-router-dom';
 import CartContext from '../utilities/CartContext.jsx';
@@ -25,7 +26,8 @@ const AppHeader = () => {
     // added click event listner to hide profile menu
     document.addEventListener('click', (e) => {
       const profile = document.querySelector('.profile');
-      if (!profile?.contains(e.target)) {
+      const profileMenu = document.querySelector('.profile-menu');
+      if (!profile?.contains(e.target) && !profileMenu?.contains(e.target)) {
         setShowProfileMenu(false);
       }
     });
@@ -42,10 +44,15 @@ const AppHeader = () => {
     setShowProfileMenu(!showProfileMenu);
   }
 
+  const closeProfileMenu = () => {
+    setShowProfileMenu(false);
+  }
+
   const handleLogout = () => {
     signOut(auth).then(() => {
       // Sign-out successful.
       console.log('Logout successful :)');
+      setShowProfileMenu(false);
       navigate('/login', { state: { from: 'homepage' }});
     }).catch((error) => {
       // An error happened.
@@ -104,6 +111,7 @@ const AppHeader = () => {
           </nav>
           <div className={showProfileMenu ? "profile-menu" : "profile-menu hidden"}>
             <div className="profile-menu-use-info">
+              <img className='close-profile-menu' src={cross} alt="Close Profile Menu" onClick={closeProfileMenu} />
               <img src={userIcon} alt="User Icon" />
               <div className="fw-bold">{user?.displayName}</div>
             </div>

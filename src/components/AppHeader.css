@@ -63,7 +63,7 @@
 
 .cart-count {
   position: absolute;
-  left: 28px;
+  left: 27px;
   top: 13px;
   font-size: var(--fs-100);
   font-weight: var(--fw-bold);
@@ -98,7 +98,13 @@
 }
 
 .profile-menu.hidden {
-  bottom: -8.875rem;
+  bottom: -11rem;
+}
+
+.close-profile-menu {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 }
 
 .profile-menu-use-info {
@@ -106,7 +112,7 @@
   flex-direction: column;
   align-items: center;
   gap: .5rem;
-  padding: 1rem;
+  padding: 2rem 1rem;
 }
 
 .profile-menu-item-list {
@@ -160,11 +166,19 @@
 
   .profile-menu.hidden {
     display: none;
-    bottom: -auto;
+    bottom: auto;
   }
 
   .profile-menu-indicator{
     display: block;
+  }
+
+  .profile-menu-use-info {
+    padding: 1rem;
+  }
+
+  .close-profile-menu {
+    display: none;
   }
 
   .cart-count {
