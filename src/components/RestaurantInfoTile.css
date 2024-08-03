@@ -17,11 +17,11 @@
   display: flex;
   font-size: var(--fs-350);
   font-weight: var(--fw-bold);
-  padding-inline: 1.5rem;
+  padding-inline: .75rem;
 }
 
 .cuisine-info {
-  padding-inline: 1.5rem;
+  padding-inline: .75rem;
 }
 
 .divider {
@@ -30,5 +30,19 @@
 }
 
 .delivery-cost-info {
-  padding-inline: 1.5rem;
+  padding-inline: .75rem;
+}
+
+@media (min-width: 48rem) {
+  .rating-cost-info {
+    padding-inline: 1.5rem;
+  }
+
+  .cuisine-info {
+    padding-inline: 1.5rem;
+  }
+
+  .delivery-cost-info {
+    padding-inline: 1.5rem;
+  }
 }
