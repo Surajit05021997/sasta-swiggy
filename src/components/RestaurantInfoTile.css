@@ -15,6 +15,7 @@
 
 .rating-cost-info {
   display: flex;
+  gap: 2rem;
   font-size: var(--fs-350);
   font-weight: var(--fw-bold);
   padding-inline: .75rem;

@@ -23,7 +23,7 @@
 }
 
 .popular-cuisines {
-  padding: 3rem 2rem;
+  padding: 3rem 1rem;
 }
 
 .popular-cuisines-title {
@@ -33,10 +33,12 @@
 
 .popular-cuisine-list {
   display: flex;
+  overflow: scroll;
 }
 
 .popular-cuisine-list img {
   width: 100px;
+  max-width: revert;
   cursor: pointer;
 }
 
@@ -67,5 +69,19 @@
 @keyframes shimmer {
   to {
      background-position-x: 0%
+  }
+}
+
+@media (min-width: 48rem) {
+  .popular-cuisines {
+    padding: 3rem 2rem;
+  }
+
+  .popular-cuisine-list {
+    overflow: hidden;
+  }
+
+  .popular-cuisine-list img {
+    max-width: 100%;
   }
 }

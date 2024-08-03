@@ -50,7 +50,7 @@ const SearchPage = () => {
             {
               preSearchData.length ? (preSearchData.map((cuisine) => {
                 return (
-                  <div key={cuisine.id}>
+                  <div className="popular-cuisine-item" key={cuisine.id}>
                     <img src={`${IMAGE_URL}${cuisine.imageId}`} onClick={() => showSuggestion(cuisine)} />
                   </div>
                 )

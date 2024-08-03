@@ -21,7 +21,7 @@ const RestaurantInfoTile = ({ restaurantInfo }) => {
       <div className="restaurant-info">
         <div className="rating-cost-info">
           <div className={getRatingClassName()}>{restaurantInfo.avgRating}</div>
-          <div>&nbsp;{`(${restaurantInfo.totalRatingsString}) • ${restaurantInfo.costForTwoMessage}`}</div>
+          <div>{`(${restaurantInfo.totalRatingsString}) • ${restaurantInfo.costForTwoMessage}`}</div>
         </div>
         <div className="cuisine-info">
           {restaurantInfo.cuisines.join(', ')}

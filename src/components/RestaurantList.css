@@ -2,6 +2,7 @@
   font-size: var(--fs-400);
   font-weight: var(--fw-black);
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .restaurant-list {
@@ -77,6 +78,10 @@
 @media (min-width: 48rem) {
   .restaurant-list {
     margin: 1rem;
+  }
+
+  .restaurant-list-title {
+    text-align: left;
   }
 
   .restaurant-tile-link {
