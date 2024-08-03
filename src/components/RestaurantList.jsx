@@ -8,6 +8,7 @@ import orderPlacedImage from '../assets/order_placed.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateIsOrderPlaced } from '../store/deliveryDetailsSlice.js';
 import ServiceErrorPage from './ServiceErrorPage.jsx';
+import { useEffect } from 'react';
 
 const RestaurantList = () => {
   const {restaurants, restaurantListTitle, restaurantNotAvailableData} = useFetchRestaurants();
@@ -20,6 +21,10 @@ const RestaurantList = () => {
     const orderPlacedDialog = document.querySelector('.order-placed-dialog');
     orderPlacedDialog.close();
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     error.serviceError ? (

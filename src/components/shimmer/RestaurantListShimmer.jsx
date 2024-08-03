@@ -1,6 +1,11 @@
+import { useEffect } from 'react';
 import './RestaurantListShimmer.css';
 
 const RestaurantListShimmer = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const shimmerContentArr = [1,2,3,4,5,6,7,8,9];
   return (
     <div className="shimmer-container">
