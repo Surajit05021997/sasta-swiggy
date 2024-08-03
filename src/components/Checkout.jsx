@@ -17,7 +17,7 @@ const Checkout = () => {
   const error = useSelector((state) => state.error);
 
   useEffect(() => {
-    setIsCartEmpty(JSON.parse(localStorage.getItem('cartDetails')).length === 0)
+    setIsCartEmpty(JSON.parse(localStorage.getItem('cartDetails')) ? JSON.parse(localStorage.getItem('cartDetails')).length === 0 : true)
   }, [cart]);
   const navigate = useNavigate();
 
