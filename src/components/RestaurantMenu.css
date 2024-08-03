@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
-  margin-bottom: 5rem;
+  margin-bottom: 10rem;
   gap: 2rem;
 }
 
@@ -49,5 +49,9 @@
 
   .cart-notification-container {
     padding: 0;
+  }
+
+  .restaurant-menu {
+    margin-bottom: 6rem;
   }
 }
