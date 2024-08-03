@@ -60,60 +60,62 @@ const AppHeader = () => {
             <img src={swiggyLogo} alt="Swiggy Logo" />
           </Link>
         </div>
-        <nav className="main-navbar">
-          <ul>
-            <li className="main-nav-items">
-              <Link to="/search">
-                <div className="nav-item">
-                  <img src={searchIcon} alt="Search Icon" />
-                  <div className='nav-item-text'>Search</div>
-                </div>
-              </Link>
-            </li>
-            <li className="main-nav-items">
-              {
-                !user ? (
-                  <Link to="/login" state={{from: 'homepage'}}>
-                    <div className="nav-item">
-                      <img src={userIcon} alt="User Icon" />
-                      <div>Login</div>
-                    </div>
-                  </Link>
-                ) : (
-                  <div className="profile">
-                    <div className="profile-menu-invoker nav-item" onClick={toggleProfileMenu}>
-                      <img src={userIcon} alt="User Icon" />
-                      <div className="use-name">{user.displayName}</div>
-                      <img src={downArrow} alt="" className={showProfileMenu ? 'profile-menu-indicator expanded' : 'profile-menu-indicator collapsed'} />
-                    </div>
-                    <div className={showProfileMenu ? "profile-menu" : "profile-menu hidden"}>
-                      <div className="profile-menu-use-info">
-                        <img src={userIcon} alt="User Icon" />
-                        <div className="fw-bold">{user.displayName}</div>
-                      </div>
-                      <hr />
-                      <div className="profile-menu-item-list">
-                        <div className="logout" onClick={handleLogout}>
-                          <img src={logout} alt="" />
-                          <div>Logout</div>
-                        </div>
-                      </div>
-                    </div>
+        <div className='main-navbar-container'>
+          <nav className="main-navbar">
+            <ul>
+              <li className="main-nav-items">
+                <Link to="/search">
+                  <div className="nav-item">
+                    <img src={searchIcon} alt="Search Icon" />
+                    <div className='nav-item-text'>Search</div>
                   </div>
-                )
-              }
-            </li>
-            <li className="main-nav-items">
-              <Link to="/checkout">
-                <div className="nav-item">
-                  <img src={cartIcon} alt="Cart Icon" className="cart-icon" />
-                  <div className="cart-count">{cartCount}</div>
-                  <div className='nav-item-text'>Cart</div>
-                </div>
-              </Link>
-            </li>
-          </ul>
-        </nav>
+                </Link>
+              </li>
+              <li className="main-nav-items">
+                {
+                  !user ? (
+                    <Link to="/login" state={{from: 'homepage'}}>
+                      <div className="nav-item">
+                        <img src={userIcon} alt="User Icon" />
+                        <div>Login</div>
+                      </div>
+                    </Link>
+                  ) : (
+                    <div className="profile">
+                      <div className="profile-menu-invoker nav-item" onClick={toggleProfileMenu}>
+                        <img src={userIcon} alt="User Icon" />
+                        <div className="use-name">{user.displayName}</div>
+                        <img src={downArrow} alt="" className={showProfileMenu ? 'profile-menu-indicator expanded' : 'profile-menu-indicator collapsed'} />
+                      </div>
+                    </div>
+                  )
+                }
+              </li>
+              <li className="main-nav-items">
+                <Link to="/checkout">
+                  <div className="nav-item">
+                    <img src={cartIcon} alt="Cart Icon" className="cart-icon" />
+                    <div className="cart-count">{cartCount}</div>
+                    <div className='nav-item-text'>Cart</div>
+                  </div>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+          <div className={showProfileMenu ? "profile-menu" : "profile-menu hidden"}>
+            <div className="profile-menu-use-info">
+              <img src={userIcon} alt="User Icon" />
+              <div className="fw-bold">{user?.displayName}</div>
+            </div>
+            <hr />
+            <div className="profile-menu-item-list">
+              <div className="logout" onClick={handleLogout}>
+                <img src={logout} alt="" />
+                <div>Logout</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </header>
     </div>
   );

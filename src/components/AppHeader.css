@@ -22,7 +22,7 @@
   width: 2rem;
 }
 
-.main-navbar {
+.main-navbar-container {
   position: fixed;
   bottom: 0;
   left: 0;
@@ -86,17 +86,19 @@
 }
 
 .profile-menu {
-  width: 12rem;
   position: absolute;
-  top: 3rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
   background: var(--clr-neutral-100);
   border-radius: .25rem;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition: bottom 250ms;
 }
 
 .profile-menu.hidden {
-  display: none;
+  bottom: -8.875rem;
 }
 
 .profile-menu-use-info {
@@ -134,7 +136,7 @@
     padding: 1rem 7rem;
   }
 
-  .main-navbar {
+  .main-navbar-container {
     position: static;
     box-shadow: none;
   }
@@ -146,6 +148,19 @@
 
   .nav-item {
     flex-direction: row;
+  }
+
+  .profile-menu {
+    width: 12rem;
+    top: 4rem;
+    bottom: auto;
+    left: auto;
+    right: 16rem;
+  }
+
+  .profile-menu.hidden {
+    display: none;
+    bottom: -auto;
   }
 
   .profile-menu-indicator{
