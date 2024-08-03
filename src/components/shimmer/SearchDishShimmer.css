@@ -1,16 +1,18 @@
 .search-dish-shimmer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   justify-items: stretch;
   gap: 1rem;
   padding: 1rem;
   background: var(--clr-neutral-200);
   border-radius: .5rem;
+  margin-bottom: 7rem;
 }
 
 .search-dish-tile {
   display: flex;
   justify-content: space-between;
+  gap: 1rem;
   background: var(--clr-neutral-100);
   padding: 1rem;
   border-radius: .5rem;
@@ -26,17 +28,17 @@
 }
 
 .search-dish-tile .info-1 {
-  width: 10rem;
+  width: 7rem;
   margin-bottom: 1rem;
 }
 
 .search-dish-tile .info-2 {
-  width: 5rem;
+  width: 3rem;
 }
 
 .search-dish-image-placeholder {
-  width: 10rem;
-  height: 10rem;
+  width: 7rem;
+  height: 7rem;
   border-radius: .5rem;
   background-color: var(--clr-neutral-200);
 }
@@ -44,5 +46,25 @@
 @keyframes shimmer {
   to {
      background-position-x: 0%
+  }
+}
+
+@media (min-width: 62rem) {
+  .search-dish-shimmer {
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 2rem;
+  }
+
+  .search-dish-tile .info-1 {
+    width: 10rem;
+  }
+  
+  .search-dish-tile .info-2 {
+    width: 5rem;
+  }
+
+  .search-dish-image-placeholder {
+    width: 10rem;
+    height: 10rem;
   }
 }
