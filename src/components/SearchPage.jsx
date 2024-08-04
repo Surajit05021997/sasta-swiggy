@@ -41,7 +41,7 @@ const SearchPage = () => {
     ) : (
       <div className="search">
         <div className="search-bar">
-          <input type="text" placeholder="Search for restaurants and food" value={searchInputText} onChange={(e) => handleChange(e)} />
+          <input type="text" placeholder="Search for food" value={searchInputText} onChange={(e) => handleChange(e)} />
           <img src={searchIcon} alt="Search Icon" />
         </div>
         <div className="popular-cuisines">
@@ -72,7 +72,12 @@ const SearchPage = () => {
           </div>
         </div>
         {
-          (searchInputText&&!searchSuggestData.length) ? <SearchDishShimmer /> : (searchInputText&&searchSuggestData.length) ? <SearchSuggest searchSuggestData={searchSuggestData} /> : ''
+          (searchInputText&&!searchSuggestData) ? <SearchDishShimmer /> : (searchInputText&&searchSuggestData.length) ? <SearchSuggest searchSuggestData={searchSuggestData} /> : searchInputText ? (
+            <div>
+              <div className="fw-bold">Search result for {`"${searchInputText}"`}</div>
+              <div>No dishes found!</div>
+            </div>
+          ) : ''
         }
       </div>
     )

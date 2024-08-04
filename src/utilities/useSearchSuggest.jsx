@@ -7,14 +7,14 @@ import { useDispatch } from 'react-redux';
 import { updateServiceError } from '../store/errorSlice';
 
 const useSearchSuggest = (searchText) => {
-  const [searchSuggest, setSearchSuggest] = useState([]);
+  const [searchSuggest, setSearchSuggest] = useState(null);
 
   const location = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {
     if(location.lat && location.lng) {
-      setSearchSuggest([]);
+      setSearchSuggest(null);
       if (searchText) {
         fetchSearchSuggestData();
       }
@@ -24,8 +24,11 @@ const useSearchSuggest = (searchText) => {
   const fetchSearchSuggestData = async () => {
     try {
       const response = await axios.get(`${baseUrl}${SEARCH_SUGGEST_URL}&lat=${location.lat}&lng=${location.lng}&str=${searchText}`);
-      const filteredDataList = response.data.data.cards[0].groupedCard.cardGroupMap.DISH.cards.filter((card) => card.card.card['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.DishGroup');
-      const filteredData = filteredDataList.map((data) => data.card.card);
+      let filteredData = [];
+      if(response.data.data.cards[0].groupedCard.cardGroupMap.DISH.cards) {
+        const filteredDataList = response.data.data.cards[0].groupedCard.cardGroupMap.DISH.cards.filter((card) => card.card.card['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.DishGroup');
+        filteredData = filteredDataList.map((data) => data.card.card);
+      }
       setSearchSuggest(filteredData);
     } catch(error) {
       dispatch(updateServiceError(true));
