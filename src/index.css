@@ -92,6 +92,7 @@ body::-webkit-scrollbar-thumb
 
 a {
   color: var(--clr-neutral-700);
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* utility class */

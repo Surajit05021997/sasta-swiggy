@@ -13,6 +13,7 @@ const SignUpPage = () => {
   const [invalidNameMsg, setInvalidNameMsg] = useState('');
   const [invalidEmailMsg, setInvalidEmailMsg] = useState('');
   const [invalidPasswordMsg, setInvalidPasswordMsg] = useState('');
+  const [invalidreTypedPasswordMsg, setInvalidReTypedPasswordMsg] = useState('');
 
   const dispatch = useDispatch();
   
@@ -22,6 +23,7 @@ const SignUpPage = () => {
   const userName = useRef(null);
   const userEmail = useRef(null);
   const userPassword = useRef(null);
+  const reTypedPassword = useRef(null);
 
   const updateUserProfile = (user, userName) => {
     updateProfile(auth.currentUser, {
@@ -52,12 +54,16 @@ const SignUpPage = () => {
     setInvalidNameMsg('');
     setInvalidEmailMsg('');
     setInvalidPasswordMsg('');
-    const validationResult = validateFormData(userName.current.value, userEmail.current.value, userPassword.current.value);
-    validationResult.isNameValid ? setInvalidNameMsg('') : setInvalidNameMsg('Invalid name');
-    validationResult.isEmailValid ? setInvalidEmailMsg('') : setInvalidEmailMsg('Invalid email');
-    validationResult.isPasswordValid ? setInvalidPasswordMsg('') : setInvalidPasswordMsg('Invalid password');
+    setInvalidReTypedPasswordMsg('');
 
-    if(validationResult.isNameValid && validationResult.isEmailValid && validationResult.isPasswordValid) {
+    const isPasswordEqual = userPassword.current.value === reTypedPassword.current.value;
+    const validationResult = validateFormData(userName.current.value, userEmail.current.value, userPassword.current.value);
+    validationResult.isNameValid ? setInvalidNameMsg('') : setInvalidNameMsg('Invalid name - Should not contain special character.');
+    validationResult.isEmailValid ? setInvalidEmailMsg('') : setInvalidEmailMsg('Invalid email');
+    validationResult.isPasswordValid ? setInvalidPasswordMsg('') : setInvalidPasswordMsg('Invalid password - Should contain atleast one number, special character, uppercase & lowercase letter and atleast 8 characters.');
+    isPasswordEqual ? setInvalidReTypedPasswordMsg('') : setInvalidReTypedPasswordMsg('Re-typed password must be same as password.');
+
+    if(validationResult.isNameValid && validationResult.isEmailValid && validationResult.isPasswordValid && isPasswordEqual) {
       const useNameCopy = userName.current.value;
       createUserWithEmailAndPassword(auth, userEmail.current.value, userPassword.current.value)
         .then((userCredential) => {
@@ -89,23 +95,26 @@ const SignUpPage = () => {
       <form onSubmit={(event) => event.preventDefault()}>
         <div className="field-container">
           <input type="text" id="name" placeholder="Name" ref={userName} />
-          {/* <label className={isInputFocus} htmlFor="name">Name</label> */}
           {
             invalidNameMsg ? (<div className="invalid-msg">{invalidNameMsg}</div>) : ''
           }
         </div>
         <div className="field-container">
           <input type="email" id="email" placeholder="Email" ref={userEmail} />
-          {/* <label htmlFor="email">Email</label> */}
           {
             invalidEmailMsg ? (<div className="invalid-msg">{invalidEmailMsg}</div>) : ''
           }
         </div>
         <div className="field-container">
           <input type="password" id="password" placeholder="Password" ref={userPassword} />
-          {/* <label htmlFor="password">Password</label> */}
           {
             invalidPasswordMsg ? (<div className="invalid-msg">{invalidPasswordMsg}</div>) : ''
+          }
+        </div>
+        <div className="field-container">
+          <input type="password" id="re-type-password" placeholder="Re-Type Password" ref={reTypedPassword} />
+          {
+            invalidreTypedPasswordMsg ? (<div className="invalid-msg">{invalidreTypedPasswordMsg}</div>) : ''
           }
         </div>
         <button onClick={signUpUser}>CONTINUE</button>

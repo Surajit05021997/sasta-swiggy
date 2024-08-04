@@ -17,7 +17,7 @@ const LoginPage = () => {
   const loginUser = () => {
     setInvalidCredentialMsg('');
     if(userEmail.current.value.trim() === '' || userPassword.current.value.trim() === '') {
-      setInvalidCredentialMsg('Invalid email or password');
+      setInvalidCredentialMsg('Wrong email or password');
       return;
     }
     signInWithEmailAndPassword(auth, userEmail.current.value, userPassword.current.value)
