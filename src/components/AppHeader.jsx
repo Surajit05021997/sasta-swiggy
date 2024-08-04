@@ -6,7 +6,7 @@ import downArrow from '../assets/down_arrow.svg';
 import logout from '../assets/logout.svg';
 import cross from '../assets/cross.svg';
 import './AppHeader.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import CartContext from '../utilities/CartContext.jsx';
 import { useContext, useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -19,6 +19,7 @@ const AppHeader = () => {
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const user = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     setCart(JSON.parse(localStorage.getItem('cartDetails')));
@@ -71,7 +72,7 @@ const AppHeader = () => {
           <nav className="main-navbar">
             <ul>
               <li className="main-nav-items">
-                <Link to="/search">
+                <Link className={location.pathname === '/search' ? 'active-tab' : ''} to="/search">
                   <div className="nav-item">
                     <img src={searchIcon} alt="Search Icon" />
                     <div className='nav-item-text'>Search</div>
@@ -99,7 +100,7 @@ const AppHeader = () => {
                 }
               </li>
               <li className="main-nav-items">
-                <Link to="/checkout">
+                <Link className={location.pathname === '/checkout' ? 'active-tab' : ''} to="/checkout">
                   <div className="nav-item">
                     <img src={cartIcon} alt="Cart Icon" className="cart-icon" />
                     <div className="cart-count">{cartCount}</div>

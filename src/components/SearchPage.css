@@ -41,6 +41,10 @@
   cursor: pointer;
 }
 
+.popular-cuisine-item {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .popular-cuisine-shimmer {
   padding: .75rem;
   display: flex;
