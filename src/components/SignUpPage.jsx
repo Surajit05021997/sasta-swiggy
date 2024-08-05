@@ -14,6 +14,7 @@ const SignUpPage = () => {
   const [invalidEmailMsg, setInvalidEmailMsg] = useState('');
   const [invalidPasswordMsg, setInvalidPasswordMsg] = useState('');
   const [invalidreTypedPasswordMsg, setInvalidReTypedPasswordMsg] = useState('');
+  const [isSigningIn, setIsSigningIn] = useState(false);
 
   const dispatch = useDispatch();
   
@@ -55,6 +56,7 @@ const SignUpPage = () => {
     setInvalidEmailMsg('');
     setInvalidPasswordMsg('');
     setInvalidReTypedPasswordMsg('');
+    setIsSigningIn(true);
 
     const isPasswordEqual = userPassword.current.value === reTypedPassword.current.value;
     const validationResult = validateFormData(userName.current.value, userEmail.current.value, userPassword.current.value);
@@ -62,6 +64,8 @@ const SignUpPage = () => {
     validationResult.isEmailValid ? setInvalidEmailMsg('') : setInvalidEmailMsg('Invalid email');
     validationResult.isPasswordValid ? setInvalidPasswordMsg('') : setInvalidPasswordMsg('Invalid password - Should contain atleast one number, special character, uppercase & lowercase letter and atleast 8 characters.');
     isPasswordEqual ? setInvalidReTypedPasswordMsg('') : setInvalidReTypedPasswordMsg('Re-typed password must be same as password.');
+
+
 
     if(validationResult.isNameValid && validationResult.isEmailValid && validationResult.isPasswordValid && isPasswordEqual) {
       const useNameCopy = userName.current.value;
@@ -75,13 +79,17 @@ const SignUpPage = () => {
           } else {
             navigate('/');
           }
+          setIsSigningIn(false);
         })
         .catch((error) => {
           const errorCode = error.code;
           if (errorCode === 'auth/email-already-in-use') {
             setInvalidEmailMsg('Email address is already registered!');
           }
+          setIsSigningIn(false);
         });
+    } else {
+      setIsSigningIn(false);
     }
   }
 
@@ -117,7 +125,7 @@ const SignUpPage = () => {
             invalidreTypedPasswordMsg ? (<div className="invalid-msg">{invalidreTypedPasswordMsg}</div>) : ''
           }
         </div>
-        <button onClick={signUpUser}>CONTINUE</button>
+        <button onClick={signUpUser} disabled={isSigningIn}>CONTINUE</button>
       </form>
     </div>
   )

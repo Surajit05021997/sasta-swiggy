@@ -49,7 +49,7 @@
   }
 }
 
-@media (min-width: 62rem) {
+@media (min-width: 48rem) {
   .search-dish-shimmer {
     grid-template-columns: repeat(2, 1fr);
     margin-bottom: 2rem;

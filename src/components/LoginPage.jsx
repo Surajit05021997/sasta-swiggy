@@ -7,6 +7,7 @@ import './LoginPage.css';
 
 const LoginPage = () => {
   const [invalidCredentialMsg, setInvalidCredentialMsg] = useState('');
+  const [isLoggingIn, setIsLoggingIn] = useState(false);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,8 +17,10 @@ const LoginPage = () => {
 
   const loginUser = () => {
     setInvalidCredentialMsg('');
+    setIsLoggingIn(true);
     if(userEmail.current.value.trim() === '' || userPassword.current.value.trim() === '') {
       setInvalidCredentialMsg('Wrong email or password');
+      setIsLoggingIn(false);
       return;
     }
     signInWithEmailAndPassword(auth, userEmail.current.value, userPassword.current.value)
@@ -29,12 +32,14 @@ const LoginPage = () => {
         } else {
           navigate('/');
         }
+        setIsLoggingIn(false);
       })
       .catch((error) => {
         const errorCode = error.code;
         if(errorCode === 'auth/invalid-credential') {
           setInvalidCredentialMsg('Invalid email or password');
         }
+        setIsLoggingIn(false);
       });
   }
 
@@ -48,18 +53,16 @@ const LoginPage = () => {
       <form onSubmit={(event) => event.preventDefault()}>
         <div className="field-container">
           <input type="email" id="email" placeholder="Email" ref={userEmail} />
-          {/* <label htmlFor="email">Email</label> */}
         </div>
         <div className="field-container">
           <input type="password" id="password" placeholder="Password" ref={userPassword} />
-          {/* <label htmlFor="password">Password</label> */}
         </div>
         <div>
           {
             invalidCredentialMsg ? (<div className="invalid-msg">{invalidCredentialMsg}</div>) : ''
           }
         </div>
-        <button onClick={loginUser}>LOGIN</button>
+        <button onClick={loginUser} disabled={isLoggingIn}>LOGIN</button>
       </form>
     </div>
   )

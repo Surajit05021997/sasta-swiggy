@@ -9,7 +9,7 @@
 }
 
 .empty-checkout {
-  min-height: calc(100vh - 7rem);
+  min-height: auto;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -60,5 +60,6 @@
   .empty-checkout {
     justify-content: center;
     margin-top: 0;
+    min-height: calc(100vh - 7rem);
   }
 }

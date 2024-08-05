@@ -9,6 +9,9 @@
 
 .food-info {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
 }
 
 .food-classifier-icon {

@@ -7,6 +7,7 @@
   display: flex;
   justify-content: space-between;
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .food-category .collapsed {

@@ -50,3 +50,8 @@
   font-weight: var(--fw-medium);
   cursor: pointer;
 }
+
+.login button:disabled {
+  background-color: var(--clr-neutral-600);
+  cursor: not-allowed;
+}

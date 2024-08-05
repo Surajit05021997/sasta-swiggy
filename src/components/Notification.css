@@ -15,8 +15,8 @@
 .notification dialog {
   border: 2px solid var(--clr-success);
   border-radius: 1rem;
-  max-width: 600px;
-  margin: auto;
+  max-width: 48rem;
+  margin: 1rem;
   padding: 1.5rem;
 }
 
@@ -35,4 +35,11 @@
   gap: 2rem;
   margin-top: 1rem;
   justify-content: end;
+}
+
+@media (min-width: 48rem) {
+  .notification dialog {
+    max-width: 600px;
+    margin: auto;
+  }
 }

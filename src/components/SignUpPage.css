@@ -51,3 +51,8 @@
   font-weight: var(--fw-medium);
   cursor: pointer;
 }
+
+.sign-up button:disabled {
+  background-color: var(--clr-neutral-600);
+  cursor: not-allowed;
+}
