@@ -6,7 +6,7 @@ import RestaurantContext from './utilities/RestaurantContext.jsx';
 import { useEffect, useState } from 'react';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from './firebase';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addUser, removeUser } from './store/userSlice';
 
 function App() {
@@ -24,6 +24,11 @@ function App() {
         dispatch(removeUser(null));
       }
     });
+
+    // setting checkout restaurant on lapp load
+    if(JSON.parse(localStorage.getItem('cartDetails')).length) {
+      setCheckoutRestaurant({id: JSON.parse(localStorage.getItem('cartDetails'))[0].restaurantId});
+    }
   }, []);
 
   return (
