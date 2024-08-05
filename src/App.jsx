@@ -26,7 +26,7 @@ function App() {
     });
 
     // setting checkout restaurant on lapp load
-    if(JSON.parse(localStorage.getItem('cartDetails')).length) {
+    if(JSON.parse(localStorage.getItem('cartDetails'))?.length) {
       setCheckoutRestaurant({id: JSON.parse(localStorage.getItem('cartDetails'))[0].restaurantId});
     }
   }, []);
