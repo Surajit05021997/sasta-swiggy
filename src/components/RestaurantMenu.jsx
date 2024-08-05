@@ -22,6 +22,9 @@ const RestaurantMenu = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     const total = cart?.reduce((acc, item) => acc = acc + item.quantity, 0);
     setTotalItem(total);
   }, [cart]);
