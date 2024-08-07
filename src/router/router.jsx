@@ -7,6 +7,7 @@ import Checkout from '../components/Checkout.jsx';
 import SearchPage from '../components/SearchPage.jsx';
 import SignUpPage from '../components/SignUpPage.jsx';
 import LoginPage from '../components/LoginPage.jsx';
+import OrdersPage from '../components/OrdersPage.jsx';
 import ProtectedRoute from '../components/ProtectedRoute.jsx';
 
 const router = createBrowserRouter([
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: '/search',
         element: <SearchPage />,
+      },
+      {
+        path: '/your-orders',
+        element: <OrdersPage />
       },
       {
         path: '*',

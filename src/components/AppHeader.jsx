@@ -118,8 +118,14 @@ const AppHeader = () => {
             </div>
             <hr />
             <div className="profile-menu-item-list">
+              <Link to="/your-orders">
+                <div className="your-orders">
+                  <img src={cartIcon} alt="Logout icon" />
+                  <div>Your orders</div>
+                </div>
+              </Link>
               <div className="logout" onClick={handleLogout}>
-                <img src={logout} alt="" />
+                <img src={logout} alt="Your order icon" />
                 <div>Logout</div>
               </div>
             </div>

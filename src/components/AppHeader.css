@@ -72,7 +72,7 @@
   font-weight: var(--fw-bold);
 }
 
-.logout {
+.logout, .your-orders {
   cursor: pointer;
   display: flex;
   gap: .5rem;
@@ -99,7 +99,7 @@
 }
 
 .profile-menu.hidden {
-  bottom: -11rem;
+  bottom: -16rem;
 }
 
 .close-profile-menu {
@@ -121,8 +121,8 @@
 .profile-menu-item-list {
   display: flex;
   flex-direction: column;
-  gap: .5rem;
-  padding: 1rem;
+  gap: 1rem;
+  padding: 2rem;
 }
 
 .profile-menu-indicator{
