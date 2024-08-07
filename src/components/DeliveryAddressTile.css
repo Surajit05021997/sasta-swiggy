@@ -14,6 +14,11 @@
   color: var(--clr-neutral-100);
   font-weight: var(--fw-bold);
   cursor: pointer;
+  transition: box-shadow 250ms;
+}
+
+.delivery-address-tile button:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .truncate {

@@ -6,6 +6,7 @@
   display: flex;
   gap: 2rem;
   padding: 1rem;
+  align-items: center;
 }
 
 .checkout-restaurant-info img {

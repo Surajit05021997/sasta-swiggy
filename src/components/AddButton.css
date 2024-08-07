@@ -2,10 +2,11 @@
   padding: .5rem .75rem;
   border: none;
   background-color: var(--clr-neutral-100);
-  color: var(--clr-success);
+  color: var(--clr-primary);
   font-size: var(--fs-300);
   font-weight: var(--fw-bold);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
   transition: all 250ms;
 }
 

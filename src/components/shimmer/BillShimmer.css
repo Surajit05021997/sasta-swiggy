@@ -6,6 +6,7 @@
 .bill-shimmer .bill-restaurant-info {
   display: flex;
   gap: 2rem;
+  align-items: center;
 }
 
 .bill-shimmer .restaurant-img-holder {

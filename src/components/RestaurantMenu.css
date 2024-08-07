@@ -14,7 +14,7 @@
 .cart-notification {
   height: 5rem;
   width: 100vw;
-  background-color: var(--clr-success);
+  background-color: var(--clr-primary);
   color: var(--clr-neutral-100);
   position: fixed;
   bottom: 0;

@@ -1,5 +1,5 @@
 .service-error {
-  height: calc(100vh - 112px);
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,11 +24,13 @@
   color: var(--clr-neutral-100);
   font-weight: var(--fw-bold);
   cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (min-width: 48rem) {
   .service-error {
     justify-content: center;
     margin-top: 0;
+    height: calc(100vh - 112px);
   }
 }

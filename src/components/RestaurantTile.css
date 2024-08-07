@@ -24,12 +24,16 @@
 
 .restaurant-tile-info {
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
 }
 
 .restaurant-tile-info-group {
   display: flex;
   gap: 1rem;
   font-weight: var(--fw-bold);
+  align-items: center;
 }
 
 .restaurant-name {

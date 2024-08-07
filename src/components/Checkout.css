@@ -38,7 +38,6 @@
   font-weight: var(--fw-bold);
   padding: .5rem 1.5rem;
   border: none;
-  border-radius: .25rem;
   color: var(--clr-neutral-100);
   background-color: var(--clr-primary);
   cursor: pointer;
