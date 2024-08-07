@@ -25,9 +25,14 @@ function App() {
       }
     });
 
-    // setting checkout restaurant on lapp load
+    // setting checkout restaurant in local storage on app load
     if(JSON.parse(localStorage.getItem('cartDetails'))?.length) {
       setCheckoutRestaurant({id: JSON.parse(localStorage.getItem('cartDetails'))[0].restaurantId});
+    }
+
+    // setting cartDetails in local storage to [] if it doest not exist
+    if(!JSON.parse(localStorage.getItem('cartDetails'))) {
+      localStorage.setItem('cartDetails', JSON.stringify([]));
     }
   }, []);
 
