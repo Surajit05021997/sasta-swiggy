@@ -1,0 +1,7 @@
+{
+  "name": "SastaSwiggy",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

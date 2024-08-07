@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@capacitor/android": "6.1.1",
+    "@capacitor/core": "^6.1.1",
     "@reduxjs/toolkit": "^2.2.5",
     "axios": "^1.6.8",
     "firebase": "^10.12.2",
@@ -19,6 +21,7 @@
     "react-router-dom": "^6.23.1"
   },
   "devDependencies": {
+    "@capacitor/cli": "^6.1.1",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",

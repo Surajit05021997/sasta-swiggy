@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.SastaSwiggy",
+  "appName": "SastaSwiggy",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "dist",
+  "cordova": {}
+}
