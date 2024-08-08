@@ -56,6 +56,11 @@ const AddButton = ({ id, name, price, defaultPrice, vegClassifier, restaurantInf
           price: price ? price : defaultPrice,
           quantity: 1,
           vegClassifier,
+          restaurantName: restaurantInfo.name,
+          areaName: restaurantInfo.areaName,
+          city: restaurantInfo.city,
+          restaurantImageId: restaurantInfo.cloudinaryImageId,
+          deliveryCharge: restaurantInfo.feeDetails.amount,
         }
         cartCopy = [...cart, foodObj];
       }

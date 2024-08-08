@@ -7,6 +7,7 @@ import { useContext } from 'react';
 import CartContext from '../utilities/CartContext.jsx';
 import RestaurantContext from '../utilities/RestaurantContext.jsx';
 import { updateIsOrderPlaced, updatePaymentLoading } from '../store/deliveryDetailsSlice.js';
+import orderList from '../utilities/orderList.js';
 
 const PaymentPage = () => {
   const user = useSelector((state) => state.user);
@@ -32,17 +33,17 @@ const PaymentPage = () => {
       description: "Test Transaction",
       image: swiggyLogo,
       order_id: id,
-      handler: async function (response){
+      handler: async function (response) {
         dispatch(updateIsOrderPlaced(true));
         setCart([]);
         setCheckoutRestaurant(null);
         localStorage.setItem('cartDetails', JSON.stringify([]));
         navigate('/');
+        orderList.update(cart);
       },
       prefill: {
           name: user.displayName,
-          email: user.email, 
-          // contact: "9000090000"
+          email: user.email,
       },
       notes: {
           address: "Razorpay Corporate Office"
@@ -53,7 +54,7 @@ const PaymentPage = () => {
     };
     let rzp1 = new Razorpay(options);
     rzp1.on('payment.failed', function (response){
-      alert('Payment failed')
+      alert('Payment failed');
     });
     rzp1.open();
     event.preventDefault();
