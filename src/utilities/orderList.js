@@ -14,6 +14,7 @@ const orderList = {
     }
     return orderList;
   },
+  
   async update(order) {
     const orderList = await this.get();
     const usersDb = collection(db, "users");
