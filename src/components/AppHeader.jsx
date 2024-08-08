@@ -41,6 +41,13 @@ const AppHeader = () => {
     setCartCount(cartCountCopy);
   }, [cart]);
 
+  // closing profile menu when navigating to your orders page
+  useEffect(() => {
+    if(window.location.pathname === '/your-orders') {
+      setShowProfileMenu(false);
+    }
+  }, [window.location.href])
+
   const toggleProfileMenu = () => {
     setShowProfileMenu(!showProfileMenu);
   }
