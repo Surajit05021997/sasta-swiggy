@@ -15,11 +15,11 @@ const orderList = {
     return orderList;
   },
   
-  async update(order) {
+  async update(order, orderId) {
     const orderList = await this.get();
     const usersDb = collection(db, "users");
     await setDoc(doc(usersDb, auth.currentUser.email), {
-      orderList: [...orderList, { orderDetails: order }],
+      orderList: [...orderList, { orderDetails: order, orderId }],
     }, { merge: true });
   }
 }

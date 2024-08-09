@@ -39,7 +39,7 @@ const PaymentPage = () => {
         setCheckoutRestaurant(null);
         localStorage.setItem('cartDetails', JSON.stringify([]));
         navigate('/');
-        orderList.update(cart);
+        orderList.update(cart, id);
       },
       prefill: {
           name: user.displayName,
