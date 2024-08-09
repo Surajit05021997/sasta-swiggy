@@ -150,7 +150,7 @@
   }
 
   .main-navbar-container {
-    position: static;
+    position: relative;
     box-shadow: none;
   }
 
@@ -178,10 +178,10 @@
 
   .profile-menu {
     width: 12rem;
-    top: 4rem;
+    top: 3rem;
     bottom: auto;
     left: auto;
-    right: 13.5rem;
+    right: 4.5rem;
   }
 
   .profile-menu.hidden {
@@ -209,5 +209,9 @@
 @media (min-width: 62rem) {
   .main-navbar ul {
     gap: 3rem;
+  }
+
+  .profile-menu {
+    right: 6.5rem;
   }
 }
