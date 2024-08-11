@@ -30,11 +30,13 @@ const OrdersPage = () => {
     ) : (
       <div>
         <div className="order-history-title">Order History</div>
-        {
-          orderHistory.map((order) => {
-            return (<OrderTile order={order} key={order.orderId} />)
-          })
-        }
+        <div className="order-history-container">
+          {
+            orderHistory.map((order) => {
+              return (<OrderTile order={order} key={order.orderId} />)
+            })
+          }
+        </div>
       </div>
     )
   );

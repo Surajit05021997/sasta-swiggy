@@ -5,6 +5,7 @@
   /* colors */
   --clr-neutral-100: #ffffff;
   --clr-neutral-150: #f3f3f3;
+  --clr-neutral-170: #f2f6fc;
   --clr-neutral-200: #ececec;
   --clr-neutral-300: #dedede;
   --clr-neutral-600: #959595;
@@ -12,7 +13,7 @@
   --clr-neutral-900: #000000;
   --clr-success: #65B741;
   --clr-error: #EE4E4E;
-  --clr-primary: #FC8019;
+  --clr-primary: #FE5005;
 
    /* font family */
    --ff-primary: "Roboto", sans-serif;

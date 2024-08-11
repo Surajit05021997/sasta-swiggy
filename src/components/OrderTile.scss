@@ -1,0 +1,41 @@
+.order-tile {
+  box-shadow: 0px 4px 8px -2px rgba(9, 30, 66, 0.25), 0px 0px 0px 1px rgba(9, 30, 66, 0.08);
+  border-radius: .5rem;
+
+  .restaurant-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: none;
+    border-radius: .5rem .5rem 0 0;
+    padding: 1rem;
+    background-color: var(--clr-neutral-170);
+
+    .restaurant-img {
+      width: 5rem;
+      height: 5rem;
+      object-fit: cover;
+      border-radius: .5rem;
+    }
+  }
+
+  .items{
+    padding: 1rem;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+  }
+
+  .delivery-info {
+    padding: 1rem;
+    border-top: 2px dashed var(--clr-neutral-300);
+  }
+
+  @media (min-width: 48rem) {
+    width: 40rem;
+  }
+
+  @media (min-width: 62rem) {
+    width: 50rem;
+  }
+}

@@ -17,5 +17,19 @@
   .order-history-title {
     font-size: var(--fs-350);
     font-weight: var(--fw-black);
+    margin-bottom: 2rem;;
+  }
+
+  .order-history-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 48rem) {
+    .order-history-container {
+      align-items: center;
+    }
   }
   
