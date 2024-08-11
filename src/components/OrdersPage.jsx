@@ -13,7 +13,6 @@ const OrdersPage = () => {
   useEffect(() => {
     if(user) {
       orderList.get().then((data) => {
-        console.log(data)
         setOrderHistory(data);
       })
     }
@@ -32,9 +31,16 @@ const OrdersPage = () => {
         <div className="order-history-title">Order History</div>
         <div className="order-history-container">
           {
-            orderHistory.map((order) => {
-              return (<OrderTile order={order} key={order.orderId} />)
-            })
+            orderHistory.length ? (
+              orderHistory.map((order) => {
+                return (<OrderTile order={order} key={order.orderId} />)
+              })
+            ) : (
+              <div>
+                <div>No Orders</div>
+                <div>You haven't placed any order yet.</div>
+              </div>
+            )
           }
         </div>
       </div>

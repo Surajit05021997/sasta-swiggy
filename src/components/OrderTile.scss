@@ -29,6 +29,8 @@
   .delivery-info {
     padding: 1rem;
     border-top: 2px dashed var(--clr-neutral-300);
+    display: flex;
+    justify-content: space-between;
   }
 
   @media (min-width: 48rem) {

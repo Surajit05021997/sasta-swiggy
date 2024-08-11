@@ -6,11 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import CartContext from '../utilities/CartContext.jsx';
 import RestaurantContext from '../utilities/RestaurantContext.jsx';
-import { updateIsOrderPlaced, updatePaymentLoading } from '../store/deliveryDetailsSlice.js';
+import { updateIsOrderPlaced, updatePaymentLoading, updateOrderDate, updateOrderTime } from '../store/deliveryDetailsSlice.js';
 import orderList from '../utilities/orderList.js';
 
 const PaymentPage = () => {
   const user = useSelector((state) => state.user);
+  const deliveryDetails = useSelector((state) => state.deliveryDetails);
   const { cart, setCart } = useContext(CartContext);
   const { checkoutRestaurant, setCheckoutRestaurant } = useContext(RestaurantContext);
   const navigate = useNavigate();
@@ -34,12 +35,17 @@ const PaymentPage = () => {
       image: swiggyLogo,
       order_id: id,
       handler: async function (response) {
+        const orderDate = new Date().toLocaleDateString();
+        const orderTime = new Date().toLocaleTimeString();
+
         dispatch(updateIsOrderPlaced(true));
         setCart([]);
         setCheckoutRestaurant(null);
         localStorage.setItem('cartDetails', JSON.stringify([]));
+        dispatch(updateOrderDate(orderDate));
+        dispatch(updateOrderTime(orderTime));
         navigate('/');
-        orderList.update(cart, id);
+        orderList.update(cart, id, deliveryDetails?.totalAmount, orderDate, orderTime);
       },
       prefill: {
           name: user.displayName,

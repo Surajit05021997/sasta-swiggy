@@ -6,7 +6,7 @@ import vegIcon from '../assets/veg_icon.svg';
 import nonVegIcon from '../assets/non_veg_icon.svg';
 
 const OrderTile = ({ order }) => {
-  const { orderDetails } = order;
+  const { orderDetails, totalAmount, orderDate, orderTime } = order;
   return (
     <div className="order-tile">
       <div className="restaurant-info">
@@ -32,8 +32,8 @@ const OrderTile = ({ order }) => {
         }
       </div>
       <div className="delivery-info">
-        <div>Order placed on</div>
-        <div></div>
+        <div>Order placed on {orderDate}, {orderTime}</div>
+        <div>₹{totalAmount}</div>
       </div>
     </div>
   );

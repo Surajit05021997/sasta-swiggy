@@ -8,6 +8,8 @@ import BillShimmer from './shimmer/BillShimmer.jsx';
 import vegIcon from '../assets/veg_icon.svg';
 import nonVegIcon from '../assets/non_veg_icon.svg';
 import useFetchRestaurantMenu from '../utilities/useFetchRestaurantMenu.jsx';
+import { useDispatch } from 'react-redux';
+import { updateTotalAmount } from '../store/deliveryDetailsSlice.js';
 
 const RestaurantBill = () => {
   const [cartDetails, setCartDetails] = useState([]);
@@ -15,6 +17,7 @@ const RestaurantBill = () => {
   const [totalAmount, setTotalAmount] = useState(0);
   const { checkoutRestaurant, setSelectedRestaurant, setCheckoutRestaurant } = useContext(RestaurantContext);
   const { cart, setCart } = useContext(CartContext);
+  const dispatch = useDispatch();
   
   const restaurantMenu = useFetchRestaurantMenu(cartDetails.length ? cartDetails[0].restaurantId : null);
 
@@ -40,6 +43,10 @@ const RestaurantBill = () => {
     setTotalFoodAmount(total);
     setTotalAmount(total + ((5*totalFoodAmount)/100) + 5 + (checkoutRestaurant?.feeDetails?.totalFee ? (checkoutRestaurant?.feeDetails?.totalFee)/100 : 0));
   }, [checkoutRestaurant, totalFoodAmount, cartDetails]);
+
+  useEffect(() => {
+    dispatch(updateTotalAmount(Math.floor(totalAmount)));
+  }, [totalAmount]);
 
   return (
     checkoutRestaurant ? (<div className="restaurant-bill">
