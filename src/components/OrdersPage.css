@@ -25,11 +25,13 @@
     flex-direction: column;
     gap: 2rem;
     align-items: stretch;
+    margin-bottom: 7rem;
   }
 
   @media (min-width: 48rem) {
     .order-history-container {
       align-items: center;
+      margin-bottom: 5rem;
     }
   }
   

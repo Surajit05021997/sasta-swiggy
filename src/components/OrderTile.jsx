@@ -14,9 +14,9 @@ const OrderTile = ({ order }) => {
           <img className="restaurant-img" src={`${IMAGE_URL}${orderDetails[0].restaurantImageId}`} alt="Restaurant Image" />
         </div>
         <div>
-          <div>{orderDetails[0].restaurantName}</div>
+          <div className='fw-bold'>{orderDetails[0].restaurantName}</div>
           <div>{`${orderDetails[0].areaName}, ${orderDetails[0].city}`}</div>
-          <Link to={`/restaurant/${orderDetails[0].restaurantId}`}>View menu</Link>
+          <Link className='menu-link' to={`/restaurant/${orderDetails[0].restaurantId}`}>View menu</Link>
         </div>
       </div>
       <div>
@@ -33,7 +33,7 @@ const OrderTile = ({ order }) => {
       </div>
       <div className="delivery-info">
         <div>Order placed on {orderDate}, {orderTime}</div>
-        <div>₹{totalAmount}</div>
+        <div className='fw-bold'>₹{totalAmount}</div>
       </div>
     </div>
   );

@@ -17,6 +17,11 @@
       object-fit: cover;
       border-radius: .5rem;
     }
+
+    .menu-link {
+      color: var(--clr-primary);
+      font-weight: var(--fw-medium);
+    }
   }
 
   .items{
