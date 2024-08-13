@@ -12,7 +12,7 @@
 }
 
 .cart-notification {
-  height: 5rem;
+  height: 4rem;
   width: 100vw;
   background-color: var(--clr-primary);
   color: var(--clr-neutral-100);
@@ -27,7 +27,7 @@
 }
 
 .cart-notification.show {
-  bottom: 4.25rem;
+  bottom: 4rem;
 }
 
 .cart-notification-container {
@@ -43,6 +43,10 @@
 }
 
 @media (min-width: 48rem) {
+  .cart-notification {
+    height: 5rem;
+  }
+
   .cart-notification.show {
     bottom: 0;
   }
