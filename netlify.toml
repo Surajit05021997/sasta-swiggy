@@ -24,7 +24,7 @@
   status = 200
 
   [[redirects]]
-  from = "//your-orders"
+  from = "/your-orders"
   to = "/index.html"
   status = 200
 
