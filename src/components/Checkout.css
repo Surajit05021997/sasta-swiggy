@@ -3,7 +3,7 @@
   margin-inline: auto;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   align-items: stretch;
   margin-bottom: 8rem;
 }
@@ -52,7 +52,6 @@
   .checkout {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 2rem;
     margin-bottom: 0;
   }
 

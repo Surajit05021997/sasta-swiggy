@@ -27,7 +27,7 @@ const OrdersPage = () => {
         </Link>
       </div>
     ) : (
-      <div>
+      <div className="order-history">
         <div className="order-history-title">Order History</div>
         <div className="order-history-container">
           {

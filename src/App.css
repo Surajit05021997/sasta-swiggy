@@ -1,6 +1,6 @@
 #root {
   max-width: 1400px;
-  margin: 7rem auto 0;
+  margin: 6rem auto 0;
   padding-inline: 1rem;
 }
 
@@ -29,5 +29,6 @@
 @media (min-width: 48rem) {
   #root {
     padding-inline: 2rem;
+    margin: 7rem auto 0;
   }
 }

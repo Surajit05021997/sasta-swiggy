@@ -1,7 +1,7 @@
 .restaurant-list-title {
   font-size: var(--fs-400);
   font-weight: var(--fw-black);
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -10,7 +10,7 @@
   flex-wrap: wrap;
   gap: 2.5rem;
   justify-content: center;
-  margin: 1rem .5rem 6rem .5rem;
+  margin: 1rem 0 6rem 0;
 }
 
 .restaurant-not-available {

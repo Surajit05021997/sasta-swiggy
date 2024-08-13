@@ -1,3 +1,8 @@
+.order-history {
+  max-width:  50rem;
+  margin: auto;
+}
+
 .login-btn {
     border: none;
     background-color: var(--clr-primary);
@@ -17,7 +22,7 @@
   .order-history-title {
     font-size: var(--fs-350);
     font-weight: var(--fw-black);
-    margin-bottom: 2rem;;
+    margin-bottom: 1rem;;
   }
 
   .order-history-container {

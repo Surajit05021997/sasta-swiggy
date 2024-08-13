@@ -4,7 +4,7 @@
   justify-items: stretch;
   gap: 1rem;
   padding: 1rem;
-  background: var(--clr-neutral-200);
+  background: var(--clr-neutral-170);
   border-radius: .5rem;
   margin-bottom: 7rem;
 }

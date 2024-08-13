@@ -5,6 +5,7 @@
   gap: 1rem;
   background: var(--clr-neutral-100);
   padding: 1rem;
+  border-radius: .5rem;
 }
 
 .delivery-address-tile button {

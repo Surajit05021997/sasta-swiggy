@@ -14,7 +14,7 @@
 }
 
 .suggested-dish-tile-top {
-  border-bottom: 2px dotted var(--clr-neutral-300);
+  border-bottom: 2px dashed var(--clr-neutral-300);
   padding-bottom: 1rem;
   font-size: var(--fs-100);
   cursor: pointer;

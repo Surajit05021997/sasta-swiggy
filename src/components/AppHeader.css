@@ -1,6 +1,6 @@
 .main-header-container {
   padding: .75rem 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   background-color: var(--clr-neutral-100);
   width: 100%;
   z-index: 1;
@@ -143,6 +143,7 @@
   .main-header-container {
     height: 5rem;
     padding: 1rem 7rem;
+    margin-bottom: 2rem;
   }
 
   .brand-logo img:hover {
