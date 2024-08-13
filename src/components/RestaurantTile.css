@@ -11,7 +11,7 @@
 
 .restaurant-tile-image-container {
   width: 100%;
-  aspect-ratio: 1.5/1;
+  aspect-ratio: 1.5/.85;
   overflow: hidden;
   border-radius: 8px 8px 0 0;
 }

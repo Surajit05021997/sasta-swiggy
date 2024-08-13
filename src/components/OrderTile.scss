@@ -25,10 +25,14 @@
   }
 
   .items{
-    padding: 1rem;
+    padding: .5rem 1rem;
     display: flex;
     gap: .5rem;
     align-items: center;
+
+    @media (min-width: 48rem) {
+      padding: 1rem;
+    }
   }
 
   .delivery-info {

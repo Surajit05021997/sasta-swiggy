@@ -20,7 +20,7 @@ const OrdersPage = () => {
 
   return (
     !user ? (
-      <div>
+      <div className="order-history">
         <div>To check your orders now, log in to your account.</div>
         <Link to="/login">
           <button className='login-btn'>LOGIN</button>

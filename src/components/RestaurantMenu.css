@@ -6,9 +6,9 @@
 .restaurant-menu {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
+  margin-top: 1rem;
   margin-bottom: 10rem;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .cart-notification {
@@ -48,7 +48,9 @@
   }
 
   .restaurant-menu {
+    margin-top: 2rem;
     margin-bottom: 6rem;
+    gap: 2rem;
   }
 }
 
