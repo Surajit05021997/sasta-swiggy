@@ -67,7 +67,7 @@
 
 .cart-count {
   position: absolute;
-  top: 13px;
+  top: 9px;
   font-size: var(--fs-100);
   font-weight: var(--fw-bold);
 }
