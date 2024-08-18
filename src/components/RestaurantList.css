@@ -1,7 +1,7 @@
 .restaurant-list-title {
   font-size: var(--fs-400);
   font-weight: var(--fw-black);
-  margin-bottom: 1rem;
+  margin: 0 1rem 1rem;
   text-align: center;
 }
 

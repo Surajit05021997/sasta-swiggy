@@ -49,7 +49,7 @@
 
 @media (min-width: 48rem) {
   .restaurant-tile {
-    width: 18.75rem;
+    width: 18.5rem;
   }
 
   .restaurant-tile:hover {
@@ -57,7 +57,7 @@
   }
 
   .restaurant-tile-image-container {
-    width: 18.75rem;
+    width: 18.5rem;
     height: 12.5rem;
     border-radius: 8px;
   }

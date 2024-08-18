@@ -6,7 +6,7 @@ const RestaurantListShimmer = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const shimmerContentArr = [1,2,3,4,5,6,7,8,9];
+  const shimmerContentArr = [1,2,3,4,5,6,7,8];
   return (
     <div className="shimmer-container">
       {
