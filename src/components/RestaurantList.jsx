@@ -11,7 +11,7 @@ import ServiceErrorPage from './ServiceErrorPage.jsx';
 import { useEffect } from 'react';
 
 const RestaurantList = () => {
-  const {restaurants, restaurantListTitle, restaurantNotAvailableData} = useFetchRestaurants();
+  const {restaurants, restaurantListTitle, topRestaurants, topRestaurantsTitle, restaurantNotAvailableData} = useFetchRestaurants();
   const dispatch = useDispatch();
   const deliveryDetails = useSelector((state) => state.deliveryDetails);
   const error = useSelector((state) => state.error);
@@ -26,13 +26,22 @@ const RestaurantList = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  const scrollLeft = () => {
+    const topRestaurantsElement = document.querySelector('.top-restaurants');
+    topRestaurantsElement.scrollLeft -= 300;
+  }
+
+  const scrollRight = () => {
+    const topRestaurantsElement = document.querySelector('.top-restaurants');
+    topRestaurantsElement.scrollLeft += 300;
+  }
+
   return (
     error.serviceError ? (
       <ServiceErrorPage />
     ) : (
       <div>
-        <div className="restaurant-list-title">{restaurantListTitle}</div>
-        <section className="restaurant-list">
+        <section>
           {
             !restaurants && !restaurantNotAvailableData ? <RestaurantListShimmer /> :
             ( !restaurants && restaurantNotAvailableData ? (
@@ -41,13 +50,40 @@ const RestaurantList = () => {
                 <div className="title">Location Unserviceable</div>
                 <div>We don’t have any services at you location till now.</div>
               </div>
-            ) : (restaurants?.map((restaurant) => {
-              return (
-                <Link className="restaurant-tile-link" to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
-                  <RestaurantTile restaurant={restaurant} />
-                </Link>
-              );
-            })))
+            ) : (
+              <div>
+                <div>
+                  <div className="restaurant-list-title">{topRestaurantsTitle}</div>
+                  <div>
+                    <div onClick={scrollLeft}>left</div>
+                    <div onClick={scrollRight}>right</div>
+                  </div>
+                </div>
+                <div  className="restaurant-list top-restaurants">
+                  {
+                    (topRestaurants?.map((restaurant) => {
+                      return (
+                        <Link className="restaurant-tile-link" to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
+                          <RestaurantTile restaurant={restaurant} />
+                        </Link>
+                      );
+                    }))
+                  }
+                </div>
+                <div className="restaurant-list-title">{restaurantListTitle}</div>
+                <div  className="restaurant-list">
+                  {
+                    (restaurants?.map((restaurant) => {
+                      return (
+                        <Link className="restaurant-tile-link" to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
+                          <RestaurantTile restaurant={restaurant} />
+                        </Link>
+                      );
+                    }))
+                  }
+                </div>
+              </div>
+            ))
           }
         </section>
         {
