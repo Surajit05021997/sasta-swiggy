@@ -4,6 +4,7 @@ import RestaurantListShimmer from './shimmer/RestaurantListShimmer.jsx';
 import { Link } from 'react-router-dom';
 import './RestaurantList.css';
 import closeButton from '../assets/cross.svg';
+import rightArrow from '../assets/right_arrow.svg';
 import orderPlacedImage from '../assets/order_placed.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateIsOrderPlaced } from '../store/deliveryDetailsSlice.js';
@@ -27,13 +28,13 @@ const RestaurantList = () => {
   }, []);
 
   const scrollLeft = () => {
-    const topRestaurantsElement = document.querySelector('.top-restaurants');
-    topRestaurantsElement.scrollLeft -= 300;
+    const topRestaurantsElement = document.querySelector('.top-restaurants-list');
+    topRestaurantsElement.scrollLeft -= 500;
   }
 
   const scrollRight = () => {
-    const topRestaurantsElement = document.querySelector('.top-restaurants');
-    topRestaurantsElement.scrollLeft += 300;
+    const topRestaurantsElement = document.querySelector('.top-restaurants-list');
+    topRestaurantsElement.scrollLeft += 500;
   }
 
   return (
@@ -52,14 +53,18 @@ const RestaurantList = () => {
               </div>
             ) : (
               <div>
-                <div>
+                <div className="top-restaurants-header">
                   <div className="restaurant-list-title">{topRestaurantsTitle}</div>
-                  <div>
-                    <div onClick={scrollLeft}>left</div>
-                    <div onClick={scrollRight}>right</div>
+                  <div className="top-restaurants-scroll">
+                    <div className="scroll-control left" onClick={scrollLeft}>
+                      <img src={rightArrow} alt="Scroll left" />
+                    </div>
+                    <div className="scroll-control" onClick={scrollRight}>
+                      <img src={rightArrow} alt="Scroll right" />
+                    </div>
                   </div>
                 </div>
-                <div  className="restaurant-list top-restaurants">
+                <div  className="restaurant-list top-restaurants-list">
                   {
                     (topRestaurants?.map((restaurant) => {
                       return (
@@ -70,7 +75,7 @@ const RestaurantList = () => {
                     }))
                   }
                 </div>
-                <div className="restaurant-list-title">{restaurantListTitle}</div>
+                <div className="restaurant-list-title seperator">{restaurantListTitle}</div>
                 <div  className="restaurant-list">
                   {
                     (restaurants?.map((restaurant) => {

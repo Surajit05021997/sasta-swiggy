@@ -1,8 +1,13 @@
 .restaurant-list-title {
   font-size: var(--fs-400);
   font-weight: var(--fw-black);
-  margin: 0 1rem 1rem;
+  margin: 0 1rem 0;
   text-align: center;
+}
+
+.restaurant-list-title.seperator {
+  padding-top: 2rem;
+  border-top: 2px solid var(--clr-neutral-200);
 }
 
 .restaurant-list {
@@ -13,14 +18,45 @@
   margin: 1rem 0 6rem 0;
 }
 
-.top-restaurants {
+.top-restaurants-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.top-restaurants-scroll {
+  display: flex;
+  gap: 1rem;
+  margin-right: 1rem;
+}
+
+.scroll-control {
+  background-color: var(--clr-neutral-200);
+  border-radius: 50%;
+  padding: .5rem;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 250ms;
+}
+
+.scroll-control:hover {
+  background-color: var(--clr-neutral-300);
+}
+
+.scroll-control.left {
+  transform: rotate(180deg);
+}
+
+.top-restaurants-list {
+  padding: 1rem;
+  margin: 0 !important;
   flex-wrap: nowrap;
   justify-content: start;
   overflow-x: scroll;
   scroll-behavior: smooth;
 }
 
-.top-restaurants::-webkit-scrollbar
+.top-restaurants-list::-webkit-scrollbar
 {
   height: 0;
 }
