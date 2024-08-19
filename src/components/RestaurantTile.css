@@ -5,6 +5,10 @@
   transition: all 250ms;
 }
 
+.restaurant-tile.top-restaurant {
+  width: 15rem;
+}
+
 .restaurant-tile:hover {
   transform: scale(1, 1);
 }
@@ -48,7 +52,7 @@
 }
 
 @media (min-width: 48rem) {
-  .restaurant-tile {
+  .restaurant-tile, .restaurant-tile.top-restaurant {
     width: 18.5rem;
   }
 

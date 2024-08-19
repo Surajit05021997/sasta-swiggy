@@ -69,7 +69,7 @@ const RestaurantList = () => {
                     (topRestaurants?.map((restaurant) => {
                       return (
                         <Link className="restaurant-tile-link" to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
-                          <RestaurantTile restaurant={restaurant} />
+                          <RestaurantTile restaurant={restaurant} isTopRestaurant={true} />
                         </Link>
                       );
                     }))
@@ -81,7 +81,7 @@ const RestaurantList = () => {
                     (restaurants?.map((restaurant) => {
                       return (
                         <Link className="restaurant-tile-link" to={`/restaurant/${restaurant.info.id}`} key={restaurant.info.id}>
-                          <RestaurantTile restaurant={restaurant} />
+                          <RestaurantTile restaurant={restaurant} isTopRestaurant={false} />
                         </Link>
                       );
                     }))

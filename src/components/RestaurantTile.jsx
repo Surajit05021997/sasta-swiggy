@@ -12,7 +12,7 @@ const RestaurantTile = (props) => {
   };
 
   return (
-    <div className="restaurant-tile">
+    <div className={props.isTopRestaurant ? "restaurant-tile top-restaurant" : "restaurant-tile"}>
       <div className="restaurant-tile-image-container">
         <img className="restaurant-tile-image" src={`${IMAGE_URL}${cloudinaryImageId}`} alt="Restaurant Image" />
       </div>
@@ -31,6 +31,7 @@ const RestaurantTile = (props) => {
 
 RestaurantTile.propTypes = {
   restaurant: PropTypes.object.isRequired,
+  isTopRestaurant: PropTypes.bool.isRequired,
 };
 
 export default RestaurantTile;
