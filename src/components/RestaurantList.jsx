@@ -44,7 +44,7 @@ const RestaurantList = () => {
       <div>
         <section>
           {
-            !restaurants && !topRestaurants && !restaurantNotAvailableData ? <RestaurantListShimmer /> :
+            (!restaurants || !topRestaurants) && !restaurantNotAvailableData ? <RestaurantListShimmer /> :
             ( !restaurants && restaurantNotAvailableData ? (
               <div className="restaurant-not-available">
                 <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_476,h_476/portal/m/location_unserviceable.png" alt="No restaurant available image" />
