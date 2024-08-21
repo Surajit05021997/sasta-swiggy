@@ -51,3 +51,8 @@
   from = "/dapi/restaurants/search/v3"
   status = 200
   to = "https://www.swiggy.com/dapi/restaurants/search/v3"
+[[redirects]]
+  force = true
+  from = "/mapi/homepage/getCards"
+  status = 200
+  to = "https://www.swiggy.com/mapi/homepage/getCards"

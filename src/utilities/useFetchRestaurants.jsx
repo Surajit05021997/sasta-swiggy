@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { SWIGGY_API_URL } from '../constants/constants';
+import { SWIGGY_API_URL, SWIGGY_MOBILE_API_URL } from '../constants/constants';
 import useLocation from './useLocation';
 import baseUrl from './getBaseUrl';
 import { useDispatch } from 'react-redux';
@@ -35,7 +35,7 @@ const useFetchRestaurants = () => {
       setRestaurantListTitle(restaurantListTitleData);
 
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-        const mobileRestaurantData = await axios.get(`${baseUrl}/mapi/homepage/getCards?lat=${location.lat}&lng=${location.lng}`);
+        const mobileRestaurantData = await axios.get(`${baseUrl}${SWIGGY_MOBILE_API_URL}?lat=${location.lat}&lng=${location.lng}`);
         const topRestaurantsData = mobileRestaurantData.data.data.success.cards.find((card) => card.gridWidget.header.title === 'Top Picks For You').gridWidget.gridElements.infoWithStyle.restaurants;
         setTopRestaurants(topRestaurantsData);
         setTopRestaurantsTitle('Top Picks For You');
