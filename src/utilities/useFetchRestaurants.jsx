@@ -33,10 +33,18 @@ const useFetchRestaurants = () => {
       setRestaurants(restaurantsList);
       const restaurantListTitleData = restaurantData?.data?.data?.cards.find((card) => card?.card?.card?.id === 'popular_restaurants_title')?.card?.card?.title;
       setRestaurantListTitle(restaurantListTitleData);
-      const topRestaurantsData = restaurantData?.data?.data?.cards.find((card) => card?.card?.card?.id === 'top_brands_for_you').card?.card?.gridElements?.infoWithStyle?.restaurants;
-      const topRestaurantsTitleData = restaurantData?.data?.data?.cards.find((card) => card?.card?.card?.id === 'top_brands_for_you').card?.card?.header?.title;
-      setTopRestaurants(topRestaurantsData);
-      setTopRestaurantsTitle(topRestaurantsTitleData);
+
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+        const mobileRestaurantData = await axios.get(`${baseUrl}/mapi/homepage/getCards?lat=${location.lat}&lng=${location.lng}`);
+        const topRestaurantsData = mobileRestaurantData.data.data.success.cards.find((card) => card.gridWidget.header.title === 'Top Picks For You').gridWidget.gridElements.infoWithStyle.restaurants;
+        setTopRestaurants(topRestaurantsData);
+        setTopRestaurantsTitle('Top Picks For You');
+      }else{
+        const topRestaurantsData = restaurantData?.data?.data?.cards?.find((card) => card?.card?.card?.id === 'top_brands_for_you')?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        const topRestaurantsTitleData = restaurantData?.data?.data?.cards?.find((card) => card?.card?.card?.id === 'top_brands_for_you')?.card?.card?.header?.title;
+        setTopRestaurants(topRestaurantsData);
+        setTopRestaurantsTitle(topRestaurantsTitleData);
+      }
     } catch(error) {
       dispatch(updateServiceError(true));
     }
