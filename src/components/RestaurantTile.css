@@ -52,7 +52,16 @@
 }
 
 @media (min-width: 48rem) {
-  .restaurant-tile, .restaurant-tile.top-restaurant {
+  .restaurant-tile.top-restaurant {
+    width: 16.5rem;
+  }
+
+  .restaurant-tile.top-restaurant .restaurant-tile-image-container {
+    width: 16.5rem;
+    height: 9.5rem;
+  }
+
+  .restaurant-tile {
     width: 18.5rem;
   }
 

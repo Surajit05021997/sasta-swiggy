@@ -175,6 +175,7 @@
     flex-direction: row;
     border-bottom: 2px solid var(--clr-neutral-100);
     border-top: 0;
+    transition: all 250ms;
   }
   
   .nav-item:hover {
