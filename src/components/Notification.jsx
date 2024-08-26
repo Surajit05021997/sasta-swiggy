@@ -32,7 +32,7 @@ const Notification = ({ setShowNotification }) => {
       <dialog open>
         <p className="notification-heading">Items already in cart</p>
         <p className="notification-description">Your cart contains items from other restaurant.
-          Would you like to reset your cart for adding items from this restaurant?</p>
+          Would you like to reset your cart?</p>
         <div className="btn-grp">
           <button className="cancel-btn">NO</button>
           <button className="confirm-btn">YES</button>
