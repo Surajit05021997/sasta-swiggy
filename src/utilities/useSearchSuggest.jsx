@@ -26,7 +26,7 @@ const useSearchSuggest = (searchText) => {
       const response = await axios.get(`${baseUrl}${SEARCH_SUGGEST_URL}&lat=${location.lat}&lng=${location.lng}&str=${searchText}`);
       let filteredData = [];
       if(response.data.data.cards[0].groupedCard.cardGroupMap.DISH.cards) {
-        const filteredDataList = response.data.data.cards[0].groupedCard.cardGroupMap.DISH.cards.filter((card) => card.card.card['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.DishGroup');
+        const filteredDataList = response.data.data.cards[0].groupedCard.cardGroupMap.DISH.cards.filter((card) => card.card.card['@type'] === 'type.googleapis.com/swiggy.presentation.food.v2.Dish');
         filteredData = filteredDataList.map((data) => data.card.card);
       }
       setSearchSuggest(filteredData);

@@ -7,7 +7,7 @@ const SearchSuggest = (props) => {
     <div className="search-suggestions">
       {
         props.searchSuggestData.map((suggestion) => {
-          const { info } = suggestion.dishes[0];
+          const { info } = suggestion;
           return (
             <SuggestedDishTile key={info.id} dishInfo={info} restaurantInfo={suggestion.restaurant} />
           )
