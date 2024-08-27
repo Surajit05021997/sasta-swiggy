@@ -5,7 +5,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 
 const AddressMap = ({setMarkerAddress}) => {
-  const location = useLocation();
+  const { location } = useLocation();
 
   async function initMap() {
     let position;

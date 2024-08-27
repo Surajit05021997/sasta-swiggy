@@ -13,7 +13,7 @@ const useFetchRestaurants = () => {
   const [restaurantListTitle, setRestaurantListTitle] = useState('');
   const [restaurantNotAvailableData, setRestaurantNotAvailableData] = useState(null);
 
-  const location = useLocation();
+  const { location, locationError } = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const useFetchRestaurants = () => {
       dispatch(updateServiceError(true));
     }
   }
-  return {restaurants, restaurantListTitle, topRestaurants, topRestaurantsTitle, restaurantNotAvailableData};
+  return {restaurants, restaurantListTitle, topRestaurants, topRestaurantsTitle, restaurantNotAvailableData, locationError };
 }
 
 export default useFetchRestaurants;

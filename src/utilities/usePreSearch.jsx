@@ -9,7 +9,7 @@ import { updateServiceError } from '../store/errorSlice';
 const usePreSearch = () => {
   const [preSearchData, setPreSearchData] = useState([]);
   
-  const location = useLocation();
+  const { location } = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {

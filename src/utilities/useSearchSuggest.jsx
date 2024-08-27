@@ -9,7 +9,7 @@ import { updateServiceError } from '../store/errorSlice';
 const useSearchSuggest = (searchText) => {
   const [searchSuggest, setSearchSuggest] = useState(null);
 
-  const location = useLocation();
+  const { location } = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {

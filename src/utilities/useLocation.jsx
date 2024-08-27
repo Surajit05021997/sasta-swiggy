@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 const useLocation = () => {
   const [location, setLocation] = useState({});
-  const [locationError, setLocationError] = useState(false);
+  const [locationError, setLocationError] = useState(null);
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success, error);
@@ -15,12 +15,16 @@ const useLocation = () => {
     setLocation(locationCopy);
   }
 
-  const error = () => {
+  const error = (error) => {
     console.log('Pleasse enable location');
-    setLocationError(true);
+    if(error.message === 'User denied Geolocation') {
+      setLocationError({
+        message:"Please allow location",
+      });
+    }
   }
 
-  return location;
+  return { location, locationError };
 }
 
 export default useLocation;

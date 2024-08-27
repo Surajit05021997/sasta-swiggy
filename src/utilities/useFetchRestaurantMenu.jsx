@@ -9,7 +9,7 @@ import { updateServiceError } from '../store/errorSlice';
 const useFetchRestaurantMenu = (restaurantId) => {
   const [restaurantMenu, setRestaurantMenu] = useState(null);
 
-  const location = useLocation();
+  const { location } = useLocation();
   const dispatch = useDispatch();
 
   useEffect(() => {
