@@ -97,11 +97,13 @@
 .order-placed-dialog {
   position: fixed;
   z-index: 10;
-  border: 2px solid var(--clr-success);
-  border-radius: 1rem;
-  max-width: 600px;
+  display: flex;
+  align-items: center;
   margin: auto;
   padding: 1.5rem;
+  height: 100%;
+  border: none;
+  border-radius: 0;
 }
 
 .order-placed-dialog .close-button {
@@ -109,10 +111,6 @@
   top: 1rem;
   right: 1rem;
   cursor: pointer;
-}
-
-.order-placed-image {
-  margin: 1rem;
 }
 
 .order-placed-dialog-title {
@@ -146,6 +144,13 @@
     width: auto;
     box-shadow: none;
     border-radius: 0;
+  }
+
+  .order-placed-dialog {
+    max-width: 600px;
+    height: revert;
+    border: 2px solid var(--clr-success);
+    border-radius: 1rem;
   }
 
   .order-placed-image {

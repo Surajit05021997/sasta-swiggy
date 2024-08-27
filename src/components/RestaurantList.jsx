@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 import './RestaurantList.css';
 import closeButton from '../assets/cross.svg';
 import rightArrow from '../assets/right_arrow.svg';
-import orderPlacedImage from '../assets/order_placed.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { updateIsOrderPlaced } from '../store/deliveryDetailsSlice.js';
 import ServiceErrorPage from './ServiceErrorPage.jsx';
 import { useEffect } from 'react';
+import Lottie from "lottie-react";
+import orderPlacedAnimation from '../assets/Animations/order_placed.json';
 
 const RestaurantList = () => {
   const {restaurants, restaurantListTitle, topRestaurants, topRestaurantsTitle, restaurantNotAvailableData} = useFetchRestaurants();
@@ -97,7 +98,7 @@ const RestaurantList = () => {
               <dialog className="order-placed-dialog" open>
                 <div>
                   <img src={closeButton} alt="Close Button" className="close-button" onClick={closeOrderPlacedDialog} />
-                  <img className="order-placed-image" src={orderPlacedImage} alt="Orer placed Image" />
+                  <Lottie animationData={orderPlacedAnimation} loop={false} />
                   <div className="order-placed-dialog-title">
                     Order Placed
                   </div>
