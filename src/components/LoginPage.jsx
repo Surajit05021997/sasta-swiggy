@@ -1,7 +1,8 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import { auth } from '../firebase';
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth, provider } from '../firebase';
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useRef, useState } from "react";
+import googleIcon from '../assets/google_icon.svg';
 import './LoginPage.css';
 
 
@@ -43,6 +44,16 @@ const LoginPage = () => {
       });
   }
 
+  const loginUserWithGoogleAccount = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  }
+
   return (
     <div className="login">
       <h1>Login</h1>
@@ -63,6 +74,11 @@ const LoginPage = () => {
           }
         </div>
         <button onClick={loginUser} disabled={isLoggingIn}>LOGIN</button>
+        <div className="align-text-center">OR</div>
+        <button className="google-login-btn" onClick={loginUserWithGoogleAccount}>
+          <img src={googleIcon} alt="" />
+          <div>Login with Google</div>
+        </button>
       </form>
     </div>
   )

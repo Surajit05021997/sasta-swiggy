@@ -119,6 +119,10 @@ a {
   align-items: center;
 }
 
+.align-text-center {
+  text-align: center;
+}
+
 .fw-bold {
   font-weight: var(--fw-bold);
 }
