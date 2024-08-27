@@ -60,6 +60,7 @@
 }
 
 .add-address-dialog {
+  z-index: 10;
   padding: 1.5rem;
   border: none;
   height: 100%;
