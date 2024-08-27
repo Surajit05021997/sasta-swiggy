@@ -3,6 +3,13 @@
   margin-inline: auto;
 }
 
+.user-loading {
+  position: fixed;
+  width: 12.5rem;
+  top: calc(100vh / 2 - 6.25rem);
+  left: calc(100vw / 2 - 6.25rem);
+}
+
 .login .redirect-link {
   color: var(--clr-primary);
 }

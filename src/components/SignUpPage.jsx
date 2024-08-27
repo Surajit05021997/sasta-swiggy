@@ -9,13 +9,15 @@ import  { db } from '../firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../store/userSlice';
 import googleIcon from '../assets/google_icon.svg';
+import Lottie from "lottie-react";
+import loadingAnimation from '../assets/Animations/loading.json';
 
 const SignUpPage = () => {
   const [invalidNameMsg, setInvalidNameMsg] = useState('');
   const [invalidEmailMsg, setInvalidEmailMsg] = useState('');
   const [invalidPasswordMsg, setInvalidPasswordMsg] = useState('');
   const [invalidreTypedPasswordMsg, setInvalidReTypedPasswordMsg] = useState('');
-  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [isUserLoading, setIsUserLoading] = useState(false);
 
   const dispatch = useDispatch();
   
@@ -57,7 +59,7 @@ const SignUpPage = () => {
     setInvalidEmailMsg('');
     setInvalidPasswordMsg('');
     setInvalidReTypedPasswordMsg('');
-    setIsSigningIn(true);
+    setIsUserLoading(true);
 
     const isPasswordEqual = userPassword.current.value === reTypedPassword.current.value;
     const validationResult = validateFormData(userName.current.value, userEmail.current.value, userPassword.current.value);
@@ -80,69 +82,82 @@ const SignUpPage = () => {
           } else {
             navigate('/');
           }
-          setIsSigningIn(false);
+          setIsUserLoading(false);
         })
         .catch((error) => {
           const errorCode = error.code;
           if (errorCode === 'auth/email-already-in-use') {
             setInvalidEmailMsg('Email address is already registered!');
           }
-          setIsSigningIn(false);
+          setIsUserLoading(false);
         });
     } else {
-      setIsSigningIn(false);
+      setIsUserLoading(false);
     }
   }
 
   const loginUserWithGoogleAccount = () => {
+    setIsUserLoading(true);
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
+        setIsUserLoading(false);
       }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        setIsUserLoading(false);
       });
   }
 
   return (
     <div className="sign-up">
-      <h1>Sign up</h1>
-      <div>
-        or
-        <Link className="redirect-link" to="/login" state={{from: 'homepage'}}> login to your account</Link>
-      </div>
-      <form onSubmit={(event) => event.preventDefault()}>
-        <div className="field-container">
-          <input type="text" id="name" placeholder="Name" ref={userName} />
-          {
-            invalidNameMsg ? (<div className="invalid-msg">{invalidNameMsg}</div>) : ''
-          }
-        </div>
-        <div className="field-container">
-          <input type="email" id="email" placeholder="Email" ref={userEmail} />
-          {
-            invalidEmailMsg ? (<div className="invalid-msg">{invalidEmailMsg}</div>) : ''
-          }
-        </div>
-        <div className="field-container">
-          <input type="password" id="password" placeholder="Password" ref={userPassword} />
-          {
-            invalidPasswordMsg ? (<div className="invalid-msg">{invalidPasswordMsg}</div>) : ''
-          }
-        </div>
-        <div className="field-container">
-          <input type="password" id="re-type-password" placeholder="Re-Type Password" ref={reTypedPassword} />
-          {
-            invalidreTypedPasswordMsg ? (<div className="invalid-msg">{invalidreTypedPasswordMsg}</div>) : ''
-          }
-        </div>
-        <button onClick={signUpUser} disabled={isSigningIn}>CONTINUE</button>
-        <div className="align-text-center">OR</div>
-        <button className="google-login-btn" onClick={loginUserWithGoogleAccount}>
-          <img src={googleIcon} alt="" />
-          <div>Login with Google</div>
-        </button>
-      </form>
+      {
+        isUserLoading ? (
+          <div className="user-loading">
+            <Lottie animationData={loadingAnimation} loop={true} />
+          </div>
+        ) : (
+          <div>
+            <h1>Sign up</h1>
+            <div>
+              or
+              <Link className="redirect-link" to="/login" state={{from: 'homepage'}}> login to your account</Link>
+            </div>
+            <form onSubmit={(event) => event.preventDefault()}>
+              <div className="field-container">
+                <input type="text" id="name" placeholder="Name" ref={userName} />
+                {
+                  invalidNameMsg ? (<div className="invalid-msg">{invalidNameMsg}</div>) : ''
+                }
+              </div>
+              <div className="field-container">
+                <input type="email" id="email" placeholder="Email" ref={userEmail} />
+                {
+                  invalidEmailMsg ? (<div className="invalid-msg">{invalidEmailMsg}</div>) : ''
+                }
+              </div>
+              <div className="field-container">
+                <input type="password" id="password" placeholder="Password" ref={userPassword} />
+                {
+                  invalidPasswordMsg ? (<div className="invalid-msg">{invalidPasswordMsg}</div>) : ''
+                }
+              </div>
+              <div className="field-container">
+                <input type="password" id="re-type-password" placeholder="Re-Type Password" ref={reTypedPassword} />
+                {
+                  invalidreTypedPasswordMsg ? (<div className="invalid-msg">{invalidreTypedPasswordMsg}</div>) : ''
+                }
+              </div>
+              <button onClick={signUpUser} disabled={isUserLoading}>CONTINUE</button>
+              <div className="align-text-center">OR</div>
+              <button className="google-login-btn" onClick={loginUserWithGoogleAccount}>
+                <img src={googleIcon} alt="" />
+                <div>Login with Google</div>
+              </button>
+            </form>
+          </div>
+        )
+      }
     </div>
   )
 }
