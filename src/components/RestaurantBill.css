@@ -1,7 +1,6 @@
 .restaurant-bill {
   background-color: var(--clr-neutral-170);
   border-radius: .5rem;
-  align-self: start;
 }
 
 .checkout-restaurant-info {
@@ -87,4 +86,10 @@
   justify-content: space-between;
   font-size: var(--fs-300);
   font-weight: var(--fw-bold);
+}
+
+@media (min-width: 48rem) {
+  .restaurant-bill {
+    align-self: start;
+  }
 }
