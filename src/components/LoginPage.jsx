@@ -1,6 +1,6 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { auth, provider } from '../firebase';
-import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { useRef, useState } from "react";
 import googleIcon from '../assets/google_icon.svg';
 import './LoginPage.css';

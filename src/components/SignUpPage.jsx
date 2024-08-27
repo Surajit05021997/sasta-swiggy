@@ -1,13 +1,14 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import './SignUpPage.css';
-import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth } from '../firebase';
+import { createUserWithEmailAndPassword, updateProfile, signInWithPopup } from "firebase/auth";
+import { auth, provider } from '../firebase';
 import { useRef, useState } from "react";
 import validateFormData from "../utilities/validateFormData";
 import { collection, doc, setDoc } from "firebase/firestore"; 
 import  { db } from '../firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../store/userSlice';
+import googleIcon from '../assets/google_icon.svg';
 
 const SignUpPage = () => {
   const [invalidNameMsg, setInvalidNameMsg] = useState('');
@@ -93,6 +94,16 @@ const SignUpPage = () => {
     }
   }
 
+  const loginUserWithGoogleAccount = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        const user = result.user;
+      }).catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+  }
+
   return (
     <div className="sign-up">
       <h1>Sign up</h1>
@@ -126,6 +137,11 @@ const SignUpPage = () => {
           }
         </div>
         <button onClick={signUpUser} disabled={isSigningIn}>CONTINUE</button>
+        <div className="align-text-center">OR</div>
+        <button className="google-login-btn" onClick={loginUserWithGoogleAccount}>
+          <img src={googleIcon} alt="" />
+          <div>Login with Google</div>
+        </button>
       </form>
     </div>
   )

@@ -56,3 +56,10 @@
   background-color: var(--clr-neutral-600);
   cursor: not-allowed;
 }
+
+.google-login-btn {
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
+  align-items: center;
+}
