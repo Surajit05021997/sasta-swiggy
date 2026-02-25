@@ -1,2 +1,2 @@
-const baseUrl = window.location.hostname === 'localhost' ? `https://thingproxy.freeboard.io/fetch/https://www.swiggy.com` : '';
+const baseUrl = window.location.hostname === 'localhost' ? `https://corsproxy.io/https://www.swiggy.com` : '';
 export default baseUrl;

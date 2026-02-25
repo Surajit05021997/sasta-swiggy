@@ -28,7 +28,7 @@ const useFetchRestaurants = () => {
       const restaurantData = await axios.get(`${baseUrl}${SWIGGY_API_URL}&lat=${location.lat}&lng=${location.lng}`);
       const restaurantNotAvailableDataResponse = restaurantData?.data?.data?.cards.find((card) => card?.card?.card?.id === 'swiggy_not_present');
       setRestaurantNotAvailableData(restaurantNotAvailableDataResponse?.card?.card);
-      const restaurantListData = restaurantData?.data?.data?.cards.find((card) => card?.card?.card?.id === 'restaurant_grid_listing');
+      const restaurantListData = restaurantData?.data?.data?.cards.find((card) => card?.card?.card?.id === 'restaurant_grid_listing_v2');
       const restaurantsList = restaurantListData?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       setRestaurants(restaurantsList);
       const restaurantListTitleData = restaurantData?.data?.data?.cards.find((card) => card?.card?.card?.id === 'popular_restaurants_title')?.card?.card?.title;
